@@ -20,14 +20,52 @@
   </header>
 
   <main class="container">
-    <h2>Selected Publications</h2>
-    <ul>
-      <li>
-        <strong>Self-Powered Multimodal Emotion Recognition System</strong> — First-author paper accepted at <em>ICDT 2025</em> (Oral). <a href="#">[PDF]</a>
-      </li>
+    <h2>🔬 Research Interests</h2>
+    <ul class="research-interests">
+      <li><strong>Multimodal Data / Sensor Fusion</strong></li>
+      <li><strong>AI for Science (AI4S)</strong></li>
     </ul>
 
-    <p>More publications will be added here. To add a paper, create an entry in this file or link to a BibTeX listing.</p>
+    <h2>📚 Selected Research Projects</h2>
+    <div class="pub-section">
+      <div class="entry">
+        <div class="pub-header">
+          <h3>Self-Powered Multimodal Emotion Recognition System <span class="muted">Dec 2023 - Aug 2024</span></h3>
+        </div>
+        <p><strong>Lead Researcher</strong> | <em>Advisor:</em> <a href="https://faculty.uestc.edu.cn/zhengding/zh_CN/index.htm" target="_blank" rel="noopener">Prof. Ding Zheng (UESTC)</a></p>
+        <p><strong>Project Introduction</strong>: Developed a wearable device integrating voice and EEG signal analysis for emotion detection.</p>
+        <p><strong>Personal Contributions</strong>:</p>
+        <ul>
+          <li><strong>Completed the model architecture</strong>, designed a bimodal binding mechanism to process voice signals, combined modality-invariant and modality-specific features to input into the Transformer; designed a wavelet-transform-based preprocessing method to convert EEG signals into time-frequency image blocks to input into the Vision Transformer.</li>
+          <li><strong>Prepared flexible organic photovoltaic devices</strong> using PM6:Y6 = 1:1.2 as the organic active layer and ITO-PET as the flexible cathode, achieving a photoelectric conversion efficiency of over 12.39%.</li>
+        </ul>
+        <p><strong>Achievements</strong>:
+          <ul>
+            <li>First-author paper accepted at <em>ICDT 2025</em> (Oral Presentation)</li>
+            <li>National First Prize in IoT Design Competition 2024</li>
+            <li>National Innovation Training Program (Excellent Rating)</li>
+          </ul>
+        </p>
+      </div>
+
+      <div class="entry">
+        <div class="pub-header">
+          <h3>Superionic Conductor Materials Screening &amp; Phase Prediction <span class="muted">Jan 2025 - May 2025</span></h3>
+        </div>
+        <p><strong>Lead Researcher</strong> | <em>Advisor:</em> <a href="https://sites.gc.sjtu.edu.cn/hong-zhu/sample-page/" target="_blank" rel="noopener">Prof. Hong Zhu (SJTU)</a></p>
+        <p><strong>Project Introduction</strong>: Using a small amount of data on superionic conductor materials in the Li-N-S system, the general potential model MatterSim is fine-tuned, and then the fine-tuned model is used to screen the generation model MatterGen to obtain stable materials in the Li-N-S system.</p>
+        <p><strong>Personal Contributions — Constructed an active learning loop</strong> to iteratively update the model and data:</p>
+        <ul>
+          <li>Used a small amount of labelled superionic conductor material data to train and test MatterSim.</li>
+          <li>Generated unlabelled superionic conductor structures using MatterGen.</li>
+          <li>Loaded MatterSim as a structure prediction model and used the Query By Committee method to obtain its uncertainty.</li>
+          <li>Performed DFT calculations on the data with the highest uncertainty and added it to the training data for the next round of training.</li>
+        </ul>
+        <p><strong>Achievement</strong>: Selected for SJTU-Global College Research Internship Program 2025.</p>
+      </div>
+    </div>
+
+    <p class="muted">(Projects are shown in chronological order.)</p>
   </main>
 
   <footer class="site-footer">
