@@ -72,7 +72,8 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 
 /* Collaborators grid */
 .collab-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:12px}
-.collab-card{display:flex;gap:18px;align-items:center;background:#fff;border:1px solid #eee;border-left:4px solid var(--accent);padding:14px;border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,0.04);width:100%}
+.collab-card{display:flex;gap:18px;align-items:center;background:#fff;border:1px solid #eee;border-left:4px solid var(--accent);padding:14px;border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,0.04);width:100%;transition:all .3s ease}
+.collab-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(2,6,23,0.12);border-left-color:#2b6cb0}
 /* Avatar as circular, fixed square to keep consistent */
 .collab-avatar{width:120px;min-width:120px;height:120px;object-fit:cover;border-radius:50%;flex-shrink:0;border:1px solid #eef4ff}
 .collab-body{flex:1;min-width:0}
@@ -84,6 +85,19 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 @media (max-width:640px){
   .collab-avatar{width:88px;min-width:88px;height:88px}
   .collab-card{padding:12px}
+}
+/* Blog cards styling */
+.blog-grid{display:flex;flex-direction:column;gap:16px;margin-top:12px}
+.blog-card{background:#fff;border:1px solid #eee;padding:18px;border-radius:10px;box-shadow:0 8px 20px rgba(2,6,23,0.06);transition:all .3s ease}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 16px 32px rgba(2,6,23,0.15);border-color:#e3eefc}
+.blog-card .blog-date{font-size:13px;color:#999;margin-bottom:8px;font-weight:500}
+.blog-card h3{margin:8px 0;font-size:18px}
+.blog-card h3 a{text-decoration:none;color:#111;transition:color .2s ease}
+.blog-card h3 a:hover{color:var(--accent)}
+.blog-card .blog-excerpt{margin:10px 0 0 0;color:#666;font-size:14px;line-height:1.5}
+@media (max-width:640px){
+  .blog-card{padding:14px}
+  .blog-card h3{font-size:16px}
 }
 /* Minimal contact card (research style) */
 .contact-card{max-width:560px;background:#fff;border:1px solid #e6e9ee;border-left:4px solid rgba(34,46,82,0.9);padding:12px 14px;border-radius:8px;margin-top:10px;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
