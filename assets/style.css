@@ -17,6 +17,13 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 .team-card{flex:1 1 200px;background:#fff;border:1px solid #eee;padding:12px;border-radius:8px;text-align:center}
 .team-card .imgwrap{width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:#f7f7f7}
 .team-card img{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block}
+
+/* Publications / Projects timeline */
+.pub-section{margin-top:12px}
+.pub-section .entry{background:#fff;border:1px solid #eee;border-left:4px solid var(--accent);padding:14px;border-radius:8px;margin-bottom:14px}
+.pub-section .entry .pub-header h3{margin:0 0 6px 0;font-size:18px}
+.pub-section .entry ul{margin-top:8px;margin-bottom:8px}
+
 .site-footer{background:#fafafa;border-top:1px solid #eee;padding:12px;margin-top:28px;text-align:center;color:#666}
 @media (max-width:640px){
   .nav{float:none;margin-top:10px}
