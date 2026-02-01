@@ -75,7 +75,9 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 /* Minimal contact card (research style) */
 .contact-card{max-width:560px;background:#fff;border:1px solid #e6e9ee;border-left:4px solid rgba(34,46,82,0.9);padding:12px 14px;border-radius:8px;margin-top:10px;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
 .contact-card-title{font-weight:700;margin-bottom:8px;color:#0f172a}
-.contact-row{display:flex;gap:12px;align-items:center;padding:8px 0;border-top:1px solid #fbfbfc}
+/* Non-card variant used on the homepage (no border/background) */
+.contact-links{max-width:560px;margin-top:10px}
+.contact-links-title{font-weight:700;margin-bottom:8px;color:#0f172a"}]}.contact-row{display:flex;gap:12px;align-items:center;padding:8px 0;border-top:1px solid #fbfbfc}
 .contact-row:first-of-type{border-top:none}
 .contact-badge-link{display:block}
 .contact-badge-link img{height:28px;display:block}
