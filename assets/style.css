@@ -12,7 +12,7 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 .badge{display:inline-block;padding:8px 12px;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none}
 .muted{color:var(--muted)}
 /* Avatar: larger, maintain 4:3 aspect ratio */
-.avatar{width:240px;max-width:40%;aspect-ratio:4/3;height:auto;border-radius:12px;float:left;margin-right:18px;box-shadow:0 6px 18px rgba(16,24,40,0.06);object-fit:cover}
+.avatar{width:320px;max-width:48%;aspect-ratio:4/3;height:auto;border-radius:12px;float:left;margin-right:22px;box-shadow:0 8px 22px rgba(16,24,40,0.08);object-fit:cover}
 .team-grid{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px}
 .team-card{flex:1 1 200px;background:#fff;border:1px solid #eee;padding:12px;border-radius:8px;text-align:center}
 .team-card .imgwrap{width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:#f7f7f7}
@@ -21,7 +21,7 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 @media (max-width:640px){
   .nav{float:none;margin-top:10px}
   .nav a{display:inline-block;margin:6px}
-  .avatar{float:none;margin:0 auto 12px;display:block;max-width:60%}
+  .avatar{float:none;margin:0 auto 12px;display:block;max-width:75%}
   .team-grid{flex-direction:column}
 }
 @media (max-width:640px){
