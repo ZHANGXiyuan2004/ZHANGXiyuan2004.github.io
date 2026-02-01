@@ -15,3 +15,13 @@ https://ZHANGXiyuan2004.github.io
 3. 如果你使用其他仓库名，请在 GitHub 仓库设置 -> Pages 中选择分支并启用 Pages。
 
 备注：第一次推送后，生效可能需要 30s~2min。若要自动化或发布到 `gh-pages` 分支，可添加 GitHub Actions 流程（可按需添加）。
+
+📎 **添加个人照片**：把你的头像命名为 `assets/me.jpg`（或 `me.png` / `me.svg`），替换仓库中的 `assets/me.svg`。然后在本地提交并推送：
+
+```bash
+git add assets/me.jpg
+git commit -m "Add personal photo"
+git push origin main
+```
+
+🔄 页面修改后同样需要提交并推送到远程仓库，GitHub Pages 会在短时间内重新部署并生效。
