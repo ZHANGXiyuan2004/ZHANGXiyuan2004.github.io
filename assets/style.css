@@ -22,6 +22,8 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 .contact-badges .badge--org:hover{background:#F59E0B;color:#fff}
 .contact-badges .badge--bili:hover{background:#FF7BAC;color:#fff}
 .muted{color:var(--muted)}
+/* Small horizontal divider used between sections */
+.section-divider{border:0;border-top:1px solid #eee;margin:14px 0}
 /* Avatar: larger, maintain 4:3 aspect ratio */
 .avatar{width:420px;max-width:60%;aspect-ratio:4/3;height:auto;border-radius:12px;float:left;margin-right:28px;box-shadow:0 10px 28px rgba(16,24,40,0.10);object-fit:cover}
 .team-grid{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px}
@@ -31,11 +33,13 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 /* Leadership cards: stacked single-column cards */
 .leadership-grid{display:flex;flex-direction:column;gap:14px;margin-top:12px}
 .lead-card{background:#fff;border:1px solid #eee;padding:16px;border-radius:10px;box-shadow:0 8px 20px rgba(2,6,23,0.06)}
+.lead-card .lead-card-img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:6px;margin-bottom:10px;display:block;background:#f7f7f7}
 .lead-card h4{margin:0 0 6px 0}
 .lead-card .role{margin:0 0 10px 0;font-weight:700;color:var(--muted)}
 .lead-card ul{margin:0;padding-left:18px}
 @media (max-width:640px){
   .lead-card{padding:14px}
+  .lead-card .lead-card-img{aspect-ratio:4/3}
 }
 .team-card img{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block}
 
