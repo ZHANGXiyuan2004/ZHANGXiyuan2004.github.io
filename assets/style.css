@@ -7,7 +7,8 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 .site-title{margin:0;display:inline-block;font-size:18px}
 .site-title a{text-decoration:none;color:var(--accent)}
 .nav{float:right}
-.nav a{margin-left:16px;color:#333;text-decoration:none}
+.nav a{margin-left:16px;color:#333;text-decoration:none;padding:8px 12px;border-radius:6px;transition:all .2s ease;display:inline-block}
+.nav a:hover{background:#eef4ff;color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(43,108,176,0.12)}
 .hero{padding:18px 0}
 .badge{display:inline-block;padding:8px 12px;background:#fff;color:var(--accent);border:1px solid #e8eef6;border-radius:8px;text-decoration:none;transition:transform .12s ease,box-shadow .12s ease,background .12s ease,color .12s ease}
 /* Contact badges: stacked, emoji, subtle hover, custom colors (non-blue backgrounds) */
