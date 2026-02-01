@@ -9,13 +9,32 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 .nav{float:right}
 .nav a{margin-left:16px;color:#333;text-decoration:none}
 .hero{padding:18px 0}
-.badge{display:inline-block;padding:8px 12px;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none}
+.badge{display:inline-block;padding:8px 12px;background:#fff;color:var(--accent);border:1px solid #e8eef6;border-radius:8px;text-decoration:none;transition:transform .12s ease,box-shadow .12s ease,background .12s ease,color .12s ease}
+/* Contact badges: stacked, emoji, subtle hover, custom colors (non-blue backgrounds) */
+.contact-badges{margin-top:10px}
+.contact-badges .badge{display:block;max-width:420px;padding:10px 14px;margin:8px 0;border-radius:10px;box-shadow:0 1px 0 rgba(16,24,40,0.02)}
+.contact-badges .badge:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(16,24,40,0.12)}
+.contact-badges .badge--email{border-color:#D14836;color:#D14836}
+.contact-badges .badge--org{border-color:#F59E0B;color:#F59E0B}
+.contact-badges .badge--bili{border-color:#FF7BAC;color:#FF7BAC}
+/* Hover: filled with color, white text */
+.contact-badges .badge--email:hover{background:#D14836;color:#fff}
+.contact-badges .badge--org:hover{background:#F59E0B;color:#fff}
+.contact-badges .badge--bili:hover{background:#FF7BAC;color:#fff}
 .muted{color:var(--muted)}
 /* Avatar: larger, maintain 4:3 aspect ratio */
 .avatar{width:420px;max-width:60%;aspect-ratio:4/3;height:auto;border-radius:12px;float:left;margin-right:28px;box-shadow:0 10px 28px rgba(16,24,40,0.10);object-fit:cover}
 .team-grid{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px}
 .team-card{flex:1 1 200px;background:#fff;border:1px solid #eee;padding:12px;border-radius:8px;text-align:center}
 .team-card .imgwrap{width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:#f7f7f7}
+
+/* Leadership list: stacked entries */
+.leadership-list{list-style:decimal-leading-zero;padding-left:20px;margin-top:12px}
+.lead-item{background:#fff;border:1px solid #eee;border-left:4px solid var(--accent);padding:14px;border-radius:8px;margin-bottom:14px}
+.lead-item h4{margin:0 0 6px 0}
+.lead-item p{margin:0 0 8px 0;font-weight:600}
+.lead-item ul{margin:0;padding-left:18px}
+
 .team-card img{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block}
 
 /* Publications / Projects timeline */
@@ -24,7 +43,24 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 .pub-section .entry .pub-header h3{margin:0 0 6px 0;font-size:18px}
 .pub-section .entry ul{margin-top:8px;margin-bottom:8px}
 
+/* Blog post styles */
+.post-article{background:#fff;padding:18px;border-radius:12px;border:1px solid #eee}
+.post-hero img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:10px;box-shadow:0 12px 30px rgba(2,6,23,0.12);display:block;margin-bottom:18px}
+.post-meta{font-size:14px;color:var(--muted);margin-bottom:12px}
+.post-article .lead{font-size:16px;margin:12px 0}
+.btn{display:inline-block;padding:10px 14px;border-radius:8px;text-decoration:none;border:1px solid #e8eef6;color:#fff;background:#ff7bac}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(16,24,40,0.12)}
+.info-list{margin:12px 0 18px 0}
+.summary{line-height:1.7}
+
 .site-footer{background:#fafafa;border-top:1px solid #eee;padding:12px;margin-top:28px;text-align:center;color:#666}
+
+/* Collaborators grid */
+.collab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
+.collab-card{background:#fff;border:1px solid #eee;padding:14px;border-radius:10px;box-shadow:0 6px 14px rgba(16,24,40,0.04)}
+.collab-card h3{margin:0 0 6px 0}
+.collab-card .cn{color:var(--muted);font-size:13px;margin-left:6px}
+
 @media (max-width:640px){
   .nav{float:none;margin-top:10px}
   .nav a{display:inline-block;margin:6px}
