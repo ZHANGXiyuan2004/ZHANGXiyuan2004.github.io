@@ -28,13 +28,15 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 .team-card{flex:1 1 200px;background:#fff;border:1px solid #eee;padding:12px;border-radius:8px;text-align:center}
 .team-card .imgwrap{width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:#f7f7f7}
 
-/* Leadership list: stacked entries */
-.leadership-list{list-style:decimal-leading-zero;padding-left:20px;margin-top:12px}
-.lead-item{background:#fff;border:1px solid #eee;border-left:4px solid var(--accent);padding:14px;border-radius:8px;margin-bottom:14px}
-.lead-item h4{margin:0 0 6px 0}
-.lead-item p{margin:0 0 8px 0;font-weight:600}
-.lead-item ul{margin:0;padding-left:18px}
-
+/* Leadership cards: stacked single-column cards */
+.leadership-grid{display:flex;flex-direction:column;gap:14px;margin-top:12px}
+.lead-card{background:#fff;border:1px solid #eee;padding:16px;border-radius:10px;box-shadow:0 8px 20px rgba(2,6,23,0.06)}
+.lead-card h4{margin:0 0 6px 0}
+.lead-card .role{margin:0 0 10px 0;font-weight:700;color:var(--muted)}
+.lead-card ul{margin:0;padding-left:18px}
+@media (max-width:640px){
+  .lead-card{padding:14px}
+}
 .team-card img{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block}
 
 /* Publications / Projects timeline */
@@ -56,10 +58,14 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 .site-footer{background:#fafafa;border-top:1px solid #eee;padding:12px;margin-top:28px;text-align:center;color:#666}
 
 /* Collaborators grid */
-.collab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
-.collab-card{background:#fff;border:1px solid #eee;padding:14px;border-radius:10px;box-shadow:0 6px 14px rgba(16,24,40,0.04)}
+.collab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:12px}
+.collab-card{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid #eee;padding:14px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.04)}
+.collab-avatar{width:120px;aspect-ratio:4/3;object-fit:cover;border-radius:8px;flex-shrink:0}
+.collab-body{flex:1}
 .collab-card h3{margin:0 0 6px 0}
 .collab-card .cn{color:var(--muted);font-size:13px;margin-left:6px}
+.small-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:#eef6ff;color:var(--accent);text-decoration:none;border:1px solid #e3eefc}
+.small-btn:hover{background:var(--accent);color:#fff;box-shadow:0 8px 18px rgba(59,130,246,0.12)}
 
 @media (max-width:640px){
   .nav{float:none;margin-top:10px}
