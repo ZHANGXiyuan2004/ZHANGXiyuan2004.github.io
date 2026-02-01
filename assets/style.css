@@ -1,0 +1,18 @@
+/* Simple responsive site styles */
+:root{--accent:#2b6cb0;--muted:#666}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;color:#111;line-height:1.6}
+.container{max-width:980px;margin:0 auto;padding:24px}
+.site-header{background:#fafafa;border-bottom:1px solid #eee}
+.site-title{margin:0;display:inline-block;font-size:18px}
+.site-title a{text-decoration:none;color:var(--accent)}
+.nav{float:right}
+.nav a{margin-left:16px;color:#333;text-decoration:none}
+.hero{padding:18px 0}
+.badge{display:inline-block;padding:8px 12px;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none}
+.muted{color:var(--muted)}
+.site-footer{background:#fafafa;border-top:1px solid #eee;padding:12px;margin-top:28px;text-align:center;color:#666}
+@media (max-width:640px){
+  .nav{float:none;margin-top:10px}
+  .nav a{display:inline-block;margin:6px}
+}
