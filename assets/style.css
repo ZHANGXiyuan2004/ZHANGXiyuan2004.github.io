@@ -59,12 +59,12 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 
 /* Collaborators grid */
 .collab-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:12px}
-.collab-card{display:flex;gap:18px;align-items:center;background:#fff;border:1px solid #eee;padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.04);width:100%}
-.collab-avatar{width:160px;min-width:160px;aspect-ratio:4/3;object-fit:cover;border-radius:8px;flex-shrink:0}
+.collab-card{display:flex;gap:18px;align-items:center;background:#fff;border:1px solid #eee;border-left:4px solid var(--accent);padding:14px;border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,0.04);width:100%}
+.collab-avatar{width:120px;min-width:120px;aspect-ratio:4/3;object-fit:cover;border-radius:6px;flex-shrink:0}
 .collab-body{flex:1;min-width:0}
 .collab-card h3{margin:0 0 6px 0}
 .collab-card .cn{color:var(--muted);font-size:13px;margin-left:6px}
-.collab-card p, .collab-card ul{word-wrap:break-word;overflow-wrap:break-word}
+.collab-card p, .collab-card ul{word-wrap:break-word;overflow-wrap:break-word;margin:0}
 .small-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:#eef6ff;color:var(--accent);text-decoration:none;border:1px solid #e3eefc}
 .small-btn:hover{background:var(--accent);color:#fff;box-shadow:0 8px 18px rgba(59,130,246,0.12)}
 /* Minimal contact card (research style) */
@@ -72,10 +72,11 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 .contact-card-title{font-weight:700;margin-bottom:8px;color:#0f172a}
 .contact-row{display:flex;gap:12px;align-items:center;padding:8px 0;border-top:1px solid #fbfbfc}
 .contact-row:first-of-type{border-top:none}
-.icon{font-size:18px;opacity:0.9}
-.contact-info .label{font-size:12px;color:var(--muted)}
-.contact-info a{color:#0f172a;text-decoration:none;font-weight:600}
-.contact-info a:hover{text-decoration:underline;color:var(--accent)}
+.contact-badge-link{display:block}
+.contact-badge-link img{height:28px;display:block}
+@media (max-width:640px){
+  .contact-badge-link img{height:24px}
+}
 @media (max-width:640px){
   .collab-grid{grid-auto-rows:auto}
   .collab-avatar{width:120px;min-width:120px}
