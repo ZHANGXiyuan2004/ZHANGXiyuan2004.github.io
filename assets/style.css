@@ -58,14 +58,28 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;marg
 .site-footer{background:#fafafa;border-top:1px solid #eee;padding:12px;margin-top:28px;text-align:center;color:#666}
 
 /* Collaborators grid */
-.collab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:12px}
-.collab-card{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid #eee;padding:14px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.04)}
-.collab-avatar{width:120px;aspect-ratio:4/3;object-fit:cover;border-radius:8px;flex-shrink:0}
-.collab-body{flex:1}
+.collab-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:12px}
+.collab-card{display:flex;gap:18px;align-items:center;background:#fff;border:1px solid #eee;padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.04);width:100%}
+.collab-avatar{width:160px;min-width:160px;aspect-ratio:4/3;object-fit:cover;border-radius:8px;flex-shrink:0}
+.collab-body{flex:1;min-width:0}
 .collab-card h3{margin:0 0 6px 0}
 .collab-card .cn{color:var(--muted);font-size:13px;margin-left:6px}
+.collab-card p, .collab-card ul{word-wrap:break-word;overflow-wrap:break-word}
 .small-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:#eef6ff;color:var(--accent);text-decoration:none;border:1px solid #e3eefc}
 .small-btn:hover{background:var(--accent);color:#fff;box-shadow:0 8px 18px rgba(59,130,246,0.12)}
+/* Minimal contact card (research style) */
+.contact-card{max-width:560px;background:#fff;border:1px solid #e6e9ee;border-left:4px solid rgba(34,46,82,0.9);padding:12px 14px;border-radius:8px;margin-top:10px;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
+.contact-card-title{font-weight:700;margin-bottom:8px;color:#0f172a}
+.contact-row{display:flex;gap:12px;align-items:center;padding:8px 0;border-top:1px solid #fbfbfc}
+.contact-row:first-of-type{border-top:none}
+.icon{font-size:18px;opacity:0.9}
+.contact-info .label{font-size:12px;color:var(--muted)}
+.contact-info a{color:#0f172a;text-decoration:none;font-weight:600}
+.contact-info a:hover{text-decoration:underline;color:var(--accent)}
+@media (max-width:640px){
+  .collab-grid{grid-auto-rows:auto}
+  .collab-avatar{width:120px;min-width:120px}
+}
 
 @media (max-width:640px){
   .nav{float:none;margin-top:10px}
