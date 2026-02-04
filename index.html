@@ -1,15 +1,22 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Shine Yuan (Xiyuan Zhang) — Home</title>
   <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/script.js" defer></script>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container">
       <h1 class="site-title"><a href="/">Shine Yuan (张晰元)</a></h1>
+      <div class="menu-controls">
+        <button id="theme-toggle" aria-label="Toggle Dark Mode"><span class="icon">🌙</span></button>
+        <button id="menu-toggle" aria-label="Toggle Menu">☰</button>
+      </div>
       <nav class="nav">
         <a href="/">Home</a>
         <a href="/publications.html">Publications</a>
@@ -20,42 +27,58 @@
   </header>
 
   <main class="container">
-    <section class="hero">
+    <section class="hero fade-in-up">
       <img src="assets/me.jpg" alt="Shine Yuan" class="avatar">
       <h2>Hi, I'm Shine Yuan (Xiyuan Zhang) 👋</h2>
+      <p class="muted"><strong>I am <span id="typewriter-text"></span></strong></p>
       <p class="muted">Undergraduate — UESTC (2022.09 - 2026.06)</p>
       <p class="muted">PhD — ZJU-UIUC (2026.09 - )</p>
       <div class="contact-badges">
         <div class="contact-row">
-          <a href="mailto:mail_Xiyuan_Zhang@126.com" class="contact-badge-link"><img src="https://img.shields.io/badge/Email-mail_Xiyuan_Zhang@126.com-D14836?style=flat-square&logo=gmail" alt="Email"/></a>
+          <a href="mailto:mail_Xiyuan_Zhang@126.com" class="contact-badge-link"><img
+              src="https://img.shields.io/badge/Email-mail_Xiyuan_Zhang@126.com-D14836?style=flat-square&logo=gmail"
+              alt="Email" /></a>
         </div>
 
         <div class="contact-row">
-          <a href="https://uestc-ia.github.io" target="_blank" rel="noopener" class="contact-badge-link"><img src="https://img.shields.io/badge/UESTC--IA-Visit%20Website-F59E0B?style=flat-square" alt="UESTC-IA"/></a>
+          <a href="https://uestc-ia.github.io" target="_blank" rel="noopener" class="contact-badge-link"><img
+              src="https://img.shields.io/badge/UESTC--IA-Visit%20Website-F59E0B?style=flat-square"
+              alt="UESTC-IA" /></a>
         </div>
 
         <div class="contact-row">
-          <a href="https://space.bilibili.com/627492887" target="_blank" rel="noopener" class="contact-badge-link"><img src="https://img.shields.io/badge/Bilibili-627492887-FF7BAC?style=flat-square&logo=bilibili" alt="Bilibili"/></a>
+          <a href="https://space.bilibili.com/627492887" target="_blank" rel="noopener" class="contact-badge-link"><img
+              src="https://img.shields.io/badge/Bilibili-627492887-FF7BAC?style=flat-square&logo=bilibili"
+              alt="Bilibili" /></a>
         </div>
 
         <div class="contact-row">
-          <a href="https://wpa.qq.com/msgrd?v=3&uin=3438036864&site=qq&menu=yes" target="_blank" rel="noopener" class="contact-badge-link"><img src="https://img.shields.io/badge/QQ-3438036864-12B7F5?style=flat-square&logo=tencentqq" alt="QQ"/></a>
+          <a href="https://wpa.qq.com/msgrd?v=3&uin=3438036864&site=qq&menu=yes" target="_blank" rel="noopener"
+            class="contact-badge-link"><img
+              src="https://img.shields.io/badge/QQ-3438036864-12B7F5?style=flat-square&logo=tencentqq" alt="QQ" /></a>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="fade-in-up">
       <br>
       <hr class="section-divider">
       <h3>About Me</h3>
-      <p>I am an undergraduate student majoring in <strong>Electronic Information Engineering</strong> at the <strong>University of Electronic Science and Technology of China (UESTC)</strong>, and a winner of the <strong>UESTC Outstanding Student Nomination Award</strong>. I am planning to pursue a Ph.D. at the <strong>ZJU-UIUC Institute</strong> from 2026, under the supervision of Prof. Bruce Yu.</p>
+      <p>I am an undergraduate student majoring in <strong>Electronic Information Engineering</strong> at the
+        <strong>University of Electronic Science and Technology of China (UESTC)</strong>, and a winner of the
+        <strong>UESTC Outstanding Student Nomination Award</strong>. I am planning to pursue a Ph.D. at the
+        <strong>ZJU-UIUC Institute</strong> from 2026, under the supervision of Prof. Bruce Yu.</p>
 
       <ul>
-        <li>🏫 <strong>Education</strong>: UESTC, School of Information and Communication Engineering (2022.09 - Present)</li>
+        <li>🏫 <strong>Education</strong>: UESTC, School of Information and Communication Engineering (2022.09 -
+          Present)</li>
         <li>🏆 <strong>Academic Performance</strong>: GPA 4.00/4.00</li>
         <li>🔬 <strong>Current Position</strong>: Intern at AsiaInfo Technologies (2026.01 - Present)</li>
-        <li>🚀 <strong>Future Plan</strong>: Ph.D. candidate at ZJUI, Zhejiang University (From 2026.09), supervised by Prof. Xinbo Yu.</li>
-        <li>🌟 <strong>Honors</strong>: National Scholarship (2x) | UESTC Outstanding Student Nomination Award | The Scholarship of Gratitude to Modern Scientists in China (Top 10 university-wide) | "Liren Elite" Scholar (Top 5 university-wide)</li>
+        <li>🚀 <strong>Future Plan</strong>: Ph.D. candidate at ZJUI, Zhejiang University (From 2026.09), supervised by
+          Prof. Xinbo Yu.</li>
+        <li>🌟 <strong>Honors</strong>: National Scholarship (2x) | UESTC Outstanding Student Nomination Award | The
+          Scholarship of Gratitude to Modern Scientists in China (Top 10 university-wide) | "Liren Elite" Scholar (Top 5
+          university-wide)</li>
       </ul>
     </section>
 
@@ -69,7 +92,7 @@
 
     <!-- Selected Projects removed as requested -->
 
-    <section>
+    <section class="fade-in-up">
       <h3>Leadership & Service</h3>
       <div class="leadership-grid">
         <div class="lead-card">
@@ -116,9 +139,11 @@
       </div>
     </section>
 
-    <section>
+    <section class="fade-in-up">
       <h3>Interests & Hobbies</h3>
-      <p class="interests-hobbies"><span class="hobby-item">🏃‍♂️ Long-distance Running</span>  &nbsp; <span class="hobby-item">🎾 Tennis</span>  &nbsp; <span class="hobby-item">📷 Photography</span>  &nbsp; <span class="hobby-item">📱 Content Creation</span>  &nbsp; </p>
+      <p class="interests-hobbies"><span class="hobby-item">🏃‍♂️ Long-distance Running</span> &nbsp; <span
+          class="hobby-item">🎾 Tennis</span> &nbsp; <span class="hobby-item">📷 Photography</span> &nbsp; <span
+          class="hobby-item">📱 Content Creation</span> &nbsp; </p>
     </section>
   </main>
 
@@ -128,5 +153,7 @@
       <p><a href="https://github.com/ZHANGXiyuan2004">GitHub</a></p>
     </div>
   </footer>
+  <button id="back-to-top" aria-label="Back to Top">↑</button>
 </body>
+
 </html>

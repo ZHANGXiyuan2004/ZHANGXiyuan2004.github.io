@@ -1,15 +1,22 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Collaborators — Shine Yuan</title>
   <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/script.js" defer></script>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container">
       <h1 class="site-title"><a href="/">Shine Yuan</a></h1>
+      <div class="menu-controls">
+        <button id="theme-toggle" aria-label="Toggle Dark Mode"><span class="icon">🌙</span></button>
+        <button id="menu-toggle" aria-label="Toggle Menu">☰</button>
+      </div>
       <nav class="nav">
         <a href="/">Home</a>
         <a href="/publications.html">Publications</a>
@@ -20,24 +27,28 @@
   </header>
 
   <main class="container">
-    <h2>Collaborators</h2>
+    <h2 class="fade-in-up">Collaborators</h2>
 
-    <div class="collab-grid">
+    <div class="collab-grid fade-in-up">
       <div class="collab-card">
-        <img class="collab-avatar" src="https://avatars.githubusercontent.com/RatUestc?s=400&v=4" alt="Yao Zhang" loading="lazy">
+        <img class="collab-avatar" src="https://avatars.githubusercontent.com/RatUestc?s=400&v=4" alt="Yao Zhang"
+          loading="lazy">
         <div class="collab-body">
           <h3>Yao Zhang <span class="cn">(张耀)</span></h3>
           <p class="muted">Streaming large language models & multimodal systems</p>
-          <p><a class="small-btn" href="https://github.com/RatUestc" target="_blank" rel="noopener">GitHub / RatUestc</a></p>
+          <p><a class="small-btn" href="https://github.com/RatUestc" target="_blank" rel="noopener">GitHub /
+              RatUestc</a></p>
         </div>
       </div>
 
       <div class="collab-card">
-        <img class="collab-avatar" src="https://avatars.githubusercontent.com/GBCWORLDWALKER?s=400&v=4" alt="Bocheng Guo" loading="lazy">
+        <img class="collab-avatar" src="https://avatars.githubusercontent.com/GBCWORLDWALKER?s=400&v=4"
+          alt="Bocheng Guo" loading="lazy">
         <div class="collab-body">
           <h3>Bocheng Guo <span class="cn">(郭博成)</span></h3>
           <p class="muted">Medical image processing</p>
-          <p><a class="small-btn" href="https://github.com/GBCWORLDWALKER" target="_blank" rel="noopener">GitHub / GBCWORLDWALKER</a></p>
+          <p><a class="small-btn" href="https://github.com/GBCWORLDWALKER" target="_blank" rel="noopener">GitHub /
+              GBCWORLDWALKER</a></p>
         </div>
       </div>
 
@@ -50,29 +61,35 @@
       </div>
 
       <div class="collab-card">
-        <img class="collab-avatar" src="https://avatars.githubusercontent.com/zxuuuustupid?s=400&v=4" alt="Zhixu Duan" loading="lazy">
+        <img class="collab-avatar" src="https://avatars.githubusercontent.com/zxuuuustupid?s=400&v=4" alt="Zhixu Duan"
+          loading="lazy">
         <div class="collab-body">
           <h3>Zhixu Duan <span class="cn">(段之续)</span></h3>
           <p class="muted">Large models & industrial fault detection</p>
-          <p><a class="small-btn" href="https://github.com/zxuuuustupid" target="_blank" rel="noopener">GitHub / zxuuuustupid</a></p>
+          <p><a class="small-btn" href="https://github.com/zxuuuustupid" target="_blank" rel="noopener">GitHub /
+              zxuuuustupid</a></p>
         </div>
       </div>
 
       <div class="collab-card">
-        <img class="collab-avatar" src="https://avatars.githubusercontent.com/sinxHuang?s=400&v=4" alt="Xuan Huang" loading="lazy">
+        <img class="collab-avatar" src="https://avatars.githubusercontent.com/sinxHuang?s=400&v=4" alt="Xuan Huang"
+          loading="lazy">
         <div class="collab-body">
           <h3>Xuan Huang <span class="cn">(黄璇)</span></h3>
           <p class="muted">Video models</p>
-          <p><a class="small-btn" href="https://github.com/sinxHuang" target="_blank" rel="noopener">GitHub / sinxHuang</a></p>
+          <p><a class="small-btn" href="https://github.com/sinxHuang" target="_blank" rel="noopener">GitHub /
+              sinxHuang</a></p>
         </div>
       </div>
 
       <div class="collab-card">
-        <img class="collab-avatar" src="https://avatars.githubusercontent.com/maxkura?s=400&v=4" alt="Puming Feng" loading="lazy">
+        <img class="collab-avatar" src="https://avatars.githubusercontent.com/maxkura?s=400&v=4" alt="Puming Feng"
+          loading="lazy">
         <div class="collab-body">
           <h3>Puming Feng <span class="cn">(冯普明)</span></h3>
           <p class="muted">Token pruning</p>
-          <p><a class="small-btn" href="https://github.com/maxkura" target="_blank" rel="noopener">GitHub / maxkura</a></p>
+          <p><a class="small-btn" href="https://github.com/maxkura" target="_blank" rel="noopener">GitHub / maxkura</a>
+          </p>
         </div>
       </div>
     </div>
@@ -82,5 +99,7 @@
   <footer class="site-footer">
     <div class="container">© 2024 Shine Yuan</div>
   </footer>
+  <button id="back-to-top" aria-label="Back to Top">↑</button>
 </body>
+
 </html>
