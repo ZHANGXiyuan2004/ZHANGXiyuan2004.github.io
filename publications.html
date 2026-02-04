@@ -42,6 +42,51 @@
     </div>
 
     <div class="pub-section fade-in-up">
+      <div class="entry filter-item" data-category="project">
+        <div class="pub-header">
+          <h3>Mini-Onevision: Lightweight Multimodal Agent Framework with GRPO <span class="muted">Feb 2026 -
+              Present</span></h3>
+        </div>
+        <p><strong>Goal</strong>: Build a lightweight Multimodal Large Language Model (MLLM) with
+          <strong>Visual-Agentic</strong> capabilities. By integrating Qwen3-0.5B (Language Base) and SigLIP (Vision
+          Encoder) and utilizing DeepSeek R1's Group Relative Policy Optimization (GRPO), the project aims to enhance
+          logical reasoning and tool-use capabilities in low-compute environments.</p>
+
+        <p><strong>Methodology</strong>:</p>
+        <ul>
+          <li><strong>Phase I: Architecture & Alignment</strong>. Using SigLIP as Vision Encoder and Qwen3-0.5B as LLM
+            backbone. Designed and trained a projection layer to map visual features to language space. Pre-trained on
+            LLaVA Bench datasets for basic image understanding.</li>
+          <li><strong>Phase II: SFT Cold Start</strong>. Synthesized high-quality Tool-calling datasets (single-turn &
+            multi-turn). Performed SFT cold start to enable basic Agent interaction formats (JSON output, API
+            selection).</li>
+          <li><strong>Phase III: Agentic RL with GRPO</strong>. Built a lightweight RL framework referencing Slime/Verl.
+            Adopted <strong>GRPO</strong> algorithm combined with RAG & Search Tools, using retrieval accuracy and task
+            completion as reward signals.</li>
+        </ul>
+
+        <p><strong>Tool Calling Capabilities</strong>:</p>
+        <ul>
+          <li><strong>Food</strong>: Calculate calories, search recipes, or calculate FODMAP content based on
+            ingredients.</li>
+          <li><strong>Fashion</strong>: Provide outfit suggestions based on clothing photos and local weather.</li>
+          <li><strong>Finance</strong>: Extract invoice details (date, amount), check against reimbursement policies,
+            flag violations, and draft applications.</li>
+        </ul>
+
+        <p><strong>Key Advantages</strong>:</p>
+        <ul>
+          <li><strong>Low-Cost Training</strong>: Lightweight Qwen3-0.5B + SigLIP combination avoids high pre-training
+            costs.</li>
+          <li><strong>Reproducibility</strong>: Qwen3's rich embedded Agentic data supports strong Zero-shot Tool Use.
+          </li>
+          <li><strong>GRPO RL Paradigm</strong>: Replicates GRPO on a small multimodal model (low VRAM usage via Group
+            sampling) to stimulate Chain-of-Thought generation and deep reasoning.</li>
+          <li><strong>Visual Agentic Loop</strong>: Establishes a complete <strong>Perception -> Planning ->
+              Action</strong> chain.</li>
+        </ul>
+      </div>
+
       <div class="entry filter-item" data-category="research">
         <div class="pub-header">
           <h3>Self-Powered Multimodal Emotion Recognition System <span class="muted">Dec 2023 - Aug 2024</span></h3>
