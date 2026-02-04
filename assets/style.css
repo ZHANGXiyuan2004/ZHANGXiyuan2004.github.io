@@ -228,11 +228,12 @@ a { color: var(--text-accent); text-decoration: none; }
    5. Components
 --------------------------- */
 /* Contact Badges */
+.contact-badges { margin-bottom: 16px; }
 .contact-row {
   display: flex;
   gap: 12px;
   align-items: center;
-  padding: 8px 0;
+  padding: 4px 0;
   border-top: 1px solid var(--border-color);
 }
 .contact-row:first-of-type { border-top: none; }
