@@ -237,9 +237,20 @@ a { color: var(--text-accent); text-decoration: none; }
 }
 .contact-row:first-of-type { border-top: none; }
 
-.contact-badge-link { display: block; transition: all 0.2s ease; }
-.contact-badge-link:hover { transform: translateY(-2px); opacity: 0.8; }
-.contact-badge-link img { height: 28px; display: block; border-radius: 4px; }
+.contact-badge-link {
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+.contact-badge-link:hover {
+  transform: translateY(-3px) scale(1.05);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+}
+.contact-badge-link img {
+  height: 20px;
+  display: block;
+  border-radius: 6px;
+}
 
 /* Leadership & Collaborator Cards */
 .lead-card, .collab-card, .blog-card {
