@@ -148,6 +148,45 @@ a { color: var(--text-accent); text-decoration: none; }
 --------------------------- */
 .hero { padding: 40px 0; overflow: hidden; }
 
+/* Post Article & Hero Image */
+.post-article { max-width: 720px; margin: 0 auto; }
+.post-hero {
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.post-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+.post-meta { margin-bottom: 16px; }
+.post-article h2 { font-size: 28px; margin-bottom: 12px; }
+.post-article h3 { font-size: 22px; margin-top: 28px; margin-bottom: 12px; }
+.post-article p { margin-bottom: 16px; }
+.post-article ul { margin-bottom: 16px; }
+.post-article .info-list { list-style: none; padding-left: 0; }
+.post-article .info-list li { margin-bottom: 8px; }
+.post-article .lead { font-size: 18px; line-height: 1.7; color: var(--text-muted); }
+.post-article .summary {
+  background: var(--bg-hobby);
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid var(--text-accent);
+}
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--text-accent);
+  color: #fff;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.btn:hover { background: #1a4971; transform: translateY(-2px); }
+
 /* Typewriter Cursor */
 #typewriter-text::after {
   content: '|';
@@ -189,22 +228,18 @@ a { color: var(--text-accent); text-decoration: none; }
    5. Components
 --------------------------- */
 /* Contact Badges */
-.contact-badges .badge {
-  display: block;
-  max-width: 420px;
-  padding: 10px 14px;
-  margin: 8px 0;
-  border-radius: 10px;
-  background: var(--bg-badge);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
+.contact-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid var(--border-color);
 }
-.contact-badges .badge:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-.contact-badge-link img { height: 28px; display: block; }
+.contact-row:first-of-type { border-top: none; }
+
+.contact-badge-link { display: block; transition: all 0.2s ease; }
+.contact-badge-link:hover { transform: translateY(-2px); opacity: 0.8; }
+.contact-badge-link img { height: 28px; display: block; border-radius: 4px; }
 
 /* Leadership & Collaborator Cards */
 .lead-card, .collab-card, .blog-card {

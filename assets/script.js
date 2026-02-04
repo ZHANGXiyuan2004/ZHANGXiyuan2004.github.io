@@ -1,6 +1,5 @@
-// DOM Elements & Config
 const config = {
-    typewriterText: ["an Undergraduate", "a Researcher", "a Developer", "a Runner"],
+    typewriterText: ["a Boundary-breaking Innovator", "an AI Researcher", "a Game Streamer", "a Tennis Player", "a Long-distance Runner"],
     typewriterSpeed: 100,
     typewriterDelay: 2000
 };
