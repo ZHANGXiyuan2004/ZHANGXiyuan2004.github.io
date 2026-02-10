@@ -52,6 +52,8 @@ body {
   background-color: var(--bg-body);
   line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
+  /* 强制预留滚动条空间，防止页面切换时左右移动 */
+  overflow-y: scroll;
 }
 
 h1,h2,h3,h4,h5,h6 { color: var(--text-main); }
