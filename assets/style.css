@@ -176,11 +176,13 @@ a {
 
 /* Glass Header - Light Mode */
 /* Glass Header - Light Mode (Light Coffee Glassmorphism) */
+/* Glass Header - Light Mode (Blue Glassmorphism) */
+/* Glass Header - Light Mode (Blue Glassmorphism) */
 .site-header {
-  /* Deeper Light Coffee / Latte 3D Gradient */
-  background: linear-gradient(180deg, rgba(240, 230, 220, 0.92) 0%, rgba(220, 205, 190, 0.85) 100%);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  /* Soft Blue 3D Gradient */
+  background: linear-gradient(180deg, rgba(235, 245, 255, 0.9) 0%, rgba(210, 230, 250, 0.8) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 
   /* Top Highlight & Border */
   border-top: 1px solid rgba(255, 255, 255, 0.9);
@@ -190,12 +192,12 @@ a {
   top: 0;
   z-index: 100;
 
-  /* 3D Shadows & Highlights - Warmer tint */
+  /* 3D Shadows & Highlights - Blue Tint */
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.6),
     /* Inner top highlight */
-    0 4px 20px -5px rgba(139, 69, 19, 0.08),
-    /* Soft brown shadow drop */
+    0 4px 20px -5px rgba(0, 113, 227, 0.1),
+    /* Soft blue shadow drop */
     0 10px 15px -5px rgba(0, 0, 0, 0.05);
 
   transition: all 0.3s ease;
@@ -230,8 +232,14 @@ body.dark-mode .site-header {
 }
 
 .site-title a {
-  color: var(--text-accent);
+  color: #000;
+  /* Black text for light mode */
   font-weight: 700;
+}
+
+body.dark-mode .site-title a {
+  color: #ffff55 !important;
+  /* Yellow text for dark mode */
 }
 
 /* Menu Toggle (mobile only) & Theme Toggle */
