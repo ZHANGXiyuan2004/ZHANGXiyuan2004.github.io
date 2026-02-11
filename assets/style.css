@@ -191,9 +191,9 @@ a {
 
   /* 3D Shadows & Highlights */
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 4px 20px -5px rgba(60, 30, 0, 0.3),
-    0 10px 15px -5px rgba(0, 0, 0, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 6px 30px -3px rgba(60, 30, 0, 0.5),
+    0 12px 20px -5px rgba(0, 0, 0, 0.2);
 
   transition: all 0.3s ease;
 }
@@ -1291,8 +1291,8 @@ li {
 
 /* Overlay - Mode Dependent */
 .minecraft-overlay {
-  background: rgba(255, 255, 255, 0.75) !important;
-  /* White overlay (Light Mode) - decreased from 0.95 to 0.75 */
+  background: rgba(255, 241, 232, 0.75) !important;
+  /* Light Coffee overlay (Light Mode) - same opacity */
   transition: background 0.3s ease;
 }
 
