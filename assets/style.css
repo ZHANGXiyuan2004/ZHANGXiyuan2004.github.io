@@ -698,7 +698,7 @@ body.dark-mode .blog-card.podcast-card {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 .lead-card {
@@ -878,7 +878,7 @@ body.dark-mode .blog-card.podcast-card {
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 .collab-card {
@@ -1006,14 +1006,14 @@ li {
 
 /* Overlay - Mode Dependent */
 .minecraft-overlay {
-  background: rgba(255, 255, 255, 0.95) !important;
-  /* White overlay (Light Mode) - increased from 0.85 to 0.95 */
+  background: rgba(255, 255, 255, 0.75) !important;
+  /* White overlay (Light Mode) - decreased from 0.95 to 0.75 */
   transition: background 0.3s ease;
 }
 
 body.dark-mode .minecraft-overlay {
-  background: rgba(0, 0, 0, 0.95) !important;
-  /* Black overlay (Dark Mode) - increased from 0.85 to 0.95 */
+  background: rgba(0, 0, 0, 0.75) !important;
+  /* Black overlay (Dark Mode) - decreased from 0.95 to 0.75 */
 }
 
 /* Typography - Light Mode (Black Text) */
