@@ -190,11 +190,17 @@ a {
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
+.site-header .container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .site-title {
   margin: 0;
   display: inline-block;
   font-size: 18px;
-  line-height: 42px;
+  line-height: 44px;
   /* vertical align with nav */
 }
 
@@ -215,18 +221,18 @@ a {
   background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%);
   border: 2px solid rgba(255,255,255,0.25);
   color: #fff;
-  padding: 6px 6px;
+  padding: 8px 8px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 22px;
   transition: all 0.25s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1), inset 0 1px 2px rgba(255,255,255,0.2);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1419,8 +1425,8 @@ body.dark-mode #typewriter-text {
   border-top: 4px solid #3e2723 !important;
   /* Darker brown border */
   color: #fff !important;
-  padding: 20px 0 !important;
-  margin-top: 40px !important;
+  padding: 12px 0 !important;
+  margin-top: 30px !important;
   font-family: var(--font-pixel);
   font-size: 20px;
   letter-spacing: 1px;
@@ -1433,7 +1439,9 @@ body.dark-mode #typewriter-text {
 }
 
 .site-footer p {
-  margin: 4px 0;
+  margin: 0;
+  display: inline;
+  margin-right: 12px;
 }
 
 /* 14. Local Font Loading (Avoid Google Fonts issues) */
