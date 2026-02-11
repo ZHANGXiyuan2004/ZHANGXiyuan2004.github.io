@@ -209,13 +209,7 @@ a {
   font-weight: 700;
 }
 
-/* Mobile Menu Toggle */
-.menu-controls {
-  float: right;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+/* Menu Toggle (mobile only) & Theme Toggle */
 
 #theme-toggle {
   background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%);
@@ -406,6 +400,7 @@ a {
 @media (max-width: 640px) {
   #menu-toggle {
     display: inline-block;
+    margin-left: auto;
   }
 
   .nav {
@@ -440,6 +435,10 @@ a {
 @media (min-width: 641px) {
   #menu-toggle {
     display: none;
+  }
+
+  #theme-toggle {
+    margin-left: auto;
   }
 }
 
@@ -1440,7 +1439,11 @@ body.dark-mode #typewriter-text {
 
 .site-footer p {
   margin: 0;
-  display: block;
+  margin-right: 12px;
+}
+
+.footer-copyright {
+  color: #fff !important;
 }
 
 /* 14. Local Font Loading (Avoid Google Fonts issues) */
