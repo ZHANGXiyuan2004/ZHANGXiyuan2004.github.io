@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackToTop();
     initTypewriter();
     initFilters();
+    initParallax(); // New
+    initTiltEffect(); // New
 });
 
 /* -------------------
@@ -171,6 +173,64 @@ function initFilters() {
                     item.classList.remove('visible');
                 }
             });
+        });
+    });
+}
+
+/* -------------------
+   7. Parallax & Scroll Reactions
+------------------- */
+function initParallax() {
+    const heroTitle = document.querySelector('.hero h2');
+    const heroAvatar = document.querySelector('.avatar');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        
+        // Parallax for Hero Title (slower scroll)
+        if (heroTitle) {
+            heroTitle.style.transform = `translateY(${scrolled * 0.4}px)`;
+            // Subtle fade out
+            heroTitle.style.opacity = 1 - (scrolled / 500);
+        }
+
+        // Scale down avatar slightly on scroll
+        if (heroAvatar) {
+            const scale = Math.max(0.9, 1 - (scrolled / 1000));
+            heroAvatar.style.transform = `scale(${scale})`;
+        }
+    });
+}
+
+/* -------------------
+   8. 3D Tilt Effect
+------------------- */
+function initTiltEffect() {
+    // Select cards to apply tilt to
+    const cards = document.querySelectorAll('.lead-card, .collab-card, .blog-card, .pub-section .entry');
+
+    cards.forEach(card => {
+        card.classList.add('tilt-card'); // Ensure CSS class is present
+        
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calculate rotation (max +/- 5 degrees)
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -5; // Invert Y for tilt
+            const rotateY = ((x - centerX) / centerX) * 5;
+
+            // Apply transform
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Reset
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
         });
     });
 }
