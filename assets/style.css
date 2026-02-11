@@ -697,12 +697,12 @@ body.dark-mode .blog-card.podcast-card {
 .leadership-grid {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 20px;
   margin-top: 16px;
 }
 
 .lead-card {
-  padding: 16px;
+  padding: 20px;
 }
 
 .lead-card .lead-card-img {
@@ -877,7 +877,7 @@ body.dark-mode .blog-card.podcast-card {
 .collab-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 20px;
   margin-top: 16px;
 }
 
@@ -886,7 +886,7 @@ body.dark-mode .blog-card.podcast-card {
   gap: 18px;
   align-items: center;
   border-left: 4px solid var(--text-accent);
-  padding: 14px;
+  padding: 20px;
   width: 100%;
 }
 
