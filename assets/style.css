@@ -319,7 +319,7 @@ a {
 .nav a {
   margin-left: 4px;
   color: #fff;
-  padding: 3px 14px;
+  padding: 2px 14px;
   border-radius: 0;
   transition: all 0.08s ease;
   display: inline-block;
@@ -336,15 +336,15 @@ a {
     linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px),
     linear-gradient(135deg, rgba(255,255,255,0.04) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.04) 50%, rgba(0,0,0,0.04) 75%, transparent 75%);
   background-size: 4px 4px, 4px 4px, 8px 8px;
-  border: 2px solid #000;
+  border: 3px solid #000;
   border-top-color: #c0c0c0;
   border-left-color: #c0c0c0;
   border-right-color: #404040;
   border-bottom-color: #404040;
   box-shadow:
-    inset -1px -1px 0 #585858,
-    inset 1px 1px 0 #b0b0b0,
-    1px 1px 0 rgba(0,0,0,0.4);
+    inset -2px -2px 0 #585858,
+    inset 2px 2px 0 #b0b0b0,
+    2px 2px 0 rgba(0,0,0,0.4);
   image-rendering: pixelated;
   cursor: pointer;
 }
@@ -360,18 +360,18 @@ a {
   color: #ffff55;
   text-shadow: none;
   filter: brightness(1.2);
-  border: 2px solid #000;
+  border: 3px solid #000;
   border-top-color: #d0d0d0;
   border-left-color: #d0d0d0;
   border-right-color: #505050;
   border-bottom-color: #505050;
   box-shadow:
-    inset -1px -1px 0 #686868,
-    inset 1px 1px 0 #c8c8c8,
+    inset -2px -2px 0 #686868,
+    inset 2px 2px 0 #c8c8c8,
     inset 0 0 10px rgba(255,255,85,0.15),
-    1px 1px 0 rgba(0,0,0,0.4);
+    2px 2px 0 rgba(0,0,0,0.4);
   transform: none;
-  padding: 3px 14px;
+  padding: 2px 14px;
   margin-left: 4px;
   margin-top: 0;
 }
@@ -382,12 +382,12 @@ a {
     linear-gradient(0deg, rgba(0,0,0,0.12) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,0,0,0.10) 1px, transparent 1px);
   background-size: 4px 4px;
-  border: 2px solid #000;
+  border: 3px solid #000;
   border-top-color: #404040;
   border-left-color: #404040;
   border-right-color: #b0b0b0;
   border-bottom-color: #b0b0b0;
-  box-shadow: inset 1px 1px 0 #333;
+  box-shadow: inset 2px 2px 0 #333;
   transform: translateY(2px);
   filter: brightness(0.85);
 }
