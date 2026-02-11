@@ -1108,7 +1108,6 @@ body.dark-mode h3 {
 /* 5. Card Titles (Associations, etc.) */
 .lead-card h4,
 .collab-card h4,
-.blog-card h4,
 .pub-section .entry h4 {
   font-size: 24px !important;
   /* Increased */
@@ -1118,7 +1117,6 @@ body.dark-mode h3 {
 
 body.dark-mode .lead-card h4,
 body.dark-mode .collab-card h4,
-body.dark-mode .blog-card h4,
 body.dark-mode .pub-section .entry h4 {
   color: #ffff55 !important;
   /* Yellow in Dark Mode */
