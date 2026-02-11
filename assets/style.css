@@ -615,6 +615,7 @@ h2,
 h3,
 h4 {
   transition: letter-spacing 1s cubic-bezier(0.25, 1, 0.5, 1), font-weight 1s cubic-bezier(0.25, 1, 0.5, 1), color 1s cubic-bezier(0.25, 1, 0.5, 1);
+  width: fit-content;
 }
 
 h2:hover,
