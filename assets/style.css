@@ -117,6 +117,12 @@ body {
   /* 强制预留滚动条空间，防止页面切换时左右移动 */
   overflow-y: scroll;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 /* Background Overlay */
