@@ -24,14 +24,20 @@
 
   --text-main: #1d1d1f;
   --text-muted: #555555;
-  --text-accent: #0071e3;
+  --text-accent: #F59E0B;  /* 黄色强调色 */
 
   --border-color: rgba(255, 255, 255, 0.6);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
   /* Soft diffuse shadow */
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
-  --shadow-hover-color: rgba(0, 113, 227, 0.2);
+  --shadow-hover-color: rgba(245, 158, 11, 0.2);
+
+  /* Navigation Colors */
+  --nav-title: #2D5016;      /* 深绿色标题 - 在绿色背景上清晰 */
+  --nav-link: #1a1a1a;       /* 深灰色链接 */
+  --nav-link-hover: #2D5016; /* 悬停时深绿色 */
+  --nav-link-active: #1B360E; /* 激活状态更深绿色 */
 
   /* Neumorphism Variables (Light) */
   --neu-shadow-light: -6px -6px 14px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.05);
@@ -69,13 +75,19 @@ body.dark-mode {
 
   --text-main: #f5f5f7;
   --text-muted: #a1a1a6;
-  --text-accent: #2997ff;
+  --text-accent: #FBBF24;  /* 黄色强调色（深色模式更亮） */
 
   --border-color: rgba(255, 255, 255, 0.1);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --shadow-hover-color: rgba(41, 151, 255, 0.25);
+  --shadow-hover-color: rgba(251, 191, 36, 0.25);
+
+  /* Navigation Colors (Dark Mode) */
+  --nav-title: #FFFFFF;      /* 白色标题 - 在绿色背景上清晰 */
+  --nav-link: #E8F5E9;       /* 浅灰绿色链接 */
+  --nav-link-hover: #FFFFFF; /* 悬停时白色 */
+  --nav-link-active: #FFFBEB; /* 激活状态浅黄色 */
 
   /* Neumorphism Variables (Dark) - subtler for dark mode */
   --neu-shadow-light: -4px -4px 10px rgba(255, 255, 255, 0.03), 4px 4px 10px rgba(0, 0, 0, 0.3);
@@ -178,7 +190,7 @@ a {
 }
 
 .site-title a {
-  color: var(--text-accent);
+  color: var(--nav-title);
   font-weight: 700;
 }
 
@@ -236,7 +248,7 @@ a {
 
 .nav a {
   margin-left: 16px;
-  color: var(--text-muted);
+  color: var(--nav-link);
   padding: 8px 12px;
   border-radius: 6px;
   transition: all 0.3s ease;
@@ -245,8 +257,8 @@ a {
 
 .nav a:hover,
 .nav a.active {
-  background: var(--bg-hobby);
-  color: var(--text-accent);
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--nav-link-hover);
   transform: translateY(-2px);
 }
 
@@ -262,10 +274,10 @@ a {
     left: 0;
     right: 0;
     right: 0;
-    background: var(--bg-header);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-header-green);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(124, 179, 66, 0.3);
     padding: 0 0 10px 0;
     opacity: 0;
     visibility: hidden;
