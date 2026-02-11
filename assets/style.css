@@ -179,15 +179,26 @@ a {
 --------------------------- */
 /* Glass Header */
 .site-header {
-  background: var(--bg-header);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid var(--border-color);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.65) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-sm);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .site-header {
+  background: linear-gradient(180deg, rgba(25, 30, 35, 0.9) 0%, rgba(15, 20, 25, 0.8) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 10px 20px -5px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .site-header .container {
@@ -582,6 +593,56 @@ a {
 #typewriter-text::after {
   content: '|';
   animation: blink 1s infinite;
+}
+
+/* Bilibili Button */
+.btn-bilibili {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fb7299 0%, #fa5a87 100%);
+  color: #fff !important;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(251, 114, 153, 0.3);
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-decoration: none;
+  font-size: 15px;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-bilibili::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #fa5a87 0%, #fb7299 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.2s ease;
+}
+
+.btn-bilibili:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(251, 114, 153, 0.4);
+}
+
+.btn-bilibili:hover::before {
+  opacity: 1;
+}
+
+.btn-bilibili:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(251, 114, 153, 0.3);
 }
 
 @keyframes blink {
