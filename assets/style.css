@@ -1455,12 +1455,7 @@ body.dark-mode .contact-badge-link img {
 /* 11. Navigation & Footer Refinements (Minecraft Grass/Dirt Theme) */
 
 /* Navigation Bar - Grass Green Glassmorphism */
-.site-header {
-  background: linear-gradient(135deg, rgba(46, 139, 87, 0.75) 0%, rgba(34, 110, 68, 0.8) 50%, rgba(30, 86, 49, 0.85) 100%) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border-bottom: 2px solid rgba(30, 86, 49, 0.6) !important;
-}
+/* .site-header override removed */
 
 /* Site Title (Shine Yuan) */
 .site-title {
