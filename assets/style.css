@@ -16,7 +16,7 @@
 
   --bg-header: rgba(255, 255, 255, 0.85);
   /* Slightly more opaque for header */
-  --bg-header-green: rgba(124, 179, 66, 0.7);  /* 绿色毛玻璃导航 */
+  --bg-header-green: rgba(100, 150, 50, 0.85);  /* 绿色毛玻璃导航 - 更深 */
   --bg-card: rgba(255, 255, 255, 0.65);
   --bg-badge: rgba(255, 255, 255, 0.8);
   --bg-hobby: rgba(255, 255, 255, 0.5);
@@ -117,6 +117,12 @@ body {
   /* 强制预留滚动条空间，防止页面切换时左右移动 */
   overflow-y: scroll;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 /* Background Overlay */
@@ -173,11 +179,11 @@ a {
   background: var(--bg-header-green);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(124, 179, 66, 0.3);
+  border-bottom: 1px solid rgba(100, 150, 50, 0.4);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(124, 179, 66, 0.2);
+  box-shadow: 0 2px 8px rgba(100, 150, 50, 0.3);
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
