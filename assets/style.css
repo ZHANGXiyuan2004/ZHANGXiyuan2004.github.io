@@ -982,6 +982,25 @@ li {
   color: #ccc;
 }
 
+/* ---------------------------
+   7. Final Typography & Overlay Overrides
+--------------------------- */
+
+/* Overlay - Mode Dependent */
+.minecraft-overlay {
+  background: rgba(255, 255, 255, 0.85) !important;
+  /* White overlay (Light Mode) */
+  transition: background 0.3s ease;
+}
+
+body.dark-mode .minecraft-overlay {
+  background: rgba(0, 0, 0, 0.85) !important;
+  /* Black overlay (Dark Mode) */
+}
+
+/* Typography - Light Mode (Black Text) */
+h1,
+h2,
 h3,
 h4,
 h5,
@@ -1049,7 +1068,6 @@ body.dark-mode .pub-section .entry {
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5) !important;
 }
 
-}
 
 /* 3. Hero Subtitle Spacing (Less space between lines) */
 .hero p.muted {
@@ -1189,47 +1207,4 @@ body.dark-mode #typewriter-text {
 .site-footer a {
   color: #ffff55 !important;
   /* Yellow links on dirt background */
-}/* 12. Dark Mode Card Hover Highlight (Yellow) */
-body.dark-mode .lead-card:hover,
-body.dark-mode .collab-card:hover,
-body.dark-mode .blog-card:hover,
-body.dark-mode .pub-section .entry:hover {
-    border-color: #ffff55 !important;
-    /* Minecraft Yellow Border */
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 85, 0.3) !important;
-    /* Adding a subtle yellow glow */
-}/* 13. Overlay Transparency & Card Highlights */
-
-/* Slightly more transparent overlays */
-.minecraft-overlay {
-    background: rgba(255, 255, 255, 0.75) !important;
-    /* Reduced from 0.85 */
-}
-
-body.dark-mode .minecraft-overlay {
-    background: rgba(0, 0, 0, 0.75) !important;
-    /* Reduced from 0.85 */
-}
-
-/* Dark Mode Card Hover Highlight (Yellow) */
-body.dark-mode .lead-card:hover,
-body.dark-mode .collab-card:hover,
-body.dark-mode .blog-card:hover,
-body.dark-mode .pub-section .entry:hover {
-    border-color: #ffff55 !important;
-    /* Minecraft Yellow Border */
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 85, 0.3) !important;
-    /* Adding a subtle yellow glow */
-}/* 14. Local Font Loading (Avoid Google Fonts issues) */
-@font-face {
-    font-family: 'VT323';
-    src: url('../assets/fonts/VT323-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Ensure the font uses the local version */
-:root {
-    --font-pixel: 'VT323', monospace;
 }
