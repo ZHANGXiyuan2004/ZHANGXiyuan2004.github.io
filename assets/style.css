@@ -39,6 +39,15 @@
   --neu-border: 1px solid rgba(255, 255, 255, 0.4);
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  /* Background Image & Overlay */
+  --bg-image: url('assets/background.png');
+  --bg-overlay-light: rgba(255, 255, 255, 0.85);  /* 浅色模式白色覆盖层 */
+  --bg-overlay-dark: rgba(0, 0, 0, 0.75);          /* 深色模式黑色覆盖层 */
+
+  /* Top/Bottom Bar Colors */
+  --top-bar-color: #7CB342;    /* 草绿色 */
+  --bottom-bar-color: #8B7355;  /* 土色 */
 }
 
 /* Dark Theme Overrides */
@@ -74,6 +83,11 @@ body.dark-mode {
   --neu-border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Dark mode overlay */
+body.dark-mode::before {
+  background: var(--bg-overlay-dark);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -82,39 +96,49 @@ body {
   font-family: var(--font-sans);
   margin: 0;
   color: var(--text-main);
-  background: var(--bg-gradient);
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
   background-attachment: fixed;
-  /* Keep gradient fixed when scrolling */
   line-height: 1.6;
   transition: color 0.3s ease;
-  /* Exclude bg transition for smoother gradients */
   /* 强制预留滚动条空间，防止页面切换时左右移动 */
   overflow-y: scroll;
   min-height: 100vh;
 }
 
-/* Glassmorphism Background Decoration -> Optional: Mesh gradients or blobs */
+/* Background Overlay */
 body::before {
   content: '';
   position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.1), rgba(0, 0, 0, 0));
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-overlay-light);
   z-index: -1;
   pointer-events: none;
-  animation: bg-shift 20s ease-in-out infinite alternate;
 }
 
-@keyframes bg-shift {
-  0% {
-    transform: translate(0, 0);
-  }
+/* Top & Bottom Bars */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--top-bar-color);
+  z-index: 1000;
+}
 
-  100% {
-    transform: translate(50px, 50px);
-  }
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--bottom-bar-color);
+  z-index: 1000;
 }
 
 h1,
