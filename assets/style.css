@@ -1291,7 +1291,7 @@ li {
 
 /* Overlay - Mode Dependent */
 .minecraft-overlay {
-  background: rgba(255, 241, 232, 0.75) !important;
+  background: rgba(255, 245, 235, 0.75) !important;
   /* Light Coffee overlay (Light Mode) - same opacity */
   transition: background 0.3s ease;
 }
