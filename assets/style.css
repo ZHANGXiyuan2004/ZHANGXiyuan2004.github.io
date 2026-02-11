@@ -16,6 +16,7 @@
 
   --bg-header: rgba(255, 255, 255, 0.85);
   /* Slightly more opaque for header */
+  --bg-header-green: rgba(124, 179, 66, 0.7);  /* 绿色毛玻璃导航 */
   --bg-card: rgba(255, 255, 255, 0.65);
   --bg-badge: rgba(255, 255, 255, 0.8);
   --bg-hobby: rgba(255, 255, 255, 0.5);
@@ -41,12 +42,11 @@
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
   /* Background Image & Overlay */
-  --bg-image: url('assets/background.png');
+  --bg-image: url('/assets/background.png');
   --bg-overlay-light: rgba(255, 255, 255, 0.85);  /* 浅色模式白色覆盖层 */
   --bg-overlay-dark: rgba(0, 0, 0, 0.75);          /* 深色模式黑色覆盖层 */
 
-  /* Top/Bottom Bar Colors */
-  --top-bar-color: #7CB342;    /* 草绿色 */
+  /* Bottom Bar Color */
   --bottom-bar-color: #8B7355;  /* 土色 */
 }
 
@@ -120,17 +120,7 @@ body::before {
   pointer-events: none;
 }
 
-/* Top & Bottom Bars */
-.top-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 8px;
-  background: var(--top-bar-color);
-  z-index: 1000;
-}
-
+/* Bottom Bar */
 .bottom-bar {
   position: fixed;
   bottom: 0;
@@ -168,14 +158,14 @@ a {
 --------------------------- */
 /* Glass Header */
 .site-header {
-  background: var(--bg-header);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-header-green);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(124, 179, 66, 0.3);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(124, 179, 66, 0.2);
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
