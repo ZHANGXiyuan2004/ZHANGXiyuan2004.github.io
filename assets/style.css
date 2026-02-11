@@ -647,12 +647,18 @@ body.dark-mode .blog-card.podcast-card {
   line-height: 1.4;
 }
 
-.blog-card h3 a {
+.blog-card h4 {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+}
+
+.blog-card h3 a, .blog-card h4 a {
   color: var(--text-main);
   transition: color 0.3s ease;
 }
 
-.blog-card h3 a:hover {
+.blog-card h3 a:hover, .blog-card h4 a:hover {
   color: var(--text-accent);
 }
 
@@ -881,6 +887,7 @@ body.dark-mode .blog-card.podcast-card {
   align-items: center;
   border-left: 4px solid var(--text-accent);
   padding: 14px;
+  width: 100%;
 }
 
 .collab-avatar {
