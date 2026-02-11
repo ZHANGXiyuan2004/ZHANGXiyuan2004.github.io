@@ -1207,4 +1207,16 @@ body.dark-mode #typewriter-text {
 .site-footer a {
   color: #ffff55 !important;
   /* Yellow links on dirt background */
+}/* 14. Local Font Loading (Avoid Google Fonts issues) */
+@font-face {
+    font-family: 'VT323';
+    src: url('../assets/fonts/VT323-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Ensure the font uses the local version */
+:root {
+    --font-pixel: 'VT323', monospace;
 }
