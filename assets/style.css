@@ -426,7 +426,7 @@ a {
 
 /* Scroll-reactive Typography */
 .hero h2 {
-  transition: transform 0.1s linear;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
   /* Smooth scroll reaction */
   will-change: transform;
 }
