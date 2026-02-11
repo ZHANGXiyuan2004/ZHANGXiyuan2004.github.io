@@ -20,10 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 ------------------- */
 function initTheme() {
     const themeToggle = document.getElementById('theme-toggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const storedTheme = localStorage.getItem('theme');
 
-    // 默认使用深色模式
-    if (storedTheme !== 'light') {
+    // Set initial state
+    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
         document.body.classList.add('dark-mode');
         // Update icon if exists
         if (themeToggle) updateThemeIcon(true);
