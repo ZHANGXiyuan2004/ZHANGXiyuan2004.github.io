@@ -444,7 +444,7 @@ h1,
 h2,
 h3,
 h4 {
-  transition: letter-spacing 0.3s ease, font-weight 0.3s ease, color 0.3s ease;
+  transition: letter-spacing 0.6s cubic-bezier(0.25, 1, 0.5, 1), font-weight 0.6s cubic-bezier(0.25, 1, 0.5, 1), color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 h2:hover,
