@@ -215,7 +215,6 @@ a {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-left: auto;
 }
 
 #theme-toggle {
@@ -1440,7 +1439,8 @@ body.dark-mode #typewriter-text {
 }
 
 .site-footer p {
-  margin: 4px 0;
+  margin: 0;
+  display: block;
 }
 
 /* 14. Local Font Loading (Avoid Google Fonts issues) */
