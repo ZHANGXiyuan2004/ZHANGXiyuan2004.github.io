@@ -1220,11 +1220,19 @@ body.dark-mode #typewriter-text {
   color: #fff !important;
   padding: 20px 0 !important;
   margin-top: 40px !important;
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px #000;
 }
 
 .site-footer a {
   color: #ffff55 !important;
   /* Yellow links on dirt background */
+}
+
+.site-footer p {
+  margin: 4px 0;
 }
 
 /* 14. Local Font Loading (Avoid Google Fonts issues) */
