@@ -752,6 +752,14 @@ body.dark-mode .blog-card.podcast-card {
   background: linear-gradient(135deg, rgba(30, 30, 35, 0.6) 0%, rgba(255, 123, 172, 0.1) 100%);
 }
 
+.podcast-hosts-theme {
+  color: #000;
+}
+
+body.dark-mode .podcast-hosts-theme {
+  color: #fff;
+}
+
 .podcast-icon {
   font-size: 32px;
   margin-bottom: 12px;
