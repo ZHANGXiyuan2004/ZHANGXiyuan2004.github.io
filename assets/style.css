@@ -211,7 +211,22 @@ a {
   gap: 10px;
 }
 
-#theme-toggle,
+#theme-toggle {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.35);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
 #menu-toggle {
   background-color: #7d7d7d;
   background-image:
@@ -239,7 +254,19 @@ a {
   image-rendering: pixelated;
 }
 
-#theme-toggle:hover,
+#theme-toggle:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2), 0 0 12px rgba(255,255,85,0.15);
+  transform: scale(1.08);
+}
+
+#theme-toggle:active {
+  transform: scale(0.95);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
 #menu-toggle:hover {
   background-color: #9e9e9e;
   background-image:
@@ -259,7 +286,6 @@ a {
   transform: none;
 }
 
-#theme-toggle:active,
 #menu-toggle:active {
   background-color: #5b5b5b;
   border-top-color: #404040;
@@ -293,7 +319,7 @@ a {
 .nav a {
   margin-left: 4px;
   color: #fff;
-  padding: 5px 14px;
+  padding: 3px 14px;
   border-radius: 0;
   transition: all 0.08s ease;
   display: inline-block;
@@ -345,7 +371,7 @@ a {
     inset 0 0 10px rgba(255,255,85,0.15),
     1px 1px 0 rgba(0,0,0,0.4);
   transform: none;
-  padding: 5px 14px;
+  padding: 3px 14px;
   margin-left: 4px;
   margin-top: 0;
 }
@@ -1120,7 +1146,6 @@ body.dark-mode .blog-card.podcast-card {
 .summary,
 .avatar,
 .contact-badge-link img,
-#theme-toggle,
 #menu-toggle,
 input,
 textarea,
@@ -1347,11 +1372,10 @@ body.dark-mode .contact-badge-link img {
 
 /* Navigation Bar - Grass Green Glassmorphism */
 .site-header {
-  background: rgba(46, 139, 87, 0.85) !important;
-  /* Grass Green */
-  backdrop-filter: blur(10px) !important;
-  border-bottom: 2px solid #1e5631 !important;
-  /* Darker green border */
+  background: linear-gradient(135deg, rgba(46, 139, 87, 0.75) 0%, rgba(34, 110, 68, 0.8) 50%, rgba(30, 86, 49, 0.85) 100%) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 2px solid rgba(30, 86, 49, 0.6) !important;
 }
 
 /* Site Title (Shine Yuan) */
