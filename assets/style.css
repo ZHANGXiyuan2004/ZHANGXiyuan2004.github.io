@@ -975,6 +975,15 @@ select {
   border-color: #fff !important;
 }
 
+/* Dark mode yellow border effect on hover */
+body.dark-mode .lead-card:hover,
+body.dark-mode .collab-card:hover,
+body.dark-mode .blog-card:hover,
+body.dark-mode .pub-section .entry:hover {
+  box-shadow: 6px 6px 0 #ffff55 !important;
+  border-color: #ffff55 !important;
+}
+
 /* Fix avatar specific */
 .avatar {
   border: 4px solid #fff !important;
