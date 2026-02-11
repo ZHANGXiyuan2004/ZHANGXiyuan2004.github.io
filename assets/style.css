@@ -176,11 +176,8 @@ a {
 
 /* Glass Header - Light Mode (Brown Gradient: Dark Edges, Light Center) */
 .site-header {
-  /* Horizontal gradient: deeper dark brown -> deeper light brown -> deeper dark brown */
-  background: linear-gradient(90deg,
-      rgba(70, 45, 20, 0.95) 0%,
-      rgba(140, 100, 65, 0.92) 50%,
-      rgba(70, 45, 20, 0.95) 100%);
+  /* Vertical gradient matching dark mode distribution: top lighter -> bottom darker */
+  background: linear-gradient(180deg, rgba(90, 60, 30, 0.92) 0%, rgba(45, 25, 10, 0.96) 100%);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
 
@@ -1495,16 +1492,14 @@ body.dark-mode #typewriter-text {
 
 /* Footer - Dirt/Earth Color */
 .site-footer {
-  background: #5d4037 !important;
-  /* Dirt Brown */
-  border-top: 4px solid #3e2723 !important;
-  /* Darker brown border */
+  background: #000000 !important;
+  border-top: 2px solid #3e2723 !important;
   color: #fff !important;
-  padding: 6px 0 !important;
-  /* Halved from 12px */
-  margin-top: 30px !important;
+  padding: 2px 0 !important;
+  margin-top: 10px !important;
   font-family: var(--font-pixel);
   font-size: 20px;
+  line-height: 1;
   letter-spacing: 1px;
   text-shadow: 1px 1px #000;
 }
