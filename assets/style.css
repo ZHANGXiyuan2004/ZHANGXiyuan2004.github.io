@@ -604,6 +604,7 @@ h3:hover {
   padding: 20px;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .blog-card.podcast-card {
@@ -703,6 +704,7 @@ body.dark-mode .blog-card.podcast-card {
 
 .lead-card {
   padding: 20px;
+  width: 100%;
 }
 
 .lead-card .lead-card-img {
@@ -726,6 +728,7 @@ body.dark-mode .blog-card.podcast-card {
   margin-bottom: 20px;
   box-shadow: var(--neu-shadow-light);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%;
 }
 
 .pub-section .entry:hover {
