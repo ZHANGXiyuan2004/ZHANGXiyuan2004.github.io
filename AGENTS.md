@@ -233,6 +233,77 @@ Edit in all HTML files:
 <span class="footer-copyright">© 2024 Shine Yuan —</span>
 ```
 
+## Lessons Learned & Best Practices
+
+### 1. Animation Transition Conflicts
+
+**Problem**: When an element has both `fade-in-up` (scroll animation) and hover animations, if `fade-in-up` is placed directly on the element, it overrides the hover transition.
+
+**Solution**: Always place `fade-in-up` class on a **parent container**, not on the element with hover effects.
+
+```html
+<!-- ❌ Wrong: fade-in-up on h3 overrides hover animation -->
+<h3 class="fade-in-up">Title</h3>
+
+<!-- ✅ Correct: fade-in-up on parent container -->
+<div class="fade-in-up">
+  <h3>Title</h3>  <!-- Hover animation works normally -->
+</div>
+```
+
+**Affected Elements**:
+- `.hero h2` - needed to merge `transform` (parallax) with `letter-spacing` and `color` (hover) transitions
+- All section headings (h3) should have `fade-in-up` on their parent `<section>` or `<div>` wrapper
+
+### 2. Button Style Consistency
+
+**Pattern**: All Minecraft-style buttons should use consistent styling:
+- `padding: 8px 18px`
+- `font-size: 20px` (desktop), `16px` (mobile)
+- Same background texture, border, and shadow patterns
+- `.filter-btn` and `.hobby-item` should share identical base styles
+
+### 3. Mobile Navigation Styling
+
+**Key Decisions**:
+- Remove background color entirely (`background: transparent`) for cleaner look
+- Keep only the button styling
+- Ensure `padding` remains constant during `:hover`, `:active`, and `.active` states to prevent layout shifts
+- Add explicit `padding` declarations in mobile media query to override desktop styles
+
+### 4. Responsive Text Alignment
+
+**Pattern**: Use mobile-specific media queries for text alignment changes:
+```css
+/* Desktop: left-aligned (default) */
+.element { text-align: left; }
+
+/* Mobile: centered */
+@media (max-width: 640px) {
+  .element { text-align: center; }
+}
+```
+
+### 5. CSS Specificity Order Matters
+
+The CSS file has multiple sections that override earlier styles:
+1. Base styles (lines 1-700)
+2. Component styles (lines 700-1200)
+3. Responsive adjustments (lines 1200+)
+4. Final overrides with `!important` (lines 1400+)
+
+**Rule**: When debugging style issues, check if later sections (especially Typography Overrides) are overriding your changes with `!important`.
+
+### 6. Testing Checklist for Responsive Changes
+
+When modifying styles that affect both desktop and mobile:
+- [ ] Verify desktop appearance unchanged
+- [ ] Test at exactly 640px breakpoint
+- [ ] Test at 320px (smallest mobile)
+- [ ] Test both Light and Dark modes
+- [ ] Check hover/active/focus states on interactive elements
+- [ ] Verify animations still work (fade-in-up, typewriter, etc.)
+
 ## Contact & References
 
 - **Repository**: `https://github.com/ZHANGXiyuan2004/ZHANGXiyuan2004.github.io`
