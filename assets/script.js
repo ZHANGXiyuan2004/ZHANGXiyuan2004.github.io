@@ -206,6 +206,10 @@ function initParallax() {
    8. 3D Tilt Effect
 ------------------- */
 function initTiltEffect() {
+    // Disable on touch devices (mobile/tablet) for better performance and UX
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    if (isTouchDevice) return;
+    
     // Select cards to apply tilt to
     const cards = document.querySelectorAll('.lead-card, .collab-card, .blog-card, .pub-section .entry');
 

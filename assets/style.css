@@ -1243,31 +1243,126 @@ body.dark-mode .podcast-hosts-theme {
   color: #fff;
 }
 
-/* Responsive adjustments */
+/* ============================
+   Responsive adjustments
+   ============================ */
+
+/* Mobile optimizations (< 640px) */
 @media (max-width: 640px) {
+  /* Container spacing */
+  .container {
+    padding: 16px;
+  }
+  
+  /* Hero section - text wrapping */
+  .hero h2 {
+    font-size: 22px !important;
+    white-space: normal !important;
+    line-height: 1.3 !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .hero p.muted:first-of-type {
+    font-size: 16px !important;
+  }
+  
+  /* Avatar */
   .avatar {
     float: none;
     margin: 0 auto 18px;
     display: block;
     max-width: 90%;
+    width: 300px;
   }
-
+  
+  /* Collaborator cards - vertical layout */
   .collab-grid {
     grid-auto-rows: auto;
   }
-
-  .collab-avatar {
-    width: 88px;
-    height: 88px;
-    min-width: 88px;
-  }
-
+  
   .collab-card {
-    padding: 12px;
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 16px;
   }
-
+  
+  .collab-avatar {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+  }
+  
+  .collab-body {
+    width: 100%;
+  }
+  
+  .collab-body h4 {
+    font-size: 20px !important;
+  }
+  
+  .small-btn {
+    margin-top: 8px;
+  }
+  
+  /* Leadership cards */
   .lead-card .lead-card-img {
     aspect-ratio: 4/3;
+  }
+  
+  .lead-card {
+    padding: 16px;
+  }
+  
+  /* Filter buttons - flex wrap */
+  .filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .filter-btn {
+    margin-right: 0;
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 70px;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  
+  /* Blog cards */
+  .blog-card {
+    padding: 16px;
+  }
+  
+  .blog-card h4 {
+    font-size: 16px !important;
+  }
+  
+  .btn-bilibili {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    margin-top: 12px;
+    display: inline-flex;
+  }
+  
+  /* Publication entries */
+  .pub-section .entry {
+    padding: 16px;
+  }
+  
+  .pub-section .entry h4 {
+    font-size: 18px !important;
+  }
+  
+  /* Back to top button */
+  #back-to-top {
+    bottom: 15px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
   }
 }
 
