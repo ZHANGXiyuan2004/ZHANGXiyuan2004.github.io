@@ -457,6 +457,13 @@ body.dark-mode .site-title a {
     margin: 5px 12px;
     text-align: center;
     min-width: unset;
+    padding: 1px 14px;  /* 固定 padding，防止 hover/active 时变化 */
+  }
+  
+  .nav a:hover,
+  .nav a.active,
+  .nav a:active {
+    padding: 1px 14px;  /* 保持相同的 padding */
   }
 }
 
