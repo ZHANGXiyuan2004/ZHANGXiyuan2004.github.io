@@ -1270,7 +1270,6 @@ body.dark-mode .podcast-hosts-theme {
 .collab-body {
   flex: 1;
   min-width: 0;
-  text-align: center;
 }
 
 .small-btn {
@@ -1339,6 +1338,7 @@ body.dark-mode .podcast-hosts-theme {
   
   .collab-body {
     width: 100%;
+    text-align: center;
   }
   
   .collab-body h4 {
