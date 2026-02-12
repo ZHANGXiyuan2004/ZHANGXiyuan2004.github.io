@@ -613,51 +613,67 @@ body.dark-mode .site-title a {
 }
 
 /* Bilibili Button */
-/* Glassmorphism Bilibili Button */
+/* Square Pink Gradient Button with Glow Effect */
 .btn-bilibili {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* Glass effect */
-  background: rgba(251, 114, 153, 0.15);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(251, 114, 153, 0.3);
-  color: #FB7299 !important;
-  /* Bilibili Pink Text */
+  background: linear-gradient(135deg, #ffb3d1 0%, #FB7299 50%, #c94670 100%);
+  border: 2px solid #FB7299;
+  color: #fff !important;
 
   font-family: var(--font-sans);
   font-weight: 600;
-  padding: 6px 16px;
-  border-radius: 20px;
-  /* Pill shape */
+  padding: 8px 16px;
+  border-radius: 0;
 
-  box-shadow: 0 4px 12px rgba(251, 114, 153, 0.15);
+  box-shadow:
+    4px 4px 0 #a03050,
+    0 0 20px rgba(251, 114, 153, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   text-decoration: none;
   font-size: 14px;
   line-height: normal;
   letter-spacing: 0.5px;
   z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Dark mode adjustment for visibility */
 body.dark-mode .btn-bilibili {
-  background: rgba(251, 114, 153, 0.2);
-  border-color: rgba(251, 114, 153, 0.4);
-  color: #ff8eb3 !important;
+  background: linear-gradient(135deg, #ffb3d1 0%, #FB7299 50%, #c94670 100%);
+  border-color: #FB7299;
+  color: #fff !important;
+  box-shadow:
+    4px 4px 0 #a03050,
+    0 0 25px rgba(251, 114, 153, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .btn-bilibili:hover {
   transform: translateY(-2px);
-  background: rgba(251, 114, 153, 0.25);
-  box-shadow: 0 8px 20px rgba(251, 114, 153, 0.25);
-  border-color: rgba(251, 114, 153, 0.6);
+  background: linear-gradient(135deg, #ffc5dc 0%, #ff8fb3 50%, #d95580 100%);
+  border-color: #ff8fb3;
+  box-shadow:
+    6px 6px 0 #a03050,
+    0 0 30px rgba(251, 114, 153, 0.6),
+    0 0 60px rgba(251, 114, 153, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .btn-bilibili:active {
   transform: translateY(0);
-  background: rgba(251, 114, 153, 0.3);
+  background: linear-gradient(135deg, #ff9fc0 0%, #e06588 50%, #b03058 100%);
+  border-color: #e06588;
+  box-shadow:
+    2px 2px 0 #a03050,
+    0 0 15px rgba(251, 114, 153, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 
 @keyframes blink {
