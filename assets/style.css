@@ -1026,13 +1026,13 @@ body.dark-mode .podcast-hosts-theme {
   border-left-color: #c0c0c0;
   border-right-color: #404040;
   border-bottom-color: #404040;
-  padding: 8px 18px;
+  padding: 2px 14px;
   margin-right: 8px;
   border-radius: 0;
   cursor: pointer;
   color: #fff;
   font-family: var(--font-pixel);
-  font-size: 20px;
+  font-size: 22px;
   transition: all 0.08s ease;
   margin-bottom: 8px;
   text-shadow: 2px 2px 0 #000;
@@ -1103,14 +1103,14 @@ body.dark-mode .podcast-hosts-theme {
 /* Hobby Items - Styled like filter buttons (Minecraft stone button) */
 .hobby-item {
   display: inline-block;
-  padding: 8px 18px;
+  padding: 2px 14px;
   margin-right: 8px;
   margin-bottom: 8px;
   border-radius: 0;
   cursor: default;
   color: #fff;
   font-family: var(--font-pixel);
-  font-size: 20px;
+  font-size: 22px;
   transition: all 0.08s ease;
   text-shadow: 2px 2px 0 #000;
   image-rendering: pixelated;
@@ -1355,8 +1355,8 @@ body.dark-mode .podcast-hosts-theme {
     margin-bottom: 0;
     flex: 1;
     min-width: 70px;
-    padding: 6px 12px;
-    font-size: 16px;
+    padding: 2px 14px;
+    font-size: 20px;
   }
   
   /* Blog cards */
@@ -1387,8 +1387,8 @@ body.dark-mode .podcast-hosts-theme {
   
   /* Hobby items - mobile */
   .hobby-item {
-    font-size: 16px;
-    padding: 6px 12px;
+    font-size: 20px;
+    padding: 2px 14px;
     margin-right: 6px;
     margin-bottom: 6px;
   }
