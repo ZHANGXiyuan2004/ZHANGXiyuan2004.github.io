@@ -730,7 +730,11 @@ body.dark-mode .btn-bilibili:active {
 .section-divider {
   border: 0;
   border-top: 1px solid var(--border-color);
-  margin: 24px 0;
+  margin: 12px 0;
+}
+
+.about-me-section .section-divider {
+  margin-top: 8px;
 }
 
 /* ---------------------------
