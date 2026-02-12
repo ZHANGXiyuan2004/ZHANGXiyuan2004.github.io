@@ -352,7 +352,7 @@ body.dark-mode .site-title a {
 .nav a {
   margin-left: 4px;
   color: #fff;
-  padding: 2px 14px;
+  padding: 2px 18px;
   border-radius: 0;
   transition: all 0.08s ease;
   display: inline-block;
@@ -404,7 +404,7 @@ body.dark-mode .site-title a {
     inset 0 0 10px rgba(255, 255, 85, 0.15),
     2px 2px 0 rgba(0, 0, 0, 0.4);
   transform: none;
-  padding: 2px 14px;
+  padding: 1px 14px;
   margin-left: 4px;
   margin-top: 0;
 }
@@ -1026,7 +1026,7 @@ body.dark-mode .podcast-hosts-theme {
   border-left-color: #c0c0c0;
   border-right-color: #404040;
   border-bottom-color: #404040;
-  padding: 2px 14px;
+  padding: 8px 18px;
   margin-right: 8px;
   border-radius: 0;
   cursor: pointer;
@@ -1355,7 +1355,7 @@ body.dark-mode .podcast-hosts-theme {
     margin-bottom: 0;
     flex: 1;
     min-width: 70px;
-    padding: 2px 14px;
+    padding: 6px 14px;
     font-size: 20px;
   }
   
