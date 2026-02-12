@@ -641,16 +641,40 @@ body.dark-mode .site-title a {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Dark mode adjustment for visibility */
+/* Dark mode - same glow effect */
 body.dark-mode .btn-bilibili {
   background: linear-gradient(135deg, #ffb3d1 0%, #FB7299 50%, #c94670 100%);
   border-color: #FB7299;
   color: #fff !important;
   box-shadow:
     4px 4px 0 #a03050,
-    0 0 25px rgba(251, 114, 153, 0.5),
+    0 0 20px rgba(251, 114, 153, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
     inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .btn-bilibili:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #ffc5dc 0%, #ff8fb3 50%, #d95580 100%);
+  border-color: #ff8fb3;
+  box-shadow:
+    6px 6px 0 #a03050,
+    0 0 30px rgba(251, 114, 153, 0.6),
+    0 0 60px rgba(251, 114, 153, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .btn-bilibili:active {
+  transform: translateY(0);
+  background: linear-gradient(135deg, #ff9fc0 0%, #e06588 50%, #b03058 100%);
+  border-color: #e06588;
+  box-shadow:
+    2px 2px 0 #a03050,
+    0 0 15px rgba(251, 114, 153, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 
 .btn-bilibili:hover {
