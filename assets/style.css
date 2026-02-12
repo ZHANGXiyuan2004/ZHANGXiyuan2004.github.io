@@ -754,8 +754,10 @@ body.dark-mode .btn-bilibili:active {
 
 /* Scroll-reactive Typography */
 .hero h2 {
-  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
-  /* Smooth scroll reaction */
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1),
+              letter-spacing 1s cubic-bezier(0.25, 1, 0.5, 1),
+              color 1s cubic-bezier(0.25, 1, 0.5, 1);
+  /* Smooth scroll reaction + hover effects */
   will-change: transform;
 }
 
