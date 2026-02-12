@@ -437,10 +437,8 @@ body.dark-mode .site-title a {
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent;
+    border-bottom: none;
     padding: 6px 0 10px 0;
     opacity: 0;
     visibility: hidden;
@@ -462,11 +460,11 @@ body.dark-mode .site-title a {
   }
 }
 
-/* Mobile nav dark mode */
+/* Mobile nav dark mode - keep transparent */
 @media (max-width: 640px) {
   body.dark-mode .nav {
-    background: rgba(0, 0, 0, 0.95);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    border-bottom: none;
   }
 }
 
@@ -1272,6 +1270,7 @@ body.dark-mode .podcast-hosts-theme {
 .collab-body {
   flex: 1;
   min-width: 0;
+  text-align: center;
 }
 
 .small-btn {
