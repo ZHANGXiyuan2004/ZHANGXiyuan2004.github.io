@@ -441,3 +441,20 @@ function showAdvancement(text, icon = '💎') {
         toast.classList.remove('show');
     }, 5000);
 }
+
+/* -------------------
+   10. Loading Screen
+------------------- */
+window.addEventListener('load', () => {
+    const loader = document.getElementById('loading-overlay');
+    if (loader) {
+        // Ensure the loader stays for at least 800ms to show the animation, 
+        // or just fade out immediately if the load took long enough.
+        // For smoother feel, we'll just add a small delay before fading.
+        setTimeout(() => {
+            loader.classList.add('loaded');
+            // Allow scroll again if we decided to block it (optional)
+            // document.body.style.overflow = 'auto'; 
+        }, 500);
+    }
+});
