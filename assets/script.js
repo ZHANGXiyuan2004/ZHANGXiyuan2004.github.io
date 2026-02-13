@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initFilters();
     initParallax(); // New
     initTiltEffect(); // New
+
+    // Minecraft Enhancements
+    initSplashText();
+    initMinecraftAudio();
+    initMinecraftTooltips();
+    initAdvancements();
 });
 
 /* -------------------
@@ -183,10 +189,10 @@ function initFilters() {
 function initParallax() {
     const heroTitle = document.querySelector('.hero h2');
     const heroAvatar = document.querySelector('.avatar');
-    
+
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
-        
+
         // Parallax for Hero Title (slower scroll)
         if (heroTitle) {
             heroTitle.style.transform = `translateY(${scrolled * 0.4}px)`;
@@ -209,22 +215,22 @@ function initTiltEffect() {
     // Disable on touch devices (mobile/tablet) for better performance and UX
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
     if (isTouchDevice) return;
-    
+
     // Select cards to apply tilt to
     const cards = document.querySelectorAll('.lead-card, .collab-card, .blog-card, .pub-section .entry');
 
     cards.forEach(card => {
         card.classList.add('tilt-card'); // Ensure CSS class is present
-        
+
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             // Calculate rotation (max +/- 5 degrees)
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
+
             const rotateX = ((y - centerY) / centerY) * -5; // Invert Y for tilt
             const rotateY = ((x - centerX) / centerX) * 5;
 
@@ -237,4 +243,181 @@ function initTiltEffect() {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
         });
     });
+}
+
+/* -------------------
+   9. Minecraft Enhancements
+------------------- */
+
+/* Audio System */
+const audioContext = {
+    click: new Audio('assets/audio/click.mp3'),
+    pop: new Audio('assets/audio/pop.mp3'),
+    toast: new Audio('assets/audio/levelup.mp3')
+};
+// Set volumes
+audioContext.click.volume = 0.6;
+audioContext.pop.volume = 0.5;
+audioContext.toast.volume = 0.8;
+
+function playAudio(key) {
+    if (audioContext[key]) {
+        // Clone to allow overlapping sounds
+        const sound = audioContext[key].cloneNode();
+        sound.volume = audioContext[key].volume;
+        sound.play().catch((e) => {
+            console.warn('Audio play failed:', e);
+        });
+    }
+}
+
+function initMinecraftAudio() {
+    // Check for pending nav sound from previous page
+    if (sessionStorage.getItem('mc_play_nav_sound')) {
+        sessionStorage.removeItem('mc_play_nav_sound');
+        playAudio('toast');
+    }
+
+    // Add click sounds to standard interactive elements (exclude nav)
+    const interactiles = document.querySelectorAll('a:not(.nav a), button, .btn');
+    interactiles.forEach(el => {
+        el.addEventListener('mousedown', () => playAudio('click'));
+        // el.addEventListener('mouseenter', () => playAudio('pop')); 
+    });
+
+    // Special handling for Navigation links: Flag for next page
+    const navLinks = document.querySelectorAll('.nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            // Only capture if it's a local link
+            if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+                // Don't prevent default. Let navigation happen immediately.
+                // Just set flag for next page.
+                sessionStorage.setItem('mc_play_nav_sound', 'true');
+            }
+        });
+    });
+}
+
+/* Splash Text */
+const splashTexts = [
+    "Herobrine Removed!"
+];
+
+function initSplashText() {
+    const splashEl = document.getElementById('splash-text');
+    if (!splashEl) return;
+
+    const randomSplash = splashTexts[Math.floor(Math.random() * splashTexts.length)];
+    splashEl.innerText = randomSplash;
+
+    // Trigger animation start
+    setTimeout(() => {
+        splashEl.classList.add('visible');
+    }, 100);
+}
+
+/* Custom Tooltips */
+function initMinecraftTooltips() {
+    const tooltip = document.createElement('div');
+    tooltip.id = 'mc-tooltip';
+    document.body.appendChild(tooltip);
+
+    // Delegate event listeners for better performance
+    document.addEventListener('mouseover', (e) => {
+        const target = e.target.closest('[title], .nav a, .btn, .contact-badge-link, .icon');
+        if (target) {
+            let content = target.getAttribute('title') || target.innerText || target.getAttribute('aria-label');
+
+            // Custom content for specific elements
+            if (target.classList.contains('contact-badge-link')) {
+                content = "Open " + (target.querySelector('img')?.alt || "Link");
+                // Add enchantment glint color?
+                tooltip.style.color = "#55ffff";
+            } else if (target.tagName === 'A' && target.closest('.nav')) {
+                content = "Go to " + target.innerText;
+                tooltip.style.color = "#fff";
+            }
+
+            if (!content) return;
+
+            // Disable default browser tooltip
+            if (target.getAttribute('title')) {
+                target.setAttribute('data-original-title', target.getAttribute('title'));
+                target.removeAttribute('title');
+            }
+
+            tooltip.innerHTML = `<span class="tooltip-title">${content}</span>`;
+            tooltip.style.display = 'block';
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        const target = e.target.closest('[data-original-title], .nav a, .btn, .contact-badge-link, .icon');
+        if (target) {
+            tooltip.style.display = 'none';
+            if (target.getAttribute('data-original-title')) {
+                target.setAttribute('title', target.getAttribute('data-original-title'));
+            }
+        }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        // Offset from cursor
+        const x = e.clientX + 15;
+        const y = e.clientY - 30;
+
+        // Boundary checks can be added here
+        tooltip.style.left = x + 'px';
+        tooltip.style.top = y + 'px';
+    });
+}
+
+/* Advancements */
+function initAdvancements() {
+    // Example: Scroll to bottom advancement
+    let scrolledBottom = false;
+    window.addEventListener('scroll', () => {
+        if (!scrolledBottom && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+            showAdvancement("We Need to Go Deeper!", "⚔️");
+            scrolledBottom = true;
+        }
+    });
+
+    // Example: Click Email
+    const emailLink = document.querySelector('a[href^="mailto"]');
+    if (emailLink) {
+        emailLink.addEventListener('click', () => {
+            showAdvancement("Message in a Bottle"); // Simplified
+        });
+    }
+}
+
+function showAdvancement(text, icon = '💎') {
+    // Check if already shown in session
+    const key = `advancement-${text}`;
+    if (sessionStorage.getItem(key)) return;
+    sessionStorage.setItem(key, 'true');
+
+    let toast = document.getElementById('advancement-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'advancement-toast';
+        document.body.appendChild(toast);
+    }
+
+    toast.innerHTML = `
+        <div class="advancement-icon">${icon}</div>
+        <div class="advancement-text">
+            <div class="advancement-title">${text}</div>
+        </div>
+    `;
+
+    playAudio('toast');
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 5000);
 }
