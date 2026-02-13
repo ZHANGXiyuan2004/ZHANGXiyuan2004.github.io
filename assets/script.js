@@ -407,7 +407,7 @@ function initAdvancements() {
     // Welcome Achievement
     setTimeout(() => {
         showAdvancement("Find A Tree And Get Some Wood", "🌳");
-    }, 3000);
+    }, 5000);
 }
 
 function showAdvancement(text, icon = '💎') {
