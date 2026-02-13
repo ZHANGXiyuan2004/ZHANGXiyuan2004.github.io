@@ -4,6 +4,51 @@ const config = {
     typewriterDelay: 2000
 };
 
+/* -------------------
+   0. Immediate Audio Init (Pre-DOM)
+------------------- */
+const audioContext = {
+    click: new Audio('assets/audio/click.mp3'),
+    pop: new Audio('assets/audio/pop.mp3'),
+    toast: new Audio('assets/audio/levelup.mp3')
+};
+
+// Force preload
+Object.values(audioContext).forEach(audio => {
+    audio.preload = 'auto';
+    audio.load();
+});
+
+// Set volumes
+audioContext.click.volume = 0.6;
+audioContext.pop.volume = 0.5;
+audioContext.toast.volume = 0.8;
+
+function playAudio(key) {
+    if (audioContext[key]) {
+        let sound;
+        if (key === 'toast') {
+            // Use main instance for Level Up to ensure 0-latency (no cloning)
+            sound = audioContext[key];
+            sound.currentTime = 0.1; // Skip 0.1s as requested to reduce perceived latency
+        } else {
+            // Clone others to allow overlapping (e.g. rapid clicks)
+            sound = audioContext[key].cloneNode();
+        }
+
+        sound.volume = audioContext[key].volume;
+        sound.play().catch((e) => {
+            console.warn('Audio play failed:', e);
+        });
+    }
+}
+
+// Check for pending nav sound from previous page IMMEDIATELY
+if (sessionStorage.getItem('mc_play_nav_sound')) {
+    sessionStorage.removeItem('mc_play_nav_sound');
+    playAudio('toast');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initMobileMenu();
@@ -249,42 +294,9 @@ function initTiltEffect() {
    9. Minecraft Enhancements
 ------------------- */
 
-/* Audio System */
-const audioContext = {
-    click: new Audio('assets/audio/click.mp3'),
-    pop: new Audio('assets/audio/pop.mp3'),
-    toast: new Audio('assets/audio/levelup.mp3')
-};
-
-// Force preload
-Object.values(audioContext).forEach(audio => {
-    audio.preload = 'auto';
-    audio.load();
-});
-
-// Set volumes
-audioContext.click.volume = 0.6;
-audioContext.pop.volume = 0.5;
-audioContext.toast.volume = 0.8;
-
-function playAudio(key) {
-    if (audioContext[key]) {
-        // Clone to allow overlapping sounds
-        const sound = audioContext[key].cloneNode();
-        sound.volume = audioContext[key].volume;
-        sound.play().catch((e) => {
-            console.warn('Audio play failed:', e);
-        });
-    }
-}
+/* Audio System moved to top for immediate playback */
 
 function initMinecraftAudio() {
-    // Check for pending nav sound from previous page
-    if (sessionStorage.getItem('mc_play_nav_sound')) {
-        sessionStorage.removeItem('mc_play_nav_sound');
-        playAudio('toast');
-    }
-
     // Add click sounds to standard interactive elements (exclude nav)
     const interactiles = document.querySelectorAll('a:not(.nav a), button, .btn');
     interactiles.forEach(el => {
