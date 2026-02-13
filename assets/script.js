@@ -445,16 +445,22 @@ function showAdvancement(text, icon = '💎') {
 /* -------------------
    10. Loading Screen
 ------------------- */
-window.addEventListener('load', () => {
+// Only show loading animation on first visit per session
+(function () {
     const loader = document.getElementById('loading-overlay');
-    if (loader) {
-        // Ensure the loader stays for at least 800ms to show the animation, 
-        // or just fade out immediately if the load took long enough.
-        // For smoother feel, we'll just add a small delay before fading.
+    if (!loader) return;
+
+    if (sessionStorage.getItem('loader_shown')) {
+        // Already shown this session — remove immediately, no animation
+        loader.remove();
+        return;
+    }
+
+    // First visit: show loading animation, then fade out on load
+    window.addEventListener('load', () => {
+        sessionStorage.setItem('loader_shown', 'true');
         setTimeout(() => {
             loader.classList.add('loaded');
-            // Allow scroll again if we decided to block it (optional)
-            // document.body.style.overflow = 'auto'; 
         }, 500);
-    }
-});
+    });
+})();
