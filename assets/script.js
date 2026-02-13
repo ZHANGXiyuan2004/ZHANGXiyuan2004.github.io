@@ -404,13 +404,10 @@ function initAdvancements() {
         }
     });
 
-    // Example: Click Email
-    const emailLink = document.querySelector('a[href^="mailto"]');
-    if (emailLink) {
-        emailLink.addEventListener('click', () => {
-            showAdvancement("Message in a Bottle"); // Simplified
-        });
-    }
+    // Welcome Achievement
+    setTimeout(() => {
+        showAdvancement("Find A Tree And Get Some Wood", "🌳");
+    }, 1000);
 }
 
 function showAdvancement(text, icon = '💎') {
