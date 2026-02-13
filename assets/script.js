@@ -431,7 +431,11 @@ function showAdvancement(text, icon = '💎') {
     `;
 
     playAudio('toast');
-    toast.classList.add('show');
+
+    // Force reflow/wait specifically for animation to catch
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 100);
 
     setTimeout(() => {
         toast.classList.remove('show');
