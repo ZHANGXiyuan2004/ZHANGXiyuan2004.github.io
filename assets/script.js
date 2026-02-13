@@ -1,5 +1,5 @@
 const config = {
-    typewriterText: ["a Boundary-breaking Innovator", "an AI Researcher", "a Game Streamer", "a Tennis Player", "a Long-distance Runner"],
+    typewriterText: ["a Startup Explorer", "an AI Researcher", "a Game Streamer", "a Tennis Player", "a Long-distance Runner"],
     typewriterSpeed: 100,
     typewriterDelay: 2000
 };
@@ -255,6 +255,13 @@ const audioContext = {
     pop: new Audio('assets/audio/pop.mp3'),
     toast: new Audio('assets/audio/levelup.mp3')
 };
+
+// Force preload
+Object.values(audioContext).forEach(audio => {
+    audio.preload = 'auto';
+    audio.load();
+});
+
 // Set volumes
 audioContext.click.volume = 0.6;
 audioContext.pop.volume = 0.5;
