@@ -430,7 +430,7 @@ function showAdvancement(text, icon = '💎') {
         </div>
     `;
 
-    playAudio('toast');
+    // playAudio('toast'); // Sound disabled by user request
 
     // Force reflow/wait specifically for animation to catch
     setTimeout(() => {

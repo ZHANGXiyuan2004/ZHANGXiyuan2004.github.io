@@ -310,3 +310,29 @@ When modifying styles that affect both desktop and mobile:
 - **Live Site**: `https://ZHANGXiyuan2004.github.io`
 - **Owner Email**: mail_Xiyuan_Zhang@126.com
 - **DEPLOY.md**: Chinese deployment instructions for reference
+
+## Feature Updates - Minecraft Theme (Feb 2026)
+
+### 1. Visual Enhancements
+- **Hotbar Navigation**: Transformed standard nav into a Minecraft Hotbar. Links act as item slots with white border hover states. Fully responsive and dark-mode compatible.
+- **Splash Text**: Added bouncing yellow text (e.g., "Herobrine Removed!") next to the site title.
+- **Advancements**:
+  - **"We Need to Go Deeper!"**: Triggers on scroll to bottom (Sword icon ⚔️).
+  - **"Find A Tree And Get Some Wood"**: Triggers 5s after first load (Tree icon 🌳).
+  - **Styles**: Glassmorphism toast notifications with adjust dark mode opacity.
+- **Tooltips**: Custom pixel-art style tooltips with purple background.
+
+### 2. Audio System
+- **Sound Effects**:
+  - `click.mp3` for general buttons.
+  - `levelup.mp3` for navigation links.
+  - **Achievements**: Sound disabled by user request.
+- **Optimizations**:
+  - **Preloading**: Implemented `<link rel="preload">` and JS preloading.
+  - **Zero-Delay**: "Level Up" sound plays immediately upon loading the *next* page to prevent navigation delay.
+  - **Start Time**: Audio playback starts at 0.1s to skip initial silence.
+
+### 3. Content Refinements
+- **Honors Section**: Reformatted into a clean, bulleted list.
+- **Introduction**: Updated typewriter text to include "a Startup Explorer".
+- **Layout**: Fixed navigation layout shifts and adjusted padding.
