@@ -27,34 +27,42 @@ audioContext.toast.volume = 0.8;
 const soundQueue = [];
 
 function playAudio(key) {
-    if (audioContext[key]) {
-        let sound;
-        if (key === 'toast') {
-            // Use main instance for Level Up to ensure 0-latency (no cloning)
-            sound = audioContext[key];
-            sound.currentTime = 0.1; // Skip 0.1s as requested to reduce perceived latency
-        } else {
-            // Clone others to allow overlapping (e.g. rapid clicks)
-            sound = audioContext[key].cloneNode();
-        }
-
-        sound.volume = audioContext[key].volume;
-        sound.play().catch((e) => {
-            console.warn('Audio play failed:', e);
-            if (e.name === 'NotAllowedError') {
-                // Queue sound to play on first interaction
-                if (!soundQueue.includes(key)) {
-                    soundQueue.push(key);
-                }
+    return new Promise((resolve) => {
+        if (audioContext[key]) {
+            let sound;
+            if (key === 'toast') {
+                // Use main instance for Level Up to ensure 0-latency (no cloning)
+                sound = audioContext[key];
+                sound.currentTime = 0.1; // Skip 0.1s as requested to reduce perceived latency
+            } else {
+                // Clone others to allow overlapping (e.g. rapid clicks)
+                sound = audioContext[key].cloneNode();
             }
-        });
-    }
+
+            sound.volume = audioContext[key].volume;
+            sound.play().then(() => {
+                resolve();
+            }).catch((e) => {
+                console.warn('Audio play failed:', e);
+                if (e.name === 'NotAllowedError') {
+                    // Queue sound AND resolve function
+                    soundQueue.push({ key, resolve });
+                } else {
+                    resolve(); // Resolve anyway on other errors
+                }
+            });
+        } else {
+            resolve();
+        }
+    });
 }
 
 function unlockAudio() {
     while (soundQueue.length > 0) {
-        const key = soundQueue.shift();
-        playAudio(key);
+        const item = soundQueue.shift();
+        playAudio(item.key).then(() => {
+            if (item.resolve) item.resolve();
+        });
     }
     // Remove listeners once unlocked
     document.removeEventListener('click', unlockAudio);
@@ -453,14 +461,14 @@ function showAdvancement(text, icon = '💎') {
         </div>
     `;
 
-    playAudio('toast');
+    playAudio('toast').then(() => {
+        // Force reflow/wait specifically for animation to catch
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 100);
 
-    // Force reflow/wait specifically for animation to catch
-    setTimeout(() => {
-        toast.classList.add('show');
-    }, 100);
-
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, 5000);
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 5000);
+    });
 }
