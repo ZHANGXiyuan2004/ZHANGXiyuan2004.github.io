@@ -24,6 +24,8 @@ audioContext.click.volume = 0.6;
 audioContext.pop.volume = 0.5;
 audioContext.toast.volume = 0.8;
 
+const soundQueue = [];
+
 function playAudio(key) {
     if (audioContext[key]) {
         let sound;
@@ -39,9 +41,30 @@ function playAudio(key) {
         sound.volume = audioContext[key].volume;
         sound.play().catch((e) => {
             console.warn('Audio play failed:', e);
+            if (e.name === 'NotAllowedError') {
+                // Queue sound to play on first interaction
+                if (!soundQueue.includes(key)) {
+                    soundQueue.push(key);
+                }
+            }
         });
     }
 }
+
+function unlockAudio() {
+    while (soundQueue.length > 0) {
+        const key = soundQueue.shift();
+        playAudio(key);
+    }
+    // Remove listeners once unlocked
+    document.removeEventListener('click', unlockAudio);
+    document.removeEventListener('keydown', unlockAudio);
+    document.removeEventListener('touchstart', unlockAudio);
+}
+
+document.addEventListener('click', unlockAudio);
+document.addEventListener('keydown', unlockAudio);
+document.addEventListener('touchstart', unlockAudio);
 
 // Check for pending nav sound from previous page IMMEDIATELY
 if (sessionStorage.getItem('mc_play_nav_sound')) {
