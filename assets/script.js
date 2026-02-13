@@ -24,55 +24,24 @@ audioContext.click.volume = 0.6;
 audioContext.pop.volume = 0.5;
 audioContext.toast.volume = 0.8;
 
-const soundQueue = [];
-
 function playAudio(key) {
-    return new Promise((resolve) => {
-        if (audioContext[key]) {
-            let sound;
-            if (key === 'toast') {
-                // Use main instance for Level Up to ensure 0-latency (no cloning)
-                sound = audioContext[key];
-                sound.currentTime = 0.1; // Skip 0.1s as requested to reduce perceived latency
-            } else {
-                // Clone others to allow overlapping (e.g. rapid clicks)
-                sound = audioContext[key].cloneNode();
-            }
-
-            sound.volume = audioContext[key].volume;
-            sound.play().then(() => {
-                resolve();
-            }).catch((e) => {
-                console.warn('Audio play failed:', e);
-                if (e.name === 'NotAllowedError') {
-                    // Queue sound AND resolve function
-                    soundQueue.push({ key, resolve });
-                } else {
-                    resolve(); // Resolve anyway on other errors
-                }
-            });
+    if (audioContext[key]) {
+        let sound;
+        if (key === 'toast') {
+            // Use main instance for Level Up to ensure 0-latency (no cloning)
+            sound = audioContext[key];
+            sound.currentTime = 0.1; // Skip 0.1s as requested to reduce perceived latency
         } else {
-            resolve();
+            // Clone others to allow overlapping (e.g. rapid clicks)
+            sound = audioContext[key].cloneNode();
         }
-    });
-}
 
-function unlockAudio() {
-    while (soundQueue.length > 0) {
-        const item = soundQueue.shift();
-        playAudio(item.key).then(() => {
-            if (item.resolve) item.resolve();
+        sound.volume = audioContext[key].volume;
+        sound.play().catch((e) => {
+            console.warn('Audio play failed:', e);
         });
     }
-    // Remove listeners once unlocked
-    document.removeEventListener('click', unlockAudio);
-    document.removeEventListener('keydown', unlockAudio);
-    document.removeEventListener('touchstart', unlockAudio);
 }
-
-document.addEventListener('click', unlockAudio);
-document.addEventListener('keydown', unlockAudio);
-document.addEventListener('touchstart', unlockAudio);
 
 // Check for pending nav sound from previous page IMMEDIATELY
 if (sessionStorage.getItem('mc_play_nav_sound')) {
@@ -461,14 +430,14 @@ function showAdvancement(text, icon = '💎') {
         </div>
     `;
 
-    playAudio('toast').then(() => {
-        // Force reflow/wait specifically for animation to catch
-        setTimeout(() => {
-            toast.classList.add('show');
-        }, 100);
+    playAudio('toast');
 
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 5000);
-    });
+    // Force reflow/wait specifically for animation to catch
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 100);
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 5000);
 }
