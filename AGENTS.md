@@ -317,7 +317,7 @@ When modifying styles that affect both desktop and mobile:
 - **Hotbar Navigation**: Transformed standard nav into a Minecraft Hotbar. Links act as item slots with white border hover states. Fully responsive and dark-mode compatible.
 - **Splash Text**: Added bouncing yellow text (e.g., "Herobrine Removed!") next to the site title.
 - **Advancements**:
-  - **"We Need to Go Deeper!"**: Triggers on scroll to bottom (Sword icon ⚔️).
+  - **"We Need to Go Deeper!"**: Triggers on scroll to bottom (Letter icon 💌).
   - **"Find A Tree And Get Some Wood"**: Triggers 5s after first load (Tree icon 🌳).
   - **Styles**: Glassmorphism toast notifications with adjust dark mode opacity.
 - **Tooltips**: Custom pixel-art style tooltips with purple background.

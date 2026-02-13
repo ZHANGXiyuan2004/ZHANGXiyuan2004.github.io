@@ -399,7 +399,7 @@ function initAdvancements() {
     let scrolledBottom = false;
     window.addEventListener('scroll', () => {
         if (!scrolledBottom && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-            showAdvancement("We Need to Go Deeper!", "⚔️");
+            showAdvancement("We Need to Go Deeper!", "💌");
             scrolledBottom = true;
         }
     });
