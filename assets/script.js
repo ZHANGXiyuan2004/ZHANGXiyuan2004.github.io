@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMinecraftAudio();
     initMinecraftTooltips();
     initAdvancements();
+    initGuestbook();
 });
 
 /* -------------------
@@ -464,3 +465,85 @@ function showAdvancement(text, icon = '💎') {
         }, 500);
     });
 })();
+
+/* -------------------
+   11. Guestbook (Book & Quill)
+------------------- */
+function initGuestbook() {
+    // 1. Inject Modal HTML
+    const modalHTML = `
+    <div id="guestbook-modal" class="hidden">
+        <div class="book-container">
+            <div class="book-page left-page">
+                <h2>Guestbook</h2>
+                <p>Leave a private message for the author.</p>
+                <div class="book-divider"></div>
+                <div class="helper-text">To: Shine Yuan</div>
+            </div>
+            <div class="book-page right-page">
+                <textarea id="guestbook-msg" placeholder="Write your message here..."></textarea>
+                <div class="book-controls">
+                    <button id="guestbook-sign" class="mc-btn">Sign & Close</button>
+                    <button id="guestbook-cancel" class="mc-btn cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>`;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    // 2. Select Elements
+    const boardBtn = document.querySelector('.mc-char'); // The "Board" image
+    const modal = document.getElementById('guestbook-modal');
+    const msgInput = document.getElementById('guestbook-msg');
+    const signBtn = document.getElementById('guestbook-sign');
+    const cancelBtn = document.getElementById('guestbook-cancel');
+
+    if (!boardBtn || !modal) return;
+
+    // 3. Open Modal
+    boardBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('visible');
+        playAudio('click');
+    });
+
+    // 4. Close Modal
+    function closeModal() {
+        modal.classList.remove('visible');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            msgInput.value = ''; // Clear input
+        }, 300); // Wait for fade out
+        playAudio('click');
+    }
+
+    cancelBtn.addEventListener('click', closeModal);
+
+    // Close on click outside (optional, maybe keep it modal for "book feel")
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // 5. Submit (Mailto)
+    signBtn.addEventListener('click', () => {
+        const message = msgInput.value.trim();
+        if (!message) {
+            alert("Please write a message first!");
+            return;
+        }
+
+        // Play "signing" sound? (reuse pop or click)
+        playAudio('toast'); 
+
+        const subject = encodeURIComponent("Guestbook Message from Website Visitor");
+        const body = encodeURIComponent(message);
+        
+        // Open Mail Client
+        window.location.href = `mailto:mail_Xiyuan_Zhang@126.com?subject=${subject}&body=${body}`;
+
+        closeModal();
+    });
+}
