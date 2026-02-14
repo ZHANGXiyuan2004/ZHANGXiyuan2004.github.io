@@ -615,92 +615,85 @@ body.dark-mode .site-title a {
   animation: blink 1s infinite;
 }
 
-/* Bilibili Button */
-/* Square Pink Gradient Button with Glow Effect */
+/* Bilibili Button — Minecraft Inventory Slot (Pink) */
 .btn-bilibili {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #ffb3d1 0%, #FB7299 50%, #c94670 100%);
-  border: 2px solid #FB7299;
   color: #fff !important;
 
-  font-family: var(--font-sans);
-  font-weight: 600;
-  padding: 8px 16px;
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding: 6px 22px;
+  height: 42px;
+  min-width: 80px;
   border-radius: 0;
-
-  box-shadow:
-    4px 4px 0 #a03050,
-    0 0 20px rgba(251, 114, 153, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   text-decoration: none;
-  font-size: 14px;
   line-height: normal;
-  letter-spacing: 0.5px;
   z-index: 2;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
+  cursor: pointer;
+  position: relative;
 
-/* Dark mode - same glow effect */
-body.dark-mode .btn-bilibili {
-  background: linear-gradient(135deg, #ffb3d1 0%, #FB7299 50%, #c94670 100%);
-  border-color: #FB7299;
-  color: #fff !important;
+  /* Minecraft Slot — Pink */
+  background: rgba(251, 114, 153, 0.7);
+  border: 2px solid #373737;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
   box-shadow:
-    4px 4px 0 #a03050,
-    0 0 20px rgba(251, 114, 153, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    inset 2px 2px 0 #373737,
+    0 0 20px rgba(251, 114, 153, 0.4);
+  text-shadow: 2px 2px 0 #000;
+  image-rendering: pixelated;
+  transition: all 0.15s ease;
 }
 
-body.dark-mode .btn-bilibili:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #ffc5dc 0%, #ff8fb3 50%, #d95580 100%);
-  border-color: #ff8fb3;
-  box-shadow:
-    6px 6px 0 #a03050,
-    0 0 30px rgba(251, 114, 153, 0.6),
-    0 0 60px rgba(251, 114, 153, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-}
-
-body.dark-mode .btn-bilibili:active {
-  transform: translateY(0);
-  background: linear-gradient(135deg, #ff9fc0 0%, #e06588 50%, #b03058 100%);
-  border-color: #e06588;
-  box-shadow:
-    2px 2px 0 #a03050,
-    0 0 15px rgba(251, 114, 153, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-}
-
+/* Light mode hover */
 .btn-bilibili:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #ffc5dc 0%, #ff8fb3 50%, #d95580 100%);
-  border-color: #ff8fb3;
+  background: rgba(251, 114, 153, 0.85);
+  transform: scale(1.05);
   box-shadow:
-    6px 6px 0 #a03050,
+    inset 2px 2px 0 #373737,
     0 0 30px rgba(251, 114, 153, 0.6),
-    0 0 60px rgba(251, 114, 153, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    0 0 60px rgba(251, 114, 153, 0.3);
+  filter: brightness(1.2);
 }
 
 .btn-bilibili:active {
-  transform: translateY(0);
-  background: linear-gradient(135deg, #ff9fc0 0%, #e06588 50%, #b03058 100%);
-  border-color: #e06588;
+  transform: scale(0.95);
+  background: rgba(200, 80, 120, 0.8);
+  box-shadow: inset 2px 2px 0 #333;
+  filter: brightness(0.85);
+}
+
+/* Dark mode — same style, slightly adjusted glow */
+body.dark-mode .btn-bilibili {
+  background: rgba(251, 114, 153, 0.7);
+  border: 2px solid #373737;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
   box-shadow:
-    2px 2px 0 #a03050,
-    0 0 15px rgba(251, 114, 153, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    inset 2px 2px 0 #373737,
+    0 0 20px rgba(251, 114, 153, 0.4);
+  color: #fff !important;
+  text-shadow: 2px 2px 0 #000;
+}
+
+body.dark-mode .btn-bilibili:hover {
+  background: rgba(251, 114, 153, 0.85);
+  transform: scale(1.05);
+  box-shadow:
+    inset 2px 2px 0 #373737,
+    0 0 30px rgba(251, 114, 153, 0.6),
+    0 0 60px rgba(251, 114, 153, 0.3);
+  filter: brightness(1.2);
+}
+
+body.dark-mode .btn-bilibili:active {
+  transform: scale(0.95);
+  background: rgba(200, 80, 120, 0.8);
+  box-shadow: inset 2px 2px 0 #333;
+  filter: brightness(0.85);
 }
 
 @keyframes blink {
