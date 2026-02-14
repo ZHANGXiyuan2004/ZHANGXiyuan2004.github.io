@@ -340,23 +340,42 @@ function initSplashText() {
 
 /* Custom Tooltips */
 function initMinecraftTooltips() {
+    // Disable on touch devices (mobile/tablet)
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    if (isTouchDevice) return;
+
     const tooltip = document.createElement('div');
     tooltip.id = 'mc-tooltip';
     document.body.appendChild(tooltip);
 
     // Delegate event listeners for better performance
     document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest('[title], .nav a, .btn, .contact-badge-link, .icon');
+        const target = e.target.closest('[title], .nav a, .btn, .contact-badge-link, .icon, .btn-bilibili, .mc-char, .filter-btn, .small-btn');
         if (target) {
             let content = target.getAttribute('title') || target.innerText || target.getAttribute('aria-label');
 
             // Custom content for specific elements
             if (target.classList.contains('contact-badge-link')) {
                 content = "Open " + (target.querySelector('img')?.alt || "Link");
-                // Add enchantment glint color?
                 tooltip.style.color = "#55ffff";
             } else if (target.tagName === 'A' && target.closest('.nav')) {
                 content = "Go to " + target.innerText;
+                tooltip.style.color = "#fff";
+            } else if (target.classList.contains('btn-bilibili')) {
+                content = "Watch on Bilibili";
+                tooltip.style.color = "#FF7BAC";
+            } else if (target.classList.contains('mc-char')) {
+                content = "Leave a Message";
+                tooltip.style.color = "#ffff55";
+            } else if (target.classList.contains('filter-btn')) {
+                content = "Filter: " + target.innerText;
+                tooltip.style.color = "#55ff55";
+            } else if (target.classList.contains('small-btn')) {
+                const href = target.getAttribute('href') || '';
+                const username = href.split('github.com/')[1] || 'Profile';
+                content = "Visit GitHub: " + username;
+                tooltip.style.color = "#aaaaaa";
+            } else {
                 tooltip.style.color = "#fff";
             }
 
@@ -374,7 +393,7 @@ function initMinecraftTooltips() {
     });
 
     document.addEventListener('mouseout', (e) => {
-        const target = e.target.closest('[data-original-title], .nav a, .btn, .contact-badge-link, .icon');
+        const target = e.target.closest('[data-original-title], .nav a, .btn, .contact-badge-link, .icon, .btn-bilibili, .mc-char, .filter-btn, .small-btn');
         if (target) {
             tooltip.style.display = 'none';
             if (target.getAttribute('data-original-title')) {
@@ -536,11 +555,11 @@ function initGuestbook() {
         }
 
         // Play "signing" sound? (reuse pop or click)
-        playAudio('toast'); 
+        playAudio('toast');
 
         const subject = encodeURIComponent("Guestbook Message from Website Visitor");
         const body = encodeURIComponent(message);
-        
+
         // Open Mail Client
         window.location.href = `mailto:mail_Xiyuan_Zhang@126.com?subject=${subject}&body=${body}`;
 

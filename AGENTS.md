@@ -24,13 +24,19 @@ ZHANGXiyuan2004.github.io/
 ├── AGENTS.md              # This file
 ├── status.txt             # Simple status file (content: "Hello")
 ├── assets/
-│   ├── style.css          # Main stylesheet (~1570 lines)
-│   ├── script.js          # Main JavaScript (~236 lines)
+│   ├── style.css          # Main stylesheet (~2200 lines)
+│   ├── script.js          # Main JavaScript (~560 lines)
 │   ├── background.png     # Minecraft-style background image
 │   ├── me.jpg             # Profile photo
-│   ├── xuzhang.jpg        # Collaborator photo (local)
+│   ├── board.png          # Minecraft board (bottom-left decoration / Guestbook trigger)
+│   ├── steve.png          # Minecraft Steve (unused, replaced by board.png)
+│   ├── Alex.png           # Minecraft Alex (unused)
+│   ├── Grass.png          # Minecraft Grass block (unused)
 │   ├── bp1.png            # Blog/podcast preview image
 │   ├── ls1.jpg ~ ls4.jpg  # Leadership section images
+│   ├── audio/
+│   │   ├── click.mp3      # Button click sound
+│   │   └── levelup.mp3    # Navigation / achievement sound
 │   └── fonts/
 │       └── VT323-Regular.ttf  # Pixel font (local, no Google Fonts dependency)
 └── .git/                  # Git repository
@@ -114,14 +120,19 @@ const config = {
 };
 
 // Initialization functions
-initTheme()           // Dark mode toggle with localStorage
-initMobileMenu()      // Hamburger menu for mobile
-initScrollAnimations() // IntersectionObserver for fade-in
-initBackToTop()       // Scroll-to-top button
-initTypewriter()      // Typing animation
-initFilters()         // Publication category filtering
-initParallax()        // Scroll-based parallax
-initTiltEffect()      // 3D card tilt on hover
+initTheme()              // Dark mode toggle with localStorage
+initMobileMenu()         // Hamburger menu for mobile
+initScrollAnimations()   // IntersectionObserver for fade-in
+initBackToTop()          // Scroll-to-top button
+initTypewriter()         // Typing animation
+initFilters()            // Publication category filtering
+initParallax()           // Scroll-based parallax
+initTiltEffect()         // 3D card tilt on hover (disabled on touch devices)
+initSplashText()         // Minecraft splash text near title
+initMinecraftAudio()     // Click/nav sound effects
+initMinecraftTooltips()  // Custom pixel-art tooltips (disabled on touch devices)
+initAdvancements()       // Achievement toast notifications
+initGuestbook()          // Guestbook modal (Book & Quill) with mailto
 ```
 
 ## Deployment Process
@@ -320,7 +331,7 @@ When modifying styles that affect both desktop and mobile:
   - **"We Need to Go Deeper!"**: Triggers on scroll to bottom (Letter icon 💌).
   - **"Find A Tree And Get Some Wood"**: Triggers 5s after first load (Tree icon 🌳).
   - **Styles**: Glassmorphism toast notifications with adjust dark mode opacity.
-- **Tooltips**: Custom pixel-art style tooltips with purple background.
+- **Tooltips**: Custom pixel-art style tooltips with purple background. Disabled on touch/mobile devices.
 
 ### 2. Audio System
 - **Sound Effects**:
@@ -336,3 +347,33 @@ When modifying styles that affect both desktop and mobile:
 - **Honors Section**: Reformatted into a clean, bulleted list.
 - **Introduction**: Updated typewriter text to include "a Startup Explorer".
 - **Layout**: Fixed navigation layout shifts and adjusted padding.
+
+### 4. Minecraft Scene Decoration (Feb 14)
+- **Board Character**: A `board.png` image is displayed as a fixed decoration in the bottom-left of every page (index, publications, blog, collaborators).
+  - **CSS class**: `.mc-char.board-anim` inside `.minecraft-scene`.
+  - **Breathing animation**: Subtle scale/shadow animation (`char-breath`, 3s cycle).
+  - **Hover effect**: Scale up + brighter shadow on mouse hover.
+  - **Hidden on mobile**: `display: none` below 768px.
+  - Originally used `steve.png`, later renamed to `board.png` across all files.
+
+### 5. Private Guestbook (Feb 14)
+- **Trigger**: Clicking the Board character opens a "Book & Quill" modal.
+- **Implementation**: Fully injected via JS (`initGuestbook()` in `script.js`), no HTML changes needed per-page.
+- **UI**: Two-page book layout — left page shows title/description, right page has a textarea and buttons.
+- **Submit**: "Sign & Close" opens the visitor's email client via `mailto:mail_Xiyuan_Zhang@126.com` with the message pre-filled. Only the owner receives messages (private).
+- **Styles**: Parchment background (`#fbf0d9`), leather border, Minecraft button style (`.mc-btn`).
+- **Mobile**: Left page hidden; textarea adjusts height.
+
+### 6. Bilibili Button Restyle (Feb 14)
+- Restyled `.btn-bilibili` from a gradient pink button to a **Minecraft inventory slot** format.
+- Semi-transparent pink background (`rgba(251, 114, 153, 0.7)`).
+- Pixel font (`VT323`), Minecraft border (dark top-left, white bottom-right).
+- Hover: `scale(1.05)` + `brightness(1.2)` + pink glow aura.
+
+### 7. Tooltip Coverage Expansion (Feb 14)
+- Extended `initMinecraftTooltips()` to cover additional elements:
+  - `.btn-bilibili` → "Watch on Bilibili" (pink).
+  - `.mc-char` → "Leave a Message" (yellow).
+  - `.filter-btn` → "Filter: {text}" (green).
+  - `.small-btn` (Collaborator GitHub links) → "Visit GitHub: {username}" (gray, username extracted from URL).
+- **Mobile**: Tooltips disabled on touch devices via `(pointer: coarse)` media query.
