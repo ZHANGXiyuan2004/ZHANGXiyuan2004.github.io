@@ -1,377 +1,55 @@
 # AGENTS.md — Project Guide for AI Coding Agents
 
 ## Project Overview
-
-This is a **static personal portfolio website** for Shine Yuan (Xiyuan Zhang, 张晰元), hosted on **GitHub Pages** at `https://ZHANGXiyuan2004.github.io`. The website showcases the owner's academic background, research projects, publications, blog posts, and collaborators.
-
-### Technology Stack
-
-- **Type**: Static HTML/CSS/JavaScript website (no build process required)
-- **Hosting**: GitHub Pages (automatic deployment from `main` branch)
-- **Language**: English (with some Chinese content in blog/collaborators sections)
-- **Theme**: Minecraft-inspired pixel art design with glassmorphism effects
+A **static personal portfolio website** for Shine Yuan (张晰元), hosted on GitHub Pages.
+- **URL**: `https://ZHANGXiyuan2004.github.io`
+- **Theme**: Minecraft-inspired pixel art + Glassmorphism.
+- **Tech**: Vanilla HTML/CSS/JS (Zero external runtime dependencies).
 
 ## Project Structure
+- `index.html`: Home, education, leadership.
+- `publications.html`: Filterable research projects.
+- `blog.html`: Blog posts and Bilibili videos.
+- `collaborators.html`: Partner profiles with GitHub links.
+- `assets/`: 
+  - `style.css`: All styling (Minecraft UI system).
+  - `script.js`: All logic (Theme, Typewriter, Modals).
+  - `board.png`: Guestbook trigger character.
+  - `fonts/VT323-Regular.ttf`: Local pixel font.
 
-```
-ZHANGXiyuan2004.github.io/
-├── index.html              # Home page - About me, education, leadership, hobbies
-├── publications.html       # Research projects and publications
-├── blog.html              # Blog posts and content creation
-├── collaborators.html     # Collaborator profiles with GitHub links
-├── README.md              # Human-readable project description
-├── DEPLOY.md              # Deployment instructions (in Chinese)
-├── AGENTS.md              # This file
-├── status.txt             # Simple status file (content: "Hello")
-├── assets/
-│   ├── style.css          # Main stylesheet (~2200 lines)
-│   ├── script.js          # Main JavaScript (~560 lines)
-│   ├── background.png     # Minecraft-style background image
-│   ├── me.jpg             # Profile photo
-│   ├── board.png          # Minecraft board (bottom-left decoration / Guestbook trigger)
-(unused)
-│   ├── bp1.png            # Blog/podcast preview image
-│   ├── ls1.jpg ~ ls4.jpg  # Leadership section images
-│   ├── audio/
-│   │   ├── click.mp3      # Button click sound
-│   │   └── levelup.mp3    # Navigation / achievement sound
-│   └── fonts/
-│       └── VT323-Regular.ttf  # Pixel font (local, no Google Fonts dependency)
-└── .git/                  # Git repository
-```
+## UI/UX Features (Minecraft Theme)
+1. **Theme Toggle**: Light/Dark mode with persistence.
+2. **Hotbar Navigation**: Nav links styled as Minecraft inventory slots.
+3. **Private Guestbook**: Triggered by clicking the **Board** character. Opens a "Book & Quill" modal that uses `mailto:` for private submissions.
+4. **Custom Tooltips**: Pixel-art style tooltips with category-specific colors (Aqua for links, Yellow for Board, etc.). Disabled on mobile.
+5. **Advancements**: Minecraft-style toast notifications for achievements (e.g., scroll to bottom).
+6. **Animations**: 3D card tilt, scroll-fade (fade-in-up), and typewriter effect.
+7. **Splash Text**: Bouncing yellow text ("Herobrine Removed!") next to title on `index.html` only.
 
-## Page Structure
+## Technical Architecture
 
-### 1. index.html (Home)
-- Hero section with profile photo and typewriter effect
-- About Me section (education, GPA, current position, honors)
-- Research Interests
-- Leadership & Service (4 cards with images)
-- Interests & Hobbies
+### 1. Board Character (Dual-Location)
+- **Desktop**: Fixed in bottom-left (`position: fixed`).
+- **Mobile (<640px)**: Integrated into the header with CSS `order` for specific sequence: `[Title] ... [Board] [Menu] [Theme]`.
+- **Logic**: Managed via media queries in CSS; multiple instances in HTML; JS handles all clicks via `querySelectorAll('.mc-char')`.
 
-### 2. publications.html
-- Research interests overview
-- Filterable research projects (All/Research/Project filters)
-- Three main projects:
-  - Mini-Onevision: Lightweight Multimodal Agent Framework
-  - Self-Powered Multimodal Emotion Recognition System
-  - Superionic Conductor Materials Screening
+### 2. Guestbook Modal
+- **Layout**: Two-page book (Left: Info, Right: Input).
+- **Theming**: Parchment background (`#fbf0d9`) in light mode; Dark leather background (`#2c1e14`) in dark mode.
+- **Submit**: Opens default mail client.
 
-### 3. blog.html
-- Blog grid with podcast card
-- Bilibili video embed links
-- Podcast metadata display
-
-### 4. collaborators.html
-- Grid of collaborator cards
-- Each card: avatar, name (Chinese name in parentheses), research area, GitHub link (if available)
-
-## Key Features
-
-### UI/UX Features
-1. **Theme Toggle**: Light/Dark mode with persistent preference (stored in `localStorage`)
-2. **Mobile Menu**: Hamburger menu for responsive navigation
-3. **Typewriter Effect**: Animated text cycling through roles ("AI Researcher", "Game Streamer", etc.)
-4. **Parallax Scrolling**: Hero elements move at different speeds on scroll
-5. **3D Tilt Effect**: Cards tilt on mouse hover
-6. **Scroll Animations**: Fade-in-up animations for content sections
-7. **Back to Top Button**: Appears after scrolling 300px
-8. **Filter System**: Publications page has category filters (All/Research/Project)
-
-### Design System
-- **Primary Font**: System sans-serif stack
-- **Accent Font**: VT323 (pixel/monospace font, loaded locally)
-- **Color Scheme**:
-  - Light mode: Warm cream background (`#fdfbf7`), dark text (`#1d1d1f`)
-  - Dark mode: Deep teal gradient, yellow accents (`#ffff55`)
-- **Minecraft Theme**: 
-  - Stone-textured buttons (gray with pixel patterns)
-  - 3D beveled borders (top/left lighter, bottom/right darker)
-  - No border-radius (square edges)
-  - Drop shadows with offset
-
-## CSS Architecture
-
-The stylesheet (`assets/style.css`) is organized into sections:
-
-1. **Core Variables & Reset** (Lines 1-43): CSS custom properties for theming
-2. **Minecraft Background & Overlay** (Lines 46-66): Fixed background setup
-3. **Dark Theme Overrides** (Lines 69-100): Dark mode variable definitions
-4. **Header & Navigation** (Lines 177-471): Sticky header with glassmorphism
-5. **Hero & Content** (Lines 473-608): Main content styling
-6. **Animations & Interactions** (Lines 736-788): Keyframes and transitions
-7. **Components** (Lines 791-1100): Cards, badges, buttons
-8. **Minecraft Global Overrides** (Lines 1274-1316): Force square borders
-9. **Typography Overrides** (Lines 1329-1559): Final text styling
-10. **Local Font Loading** (Lines 1561-1573): @font-face declaration
-
-## JavaScript Architecture
-
-The script (`assets/script.js`) uses vanilla JS with modular initialization:
-
-```javascript
-// Configuration object
-const config = {
-    typewriterText: ["a Boundary-breaking Innovator", "an AI Researcher", ...],
-    typewriterSpeed: 100,
-    typewriterDelay: 2000
-};
-
-// Initialization functions
-initTheme()              // Dark mode toggle with localStorage
-initMobileMenu()         // Hamburger menu for mobile
-initScrollAnimations()   // IntersectionObserver for fade-in
-initBackToTop()          // Scroll-to-top button
-initTypewriter()         // Typing animation
-initFilters()            // Publication category filtering
-initParallax()           // Scroll-based parallax
-initTiltEffect()         // 3D card tilt on hover (disabled on touch devices)
-initSplashText()         // Minecraft splash text near title
-initMinecraftAudio()     // Click/nav sound effects
-initMinecraftTooltips()  // Custom pixel-art tooltips (disabled on touch devices)
-initAdvancements()       // Achievement toast notifications
-initGuestbook()          // Guestbook modal (Book & Quill) with mailto
-```
-
-## Deployment Process
-
-### GitHub Pages Deployment
-1. Push changes to `main` branch:
-   ```bash
-   git add .
-   git commit -m "Description of changes"
-   git push origin main
-   ```
-2. GitHub Pages automatically deploys (takes 30s-2min to propagate)
-3. Site available at: `https://ZHANGXiyuan2004.github.io`
-
-### Asset Management
-- Profile photo: Place as `assets/me.jpg` (or .png/.svg)
-- Background: `assets/background.png` (Minecraft-style)
-- Images should be optimized for web (compress before committing)
-- Local font file must remain in `assets/fonts/` for VT323 to work
+### 3. CSS Specificity
+- The stylesheet uses many `!important` flags in final override sections (lines 1400+). Check these first when styles won't update.
+- Always place `fade-in-up` on a **parent container**, not on elements with hover effects (avoids transition conflicts).
 
 ## Development Guidelines
+- **Responsive**: Test breakpoints at 640px and 320px. 
+- **Dark Mode**: Always verify parity for every new UI element.
+- **Pixel Art**: Use `image-rendering: pixelated` for game assets. Ensure square edges (no `border-radius`).
+- **Dependencies**: Do not add external CDNs/libraries without express permission.
 
-### Code Style
-- **HTML**: Semantic tags, proper indentation (2 spaces), accessibility attributes (`aria-label`)
-- **CSS**: 
-  - Use CSS variables for theming (`var(--variable-name)`)
-  - Minecraft button pattern: Use the established stone texture styles
-  - Maintain dark mode parity: Always test both themes
-- **JavaScript**: 
-  - Use `const` and `let` (no `var`)
-  - Event listeners with proper cleanup considerations
-  - Feature detection before DOM manipulation
-
-### Adding New Pages
-1. Create new `.html` file in root
-2. Copy header/nav structure from existing page
-3. Include `assets/style.css` and `assets/script.js`
-4. Add navigation link to all pages (update `nav` element)
-5. Mark active page with `class="active"` on corresponding nav link
-
-### Adding Content
-- **Publications**: Add `.entry` div with `data-category` attribute inside `.pub-section`
-- **Collaborators**: Add `.collab-card` div inside `.collab-grid`
-- **Blog Posts**: Add `.blog-card` div inside `.blog-grid`
-- **Leadership Cards**: Add `.lead-card` with image inside `.leadership-grid`
-
-### Image Guidelines
-- Profile: `assets/me.jpg` (420px width, 4:3 aspect ratio recommended)
-- Leadership: `assets/ls{n}.jpg` (3:2 aspect ratio)
-- Blog: Store in `assets/` with descriptive names
-- Collaborator avatars: Can use GitHub avatar URLs or local files
-
-## Testing Checklist
-
-Before committing changes:
-- [ ] Test both Light and Dark modes
-- [ ] Test mobile responsiveness (resize to <640px)
-- [ ] Verify all navigation links work
-- [ ] Check typewriter effect on home page
-- [ ] Test filter buttons on publications page
-- [ ] Verify back-to-top button functionality
-- [ ] Confirm images load correctly
-- [ ] Check external links (GitHub, Bilibili, etc.)
-
-## External Dependencies
-
-The site intentionally has **zero external runtime dependencies**:
-- No CDN scripts
-- No external CSS frameworks
-- Fonts loaded locally (`assets/fonts/VT323-Regular.ttf`)
-- Badge images use shields.io (external but reliable)
-
-## Security Considerations
-
-- No user input handling (static site)
-- External links use `target="_blank"` with `rel="noopener"`
-- No sensitive data in repository
-- HTTPS enforced by GitHub Pages
-
-## Maintenance Notes
-
-- **Annual Update**: Update copyright year in footer (currently "© 2024")
-- **Academic Info**: Update education timeline as needed (currently shows 2022-2026 UESTC, 2026+ PhD)
-- **GPA/Honors**: Update if new achievements
-- **Profile Photo**: Replace `assets/me.jpg` when needed
-
-## Common Tasks
-
-### Update Typewriter Text
-Edit `config.typewriterText` array in `assets/script.js`:
-```javascript
-const config = {
-    typewriterText: ["New Role 1", "New Role 2", ...],
-    // ...
-};
-```
-
-### Change Theme Colors
-Modify CSS variables in `:root` (light) and `body.dark-mode` (dark) sections of `style.css`.
-
-### Add New Filter Category
-1. Add button in HTML: `<button class="filter-btn" data-filter="newcategory">New</button>`
-2. Add `data-category="newcategory"` to relevant entries
-3. CSS for active state is automatic
-
-### Update Footer Copyright
-Edit in all HTML files:
-```html
-<span class="footer-copyright">© 2024 Shine Yuan —</span>
-```
-
-## Lessons Learned & Best Practices
-
-### 1. Animation Transition Conflicts
-
-**Problem**: When an element has both `fade-in-up` (scroll animation) and hover animations, if `fade-in-up` is placed directly on the element, it overrides the hover transition.
-
-**Solution**: Always place `fade-in-up` class on a **parent container**, not on the element with hover effects.
-
-```html
-<!-- ❌ Wrong: fade-in-up on h3 overrides hover animation -->
-<h3 class="fade-in-up">Title</h3>
-
-<!-- ✅ Correct: fade-in-up on parent container -->
-<div class="fade-in-up">
-  <h3>Title</h3>  <!-- Hover animation works normally -->
-</div>
-```
-
-**Affected Elements**:
-- `.hero h2` - needed to merge `transform` (parallax) with `letter-spacing` and `color` (hover) transitions
-- All section headings (h3) should have `fade-in-up` on their parent `<section>` or `<div>` wrapper
-
-### 2. Button Style Consistency
-
-**Pattern**: All Minecraft-style buttons should use consistent styling:
-- `padding: 8px 18px`
-- `font-size: 20px` (desktop), `16px` (mobile)
-- Same background texture, border, and shadow patterns
-- `.filter-btn` and `.hobby-item` should share identical base styles
-
-### 3. Mobile Navigation Styling
-
-**Key Decisions**:
-- Remove background color entirely (`background: transparent`) for cleaner look
-- Keep only the button styling
-- Ensure `padding` remains constant during `:hover`, `:active`, and `.active` states to prevent layout shifts
-- Add explicit `padding` declarations in mobile media query to override desktop styles
-
-### 4. Responsive Text Alignment
-
-**Pattern**: Use mobile-specific media queries for text alignment changes:
-```css
-/* Desktop: left-aligned (default) */
-.element { text-align: left; }
-
-/* Mobile: centered */
-@media (max-width: 640px) {
-  .element { text-align: center; }
-}
-```
-
-### 5. CSS Specificity Order Matters
-
-The CSS file has multiple sections that override earlier styles:
-1. Base styles (lines 1-700)
-2. Component styles (lines 700-1200)
-3. Responsive adjustments (lines 1200+)
-4. Final overrides with `!important` (lines 1400+)
-
-**Rule**: When debugging style issues, check if later sections (especially Typography Overrides) are overriding your changes with `!important`.
-
-### 6. Testing Checklist for Responsive Changes
-
-When modifying styles that affect both desktop and mobile:
-- [ ] Verify desktop appearance unchanged
-- [ ] Test at exactly 640px breakpoint
-- [ ] Test at 320px (smallest mobile)
-- [ ] Test both Light and Dark modes
-- [ ] Check hover/active/focus states on interactive elements
-- [ ] Verify animations still work (fade-in-up, typewriter, etc.)
-
-## Contact & References
-
-- **Repository**: `https://github.com/ZHANGXiyuan2004/ZHANGXiyuan2004.github.io`
-- **Live Site**: `https://ZHANGXiyuan2004.github.io`
-- **Owner Email**: mail_Xiyuan_Zhang@126.com
-- **DEPLOY.md**: Chinese deployment instructions for reference
-
-## Feature Updates - Minecraft Theme (Feb 2026)
-
-### 1. Visual Enhancements
-- **Hotbar Navigation**: Transformed standard nav into a Minecraft Hotbar. Links act as item slots with white border hover states. Fully responsive and dark-mode compatible.
-- **Splash Text**: Added bouncing yellow text (e.g., "Herobrine Removed!") next to the site title.
-- **Advancements**:
-  - **"We Need to Go Deeper!"**: Triggers on scroll to bottom (Letter icon 💌).
-  - **"Find A Tree And Get Some Wood"**: Triggers 5s after first load (Tree icon 🌳).
-  - **Styles**: Glassmorphism toast notifications with adjust dark mode opacity.
-- **Tooltips**: Custom pixel-art style tooltips with purple background. Disabled on touch/mobile devices.
-
-### 2. Audio System
-- **Sound Effects**:
-  - `click.mp3` for general buttons.
-  - `levelup.mp3` for navigation links.
-  - **Achievements**: Sound disabled by user request.
-- **Optimizations**:
-  - **Preloading**: Implemented `<link rel="preload">` and JS preloading.
-  - **Zero-Delay**: "Level Up" sound plays immediately upon loading the *next* page to prevent navigation delay.
-  - **Start Time**: Audio playback starts at 0.1s to skip initial silence.
-
-### 3. Content Refinements
-- **Honors Section**: Reformatted into a clean, bulleted list.
-- **Introduction**: Updated typewriter text to include "a Startup Explorer".
-- **Layout**: Fixed navigation layout shifts and adjusted padding.
-
-### 4. Minecraft Scene Decoration (Feb 14)
-- **Board Character**: A `board.png` image is displayed as a fixed decoration in the bottom-left of every page on desktop. On mobile, it is integrated into the top navigation bar.
-  - **CSS class**: `.mc-char.board-anim` inside `.minecraft-scene`.
-  - **Breathing animation**: Subtle scale/shadow animation (`char-breath`, 3s cycle).
-  - **Hover effect**: Scale up + brighter shadow on mouse hover.
-  - **Mobile Integration**: Below 640px, the Board icon moves to the header container with a specific order: [Title] ... [Board] [Menu] [Theme]. Height is scaled to 38px.
-  - Originally used `steve.png`, later renamed to `board.png` across all files.
-
-### 5. Private Guestbook (Feb 14)
-- **Trigger**: Clicking the Board character opens a "Book & Quill" modal.
-- **Implementation**: Fully injected via JS (`initGuestbook()` in `script.js`), no HTML changes needed per-page.
-- **UI**: Two-page book layout — left page shows title/description, right page has a textarea and buttons.
-- **Submit**: "Sign & Close" opens the visitor's email client via `mailto:mail_Xiyuan_Zhang@126.com` with the message pre-filled. Only the owner receives messages (private).
-- **Styles**: Parchment background (`#fbf0d9`), leather border, Minecraft button style (`.mc-btn`).
-- **Mobile**: Left page hidden; textarea adjusts height.
-
-### 6. Bilibili Button Restyle (Feb 14)
-- Restyled `.btn-bilibili` from a gradient pink button to a **Minecraft inventory slot** format.
-- Semi-transparent pink background (`rgba(251, 114, 153, 0.7)`).
-- Pixel font (`VT323`), Minecraft border (dark top-left, white bottom-right).
-- Hover: `scale(1.05)` + `brightness(1.2)` + pink glow aura.
-
-### 7. Tooltip Coverage Expansion (Feb 14)
-- Extended `initMinecraftTooltips()` to cover additional elements:
-  - `.btn-bilibili` → "Watch on Bilibili" (pink).
-  - `.mc-char` → "Leave a Message" (yellow).
-  - `.filter-btn` → "Filter: {text}" (green).
-  - `.small-btn` (Collaborator GitHub links) → "Visit GitHub: {username}" (gray, username extracted from URL).
-- **Mobile**: Tooltips disabled on touch devices via `(pointer: coarse)` media query.
+## Maintenance Milestone (Feb 14, 2026)
+- Fully implemented Minecraft UI system (Hotbar, Tooltips, Advancements).
+- Added Private Guestbook with Book & Quill interface.
+- Optimized mobile header to include the Board icon.
+- Restored "Herobrine Removed" splash to Home page only.
