@@ -1972,12 +1972,42 @@ body.dark-mode #advancement-toast .advancement-title {
   /* Allow interaction */
 }
 
+/* Spotlight glow beneath the board */
+.minecraft-scene::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 18px;
+  background: radial-gradient(ellipse at center, rgba(255, 200, 60, 0.35) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: spotlight-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes spotlight-pulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1.15);
+  }
+}
+
 .mc-char {
   height: 60px;
   width: auto;
   image-rendering: pixelated;
   animation: char-breath 3s ease-in-out infinite;
-  filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.3));
+  filter:
+    drop-shadow(0 0 8px rgba(255, 200, 60, 0.5)) drop-shadow(0 0 20px rgba(255, 170, 40, 0.25)) drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.4));
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
   cursor: pointer;
 }
@@ -1985,8 +2015,9 @@ body.dark-mode #advancement-toast .advancement-title {
 /* Hover Interaction: Pause breathing and jump/scale */
 .mc-char:hover {
   animation-play-state: paused;
-  transform: scale(1.15) translateY(-10px) rotate(5deg);
-  filter: drop-shadow(6px 8px 0 rgba(0, 0, 0, 0.25)) brightness(1.1);
+  transform: scale(1.25) translateY(-14px) rotate(6deg);
+  filter:
+    drop-shadow(0 0 14px rgba(255, 200, 60, 0.8)) drop-shadow(0 0 30px rgba(255, 170, 40, 0.4)) drop-shadow(6px 8px 0 rgba(0, 0, 0, 0.3)) brightness(1.15);
 }
 
 .board-anim {
@@ -1994,17 +2025,25 @@ body.dark-mode #advancement-toast .advancement-title {
 }
 
 @keyframes char-breath {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
 
-  0%,
-  100% {
-    transform: translateY(0);
+  25% {
+    transform: translateY(-4px) rotate(1.5deg);
   }
 
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-7px) rotate(0deg);
   }
 
-  /* User requested -5px */
+  75% {
+    transform: translateY(-4px) rotate(-1.5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 @media (max-width: 768px) {

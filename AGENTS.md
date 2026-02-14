@@ -29,9 +29,7 @@ ZHANGXiyuan2004.github.io/
 │   ├── background.png     # Minecraft-style background image
 │   ├── me.jpg             # Profile photo
 │   ├── board.png          # Minecraft board (bottom-left decoration / Guestbook trigger)
-│   ├── steve.png          # Minecraft Steve (unused, replaced by board.png)
-│   ├── Alex.png           # Minecraft Alex (unused)
-│   ├── Grass.png          # Minecraft Grass block (unused)
+(unused)
 │   ├── bp1.png            # Blog/podcast preview image
 │   ├── ls1.jpg ~ ls4.jpg  # Leadership section images
 │   ├── audio/
