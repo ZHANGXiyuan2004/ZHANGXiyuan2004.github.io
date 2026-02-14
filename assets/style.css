@@ -1972,6 +1972,11 @@ body.dark-mode #advancement-toast .advancement-title {
   /* Allow interaction */
 }
 
+/* Hide header version on desktop */
+.site-header .minecraft-scene {
+  display: none;
+}
+
 /* Spotlight glow beneath the board */
 .minecraft-scene::after {
   content: '';
@@ -2047,8 +2052,53 @@ body.dark-mode #advancement-toast .advancement-title {
 }
 
 @media (max-width: 768px) {
-  .minecraft-scene {
+  /* No longer hiding it globally, specific mobile header styling handles it at 640px below */
+}
+
+@media (max-width: 640px) {
+
+  /* Hide desktop bottom version on mobile */
+  body>.minecraft-scene {
     display: none;
+  }
+
+  /* Show header version on mobile */
+  .site-header .minecraft-scene {
+    display: flex;
+    position: static;
+    margin-left: auto;
+    /* Push group to right */
+    z-index: 101;
+    align-items: center;
+    order: 2;
+    /* Between Title (1) and Menu (3) */
+  }
+
+  .site-header .minecraft-scene::after {
+    display: none;
+    /* Hide spotlight in header */
+  }
+
+  .site-header .mc-char {
+    height: 38px;
+    /* Scaled for header height */
+    filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.3));
+    margin-right: 5px;
+  }
+
+  #menu-toggle {
+    margin-left: 0;
+    /* Remove previous auto margin */
+    order: 3;
+    padding: 2px 8px;
+    font-size: 14px;
+  }
+
+  #theme-toggle {
+    order: 4;
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
   }
 }
 
@@ -2162,6 +2212,47 @@ body.dark-mode #advancement-toast .advancement-title {
 
 #guestbook-msg::placeholder {
   color: rgba(0, 0, 0, 0.3);
+}
+
+/* Guestbook Dark Mode Overrides */
+body.dark-mode .book-container {
+  background-color: #2c1e14;
+  /* Dark Leather/Dark Parchment */
+  border-color: #8a5a3a;
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.4),
+    0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .left-page {
+  border-right-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(90deg, transparent 95%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+body.dark-mode .left-page h2 {
+  color: #ffff55 !important;
+  /* Minecraft Yellow Title */
+  text-shadow: 2px 2px 0 #3f3f00 !important;
+}
+
+body.dark-mode .left-page p,
+body.dark-mode .helper-text {
+  color: #e0d0b0 !important;
+  /* Light Parchment Text */
+  text-shadow: 1px 1px 0 #000 !important;
+}
+
+body.dark-mode .book-divider {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode #guestbook-msg {
+  color: #fbf0d9;
+  /* Off-white for typing */
+}
+
+body.dark-mode #guestbook-msg::placeholder {
+  color: rgba(255, 255, 255, 0.2);
 }
 
 .book-controls {

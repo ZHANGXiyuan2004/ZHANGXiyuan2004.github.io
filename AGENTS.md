@@ -347,11 +347,11 @@ When modifying styles that affect both desktop and mobile:
 - **Layout**: Fixed navigation layout shifts and adjusted padding.
 
 ### 4. Minecraft Scene Decoration (Feb 14)
-- **Board Character**: A `board.png` image is displayed as a fixed decoration in the bottom-left of every page (index, publications, blog, collaborators).
+- **Board Character**: A `board.png` image is displayed as a fixed decoration in the bottom-left of every page on desktop. On mobile, it is integrated into the top navigation bar.
   - **CSS class**: `.mc-char.board-anim` inside `.minecraft-scene`.
   - **Breathing animation**: Subtle scale/shadow animation (`char-breath`, 3s cycle).
   - **Hover effect**: Scale up + brighter shadow on mouse hover.
-  - **Hidden on mobile**: `display: none` below 768px.
+  - **Mobile Integration**: Below 640px, the Board icon moves to the header container with a specific order: [Title] ... [Board] [Menu] [Theme]. Height is scaled to 38px.
   - Originally used `steve.png`, later renamed to `board.png` across all files.
 
 ### 5. Private Guestbook (Feb 14)

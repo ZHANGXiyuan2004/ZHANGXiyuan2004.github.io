@@ -512,19 +512,21 @@ function initGuestbook() {
     document.body.insertAdjacentHTML('beforeend', modalHTML);
 
     // 2. Select Elements
-    const boardBtn = document.querySelector('.mc-char'); // The "Board" image
+    const boardBtns = document.querySelectorAll('.mc-char'); // All "Board" images (Desktop/Mobile)
     const modal = document.getElementById('guestbook-modal');
     const msgInput = document.getElementById('guestbook-msg');
     const signBtn = document.getElementById('guestbook-sign');
     const cancelBtn = document.getElementById('guestbook-cancel');
 
-    if (!boardBtn || !modal) return;
+    if (boardBtns.length === 0 || !modal) return;
 
     // 3. Open Modal
-    boardBtn.addEventListener('click', () => {
-        modal.classList.remove('hidden');
-        modal.classList.add('visible');
-        playAudio('click');
+    boardBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('visible');
+            playAudio('click');
+        });
     });
 
     // 4. Close Modal
