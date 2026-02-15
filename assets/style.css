@@ -2089,6 +2089,11 @@ body.dark-mode #advancement-toast .advancement-title {
     width: 38px;
     height: 38px;
   }
+
+  #theme-toggle:hover {
+    transform: none;
+    filter: none;
+  }
 }
 
 /* ---------------------------
