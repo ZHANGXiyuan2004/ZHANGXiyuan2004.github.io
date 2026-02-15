@@ -80,6 +80,9 @@ function initTheme() {
         document.body.classList.add('dark-mode');
         // Update icon if exists
         if (themeToggle) updateThemeIcon(true);
+    } else {
+        // Ensure icon/title is correct for light mode
+        if (themeToggle) updateThemeIcon(false);
     }
 
     if (themeToggle) {
@@ -93,9 +96,22 @@ function initTheme() {
 }
 
 function updateThemeIcon(isDark) {
-    const icon = document.querySelector('#theme-toggle .icon');
+    const btn = document.getElementById('theme-toggle');
+    const icon = btn ? btn.querySelector('.theme-icon') : null;
+    if (btn) {
+        // Set title for tooltip (reversed logic: if dark, we show "Dark Mode")
+        // User asked for "light mode" / "dark mode".
+        // Assuming this labels the CURRENT state.
+        const label = isDark ? "Light Mode" : "Dark Mode";
+        btn.setAttribute('title', label);
+        btn.setAttribute('aria-label', label);
+        // Also update cached tooltip so Minecraft tooltip system picks up the change
+        if (btn.hasAttribute('data-original-title')) {
+            btn.setAttribute('data-original-title', label);
+        }
+    }
     if (icon) {
-        icon.textContent = isDark ? '☀️' : '🌙';
+        icon.src = isDark ? 'assets/clock_dark.png' : 'assets/clock_light.png';
     }
 }
 
@@ -350,7 +366,7 @@ function initMinecraftTooltips() {
 
     // Delegate event listeners for better performance
     document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest('[title], .nav a, .btn, .contact-badge-link, .icon, .btn-bilibili, .mc-char, .filter-btn, .small-btn');
+        const target = e.target.closest('[title], .nav a, .btn, .contact-badge-link, .icon, .btn-bilibili, .mc-char, .filter-btn, .small-btn, #theme-toggle');
         if (target) {
             let content = target.getAttribute('title') || target.innerText || target.getAttribute('aria-label');
 
@@ -393,7 +409,7 @@ function initMinecraftTooltips() {
     });
 
     document.addEventListener('mouseout', (e) => {
-        const target = e.target.closest('[data-original-title], .nav a, .btn, .contact-badge-link, .icon, .btn-bilibili, .mc-char, .filter-btn, .small-btn');
+        const target = e.target.closest('[data-original-title], .nav a, .btn, .contact-badge-link, .icon, .btn-bilibili, .mc-char, .filter-btn, .small-btn, #theme-toggle');
         if (target) {
             tooltip.style.display = 'none';
             if (target.getAttribute('data-original-title')) {
