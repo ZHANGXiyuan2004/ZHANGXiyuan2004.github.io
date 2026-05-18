@@ -802,7 +802,7 @@
 
 /* --- Contact photo scene with scroll-bound animated tags --- */
 .booking.section-panel {
-  --contact-photo: url("images/IMG_0555.JPG");
+  --contact-photo: url("images/IMG_0555.jpg");
   --contact-photo-position: center 52%;
   position: relative;
   display: flex;
