@@ -36,7 +36,6 @@ body {
   margin: 0;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 18% 0%, rgba(255, 64, 95, 0.13), transparent 32rem),
     radial-gradient(circle at 82% 12%, rgba(61, 172, 255, 0.12), transparent 34rem),
     linear-gradient(180deg, #070707 0%, #040404 44%, #070707 100%);
   color: var(--text);

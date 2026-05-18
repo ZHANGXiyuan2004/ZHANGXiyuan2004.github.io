@@ -89,7 +89,7 @@ Below-the-fold content:
 - Preserve image filename casing exactly. GitHub Pages is case-sensitive.
 
 Cache busting:
-- HTML pages currently use `?v=20260518-contact-image-case` on `styles.css`, `custom.css`, and `script.js`.
+- HTML pages currently use `?v=20260518-top-glow-clear` on `styles.css`, `custom.css`, and `script.js`.
 - If CSS or JS changes after deployment, update this version string consistently across `index.html` and all `project_*.html` pages.
 
 ## Runtime JavaScript
