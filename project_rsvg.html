@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semantic-Spatial Bayesian Inference for RSVG — Shine Yuan</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css?v=20260518-contact-scroll-clear" />
+    <link rel="stylesheet" href="custom.css?v=20260518-contact-scroll-clear" />
+    <style>
+      .project-details-page { padding: 120px 0 60px; max-width: 800px; margin: 0 auto; color: #eee; }
+      .project-details-page h1 { font-size: 3rem; margin: 20px 0; background: linear-gradient(180deg, #fff, #a3a3a3); -webkit-background-clip: text; color: transparent; line-height: 1.1; }
+      .project-details-page h3 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 15px; color: #fff; }
+      .project-details-page p, .project-details-page li { font-size: 1.1rem; line-height: 1.8; color: #a1a1aa; margin-bottom: 15px; }
+      .project-details-page ul { padding-left: 20px; }
+      .project-details-page .back-link { display: inline-flex; align-items: center; gap: 8px; color: #a1a1aa; text-decoration: none; margin-bottom: 30px; transition: color 0.2s; }
+      .project-details-page .back-link:hover { color: #fff; }
+      .project-hero-img { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 12px; margin: 40px 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    </style>
+  </head>
+  <body>
+    <div class="cursor-light" aria-hidden="true"></div>
+    <div class="page-glow" aria-hidden="true"></div>
+
+    <main>
+      <section class="project-details-page section-panel">
+        <a href="index.html#research" class="back-link reveal">← Back to Portfolio</a>
+        
+        <div class="tags reveal"><span>ACM MM 2026</span><span>Remote Sensing</span><span>VLM</span></div>
+        <h1 class="reveal">Aligning What and Where: Semantic-Spatial Bayesian Inference for Zero-shot Remote Sensing Visual Grounding</h1>
+        <p class="reveal" style="color: var(--muted); font-size: 1.1rem;">Co-Author | Oct 2025 - Present (ACM MM 2026 Submission)<br>Collaboration with Yuyue Huang and team</p>
+        
+        <img src="images/rsvg.png" alt="Remote Sensing Visual Grounding" class="project-hero-img reveal" width="2016"
+          height="1506" loading="lazy" decoding="async" fetchpriority="low" />
+
+        <div class="reveal">
+          <h3>Project Introduction</h3>
+          <p>Proposed a training-free Semantic-Spatial Bayesian Inference Framework for zero-shot Remote Sensing Visual Grounding (RSVG). The work analyzes the "Space Blindness" of CLIP — its inability to handle directional cues in remote sensing images — and reformulates localization as a probabilistic uncertainty reduction process that fuses spatial constraints with semantic visual likelihoods.</p>
+          
+          <h3>Personal Contributions</h3>
+          <ul>
+            <li>Conducted exploratory experiments revealing that CLIP and its variants fail to leverage spatial directional words, with explicit directional terms acting as cross-modal noise rather than localization cues.</li>
+            <li>Designed the Semantic-Spatial Decoupling (SSD) module, leveraging a Multimodal Large Language Model (LLaVA-v1.6 with Vicuna-13B) and a structured prompt (Detail Instruction, Format Rule, Example, Task Instruction) to decompose referring expressions into orthogonal Semantic and Spatial flows.</li>
+            <li>Developed the Geometric Constraint Formulation (GCF) module, mathematically mapping discrete spatial keywords (left, right, top, bottom, center) onto a 2D continuous spatial spectrum via a unified exponential decay function with edge-based distance terms.</li>
+            <li>Formulated the Semantic-Spatial Bayesian Fusion Selection mechanism, deriving a parameter-free joint posterior probability under a uniform prior assumption to fuse global spatial constraints with local visual likelihoods.</li>
+          </ul>
+
+          <h3>Achievements</h3>
+          <ul>
+            <li>Achieves 74.07% accuracy on DIOR-RSVG and 86.70% on RISBench, surpassing the best general training-free baseline (ReCLIP) by 20.95% on DIOR-RSVG.</li>
+            <li>Outperforms the remote-sensing training-free counterpart RSVG-ZeroOV by 42.68% on DIOR-RSVG, while also exceeding several fine-tuned models such as GeoChat and RemoteCLIP.</li>
+            <li>Submitted to ACM MM 2026.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Shine Yuan</span>
+      <span>Hangzhou, China</span>
+    </footer>
+
+    <script src="script.js?v=20260518-contact-scroll-clear"></script>
+  </body>
+</html>

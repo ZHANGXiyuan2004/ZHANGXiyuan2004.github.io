@@ -1,0 +1,1259 @@
+/* ===== NEW SECTIONS: appended styles for Shine Yuan portfolio ===== */
+
+/* --- Hero title single line --- */
+.hero-title-single {
+  white-space: nowrap;
+  font-size: 7rem !important;
+  /* Slightly smaller */
+}
+
+/* --- Hero social links row --- */
+.hero-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  /* Increased gap */
+  margin-top: 48px;
+  /* Increased margin */
+}
+
+.hero-social-link {
+  --social-fill: linear-gradient(135deg, #3487ff, #05265e);
+  --social-glow: rgba(52, 135, 255, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: background 220ms ease, border-color 220ms ease, color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.hero-social-link:nth-child(1) {
+  --social-fill: linear-gradient(135deg, #ff8a00, #d85c14);
+  --social-glow: rgba(255, 138, 0, 0.32);
+}
+
+.hero-social-link:nth-child(2) {
+  --social-fill: linear-gradient(135deg, #7c3cff, #2d0b5e);
+  --social-glow: rgba(124, 60, 255, 0.34);
+}
+
+.hero-social-link:nth-child(3) {
+  --social-fill: linear-gradient(135deg, #fb7299, #ff4da6 52%, #d4146e);
+  --social-glow: rgba(251, 114, 153, 0.4);
+}
+
+.hero-social-link.social-bilibili {
+  --social-fill: linear-gradient(135deg, #fb7299, #ff4da6 52%, #d4146e);
+  --social-glow: rgba(251, 114, 153, 0.4);
+}
+
+.hero-social-link:nth-child(4) {
+  --social-fill: linear-gradient(135deg, #ff2442, #d80074);
+  --social-glow: rgba(255, 36, 66, 0.34);
+}
+
+.hero-social-link:nth-child(5) {
+  --social-fill: linear-gradient(135deg, #00f5ff, #1a1a1a 48%, #ff2d75);
+  --social-glow: rgba(255, 45, 117, 0.34);
+}
+
+.hero-social-link:hover,
+.hero-social-link:focus-visible {
+  background: var(--social-fill);
+  border-color: rgba(255, 255, 255, 0.34);
+  color: #fff;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35), 0 0 28px var(--social-glow);
+  transform: translateY(-2px);
+}
+
+.hero-social-link.social-bilibili:hover,
+.hero-social-link.social-bilibili:focus-visible {
+  background: linear-gradient(135deg, #fb7299, #ff4da6 52%, #d4146e) !important;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35), 0 0 30px rgba(251, 114, 153, 0.42);
+}
+
+.hero-social-link svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+
+/* --- Avatar Photo (replaces CSS illustration) --- */
+.avatar-photo {
+  position: relative;
+  width: 142px;
+  height: 142px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.avatar-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Project description text --- */
+.project-desc {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  max-width: 340px;
+}
+
+/* --- Project card images --- */
+.project-visual.has-img {
+  overflow: hidden;
+}
+
+.project-visual.has-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
+
+.project-visual.grad-ai4s {
+  background:
+    radial-gradient(circle at 30% 40%, rgba(109, 255, 174, 0.4), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(52, 135, 255, 0.35), transparent 40%),
+    linear-gradient(135deg, #0a1628, #1a2a1a);
+}
+
+/* --- Feature card images (carousel) --- */
+.feature-img {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.feature-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.7;
+  transition: opacity 300ms ease, transform 400ms ease;
+}
+
+.feature-card:hover .feature-img img {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.feature-label {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 2;
+}
+
+.feature-label span {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* remove default ::after "View project" on feature cards */
+.feature-card::after {
+  display: none !important;
+}
+
+/* --- Product Section --- */
+.product-section {
+  padding-top: 48px;
+  padding-bottom: 88px;
+}
+
+.product-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
+  gap: 0;
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.035), transparent),
+    #1a1a1a;
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.44);
+  cursor: pointer;
+  isolation: isolate;
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 220ms ease;
+  will-change: auto;
+  transform-style: preserve-3d;
+}
+
+.product-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  opacity: 0;
+  background: radial-gradient(circle at var(--local-x, 50%) var(--local-y, 50%), rgba(255, 255, 255, 0.14), transparent 30%);
+  transition: opacity 180ms ease;
+  pointer-events: none;
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
+
+.product-card:hover,
+.product-card.is-card-hovered {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.62), 0 0 28px rgba(255, 255, 255, 0.05);
+  will-change: transform;
+}
+
+.product-info {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  min-height: 360px;
+  padding: 52px 48px 64px 64px;
+}
+
+.product-info .tags {
+  margin-bottom: 16px;
+}
+
+.product-info h3 {
+  max-width: 400px;
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 2.7vw, 2.45rem);
+  line-height: 1.03;
+}
+
+.product-info .project-desc {
+  max-width: 410px;
+  margin-top: 0;
+  font-size: 0.98rem;
+  line-height: 1.62;
+}
+
+.product-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.product-btn {
+  --product-btn-fill: linear-gradient(135deg, #7c3cff, #2d0b5e);
+  --product-btn-glow: rgba(124, 60, 255, 0.34);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: background 220ms ease, border-color 220ms ease, color 220ms ease, filter 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.product-btn.product-github {
+  --product-btn-fill: linear-gradient(135deg, #7c3cff, #16161d);
+  --product-btn-glow: rgba(124, 60, 255, 0.36);
+}
+
+.product-btn.product-video {
+  --product-btn-fill: linear-gradient(135deg, #fb7299, #ff4da6 52%, #d4146e);
+  --product-btn-glow: rgba(251, 114, 153, 0.4);
+}
+
+.product-btn:hover,
+.product-btn:focus-visible,
+.product-btn.is-hovered {
+  background: var(--product-btn-fill);
+  border-color: rgba(255, 255, 255, 0.48);
+  color: #fff;
+  filter: brightness(1.08) saturate(1.08);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35), 0 0 28px var(--product-btn-glow);
+  transform: translateY(-2px);
+}
+
+.product-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  stroke: none;
+}
+
+.product-visual {
+  position: relative;
+  min-height: 312px;
+  margin: 24px 24px 24px 0;
+  overflow: hidden;
+  border: 1px solid rgba(124, 60, 255, 0.22);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(124, 60, 255, 0.24), transparent 34%),
+    radial-gradient(circle at 82% 72%, rgba(109, 255, 174, 0.14), transparent 32%),
+    #08090d;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    0 0 42px rgba(124, 60, 255, 0.12);
+}
+
+.product-visual::before,
+.product-visual::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  pointer-events: none;
+}
+
+.product-visual::before {
+  background:
+    linear-gradient(90deg, rgba(8, 9, 13, 0.58), transparent 18%, transparent 72%, rgba(8, 9, 13, 0.28)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 26%);
+  mix-blend-mode: screen;
+  opacity: 0.44;
+}
+
+.product-visual::after {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: inherit;
+  box-shadow: inset 0 0 42px rgba(0, 0, 0, 0.38);
+}
+
+.product-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52% 42%;
+  display: block;
+  transition: transform 400ms ease;
+}
+
+.product-card:hover .product-visual img {
+  transform: scale(1.04);
+}
+
+/* --- Blog Section --- */
+.blog-section {
+  padding-top: 48px;
+  padding-bottom: 88px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.blog-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  background: #1a1a1a;
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.44);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 220ms ease;
+  will-change: auto;
+}
+
+.blog-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  content: "";
+  opacity: 0;
+  background: radial-gradient(circle at var(--local-x, 50%) var(--local-y, 50%), rgba(255, 255, 255, 0.12), transparent 30%);
+  transition: opacity 180ms ease;
+  pointer-events: none;
+}
+
+.blog-card:hover::before,
+.blog-card.is-card-hovered::before {
+  opacity: 1;
+}
+
+.blog-card:hover,
+.blog-card.is-card-hovered {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.62);
+  will-change: transform;
+}
+
+.blog-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.blog-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 400ms ease;
+}
+
+.blog-card:hover .blog-thumb img {
+  transform: scale(1.06);
+}
+
+.blog-thumb--contain img {
+  object-fit: contain;
+}
+
+.blog-card:hover .blog-thumb--contain img,
+.blog-card.is-card-hovered .blog-thumb--contain img {
+  transform: none;
+}
+
+.play-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 2rem;
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.blog-card:hover .play-icon {
+  opacity: 1;
+}
+
+.blog-card h3 {
+  padding: 18px 22px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+/* --- Gallery / Photography --- */
+.gallery-section {
+  padding-top: 48px;
+  padding-bottom: 88px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.photo-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 3/2;
+  cursor: pointer;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 500ms ease, filter 300ms ease;
+}
+
+.photo-item:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.1);
+}
+
+/* --- Contact Grid --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.contact-card {
+  --contact-fill: linear-gradient(135deg, #3487ff, #05265e);
+  --contact-glow: rgba(52, 135, 255, 0.35);
+  position: relative;
+  display: block;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.06), transparent 34%),
+    #181818;
+  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.contact-card.contact-email {
+  --contact-fill: linear-gradient(135deg, #ff8a00, #d85c14);
+  --contact-glow: rgba(255, 138, 0, 0.32);
+}
+
+.contact-card.contact-github {
+  --contact-fill: linear-gradient(135deg, #7c3cff, #2d0b5e);
+  --contact-glow: rgba(124, 60, 255, 0.34);
+}
+
+.contact-card.contact-bilibili {
+  --contact-fill: linear-gradient(135deg, #fb7299, #ff4da6 52%, #d4146e);
+  --contact-glow: rgba(251, 114, 153, 0.4);
+}
+
+.contact-card.contact-xiaohongshu {
+  --contact-fill: linear-gradient(135deg, #ff2442, #d80074);
+  --contact-glow: rgba(255, 36, 66, 0.34);
+}
+
+.contact-card.contact-douyin {
+  --contact-fill: linear-gradient(135deg, #00f5ff, #1a1a1a 48%, #ff2d75);
+  --contact-glow: rgba(255, 45, 117, 0.34);
+}
+
+.contact-card:hover,
+.contact-card:focus-visible,
+.contact-card.is-hovered {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: var(--contact-fill);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.48), 0 0 28px var(--contact-glow);
+  transform: translateY(-4px);
+}
+
+.contact-card strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.contact-card span {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  word-break: break-all;
+}
+
+.contact-card:hover span,
+.contact-card:focus-visible span,
+.contact-card.is-hovered span {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 1040px) {
+  .product-card {
+    grid-template-columns: 1fr;
+  }
+
+  .product-visual {
+    min-height: 0;
+    height: 300px;
+    margin: 0 24px 24px;
+  }
+
+  .product-info {
+    min-height: 0;
+    padding: 48px 44px;
+  }
+
+  .avatar-photo {
+    width: 112px;
+    height: 112px;
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-info {
+    padding: 30px;
+  }
+
+  .product-visual {
+    height: clamp(220px, 52vw, 300px);
+    margin: 0 clamp(14px, 5vw, 24px) 24px;
+  }
+
+  .product-info h3 {
+    font-size: 1.55rem;
+  }
+
+  .product-links {
+    flex-direction: column;
+  }
+
+  .avatar-photo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* --- Gallery feature-card size increase --- */
+.feature-card {
+  width: 640px !important;
+  height: 408px !important;
+}
+
+.carousel-window--portrait {
+  margin-top: 18px;
+}
+
+.feature-card.feature-card--portrait {
+  width: 272px !important;
+  height: 408px !important;
+}
+
+/* --- Increase gap between Gallery and Research --- */
+#research {
+  margin-top: 180px;
+}
+
+/* --- Switch to JS animation for seamless slow-down on hover --- */
+.carousel-track {
+  animation: none !important;
+}
+
+/* --- Project Card Custom Hover Colors --- */
+/* Change the whole background on hover, distinct for each card, without glow */
+.project-card.color-blue:hover,
+.project-card.color-blue.is-card-hovered {
+  background: linear-gradient(135deg, #1057c8, #05265e) !important;
+}
+
+.project-card.color-orange:hover,
+.project-card.color-orange.is-card-hovered {
+  background: linear-gradient(135deg, #d85c14, #6e2f07) !important;
+}
+
+.project-card.color-green:hover,
+.project-card.color-green.is-card-hovered {
+  background: linear-gradient(135deg, #0c705c, #063d31) !important;
+}
+
+.project-card.color-purple:hover,
+.project-card.color-purple.is-card-hovered {
+  background: linear-gradient(135deg, #6b14d8, #2d0b5e) !important;
+}
+
+/* Hide the pseudo-element glow completely for these colored cards */
+.project-card.color-blue::before,
+.project-card.color-orange::before,
+.project-card.color-green::before,
+.project-card.color-purple::before {
+  display: none !important;
+}
+
+/* --- First-screen responsive polish --- */
+.hero-row,
+.hero-copy {
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .hero-title-single {
+    max-width: 100%;
+    white-space: normal;
+    font-size: 3.7rem !important;
+  }
+
+  .hero-socials {
+    gap: 10px 12px;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 420px) {
+  .desk-scene {
+    height: 302px;
+  }
+
+  .notebook {
+    left: -0.8%;
+    top: 50%;
+    width: 194px;
+    height: 127px;
+    --book-model-scale: 1.06;
+  }
+
+  .laptop {
+    left: 56%;
+    top: 13%;
+    width: 246px;
+  }
+
+  .mouse {
+    right: 6%;
+    top: 65%;
+    width: 72px;
+    height: 50px;
+  }
+
+  .hero-title-single {
+    font-size: 2.85rem !important;
+    line-height: 0.9;
+  }
+
+  .hero-socials {
+    gap: 9px;
+    margin-top: 24px;
+  }
+
+  .hero-social-link {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-copy {
+    width: 100%;
+    max-width: calc(100vw - 48px);
+    overflow: visible;
+  }
+
+  .hero-title-single {
+    max-width: calc(100vw - 48px);
+    font-size: 2rem !important;
+    line-height: 0.98;
+    white-space: nowrap;
+  }
+
+  .dock {
+    left: 50% !important;
+    right: auto !important;
+    width: auto;
+    max-width: calc(100vw - 16px);
+    gap: 6px;
+    justify-content: center;
+    padding: 7px;
+    transform: translateX(-50%) !important;
+  }
+
+  .dock a {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 48px;
+    grid-template-columns: 24px 0fr;
+    border-radius: 15px;
+  }
+
+  .dock a:hover,
+  .dock a.is-hovered {
+    width: 42px;
+    grid-template-columns: 24px 0fr;
+    gap: 0;
+  }
+
+  .dock svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .dock a::after {
+    display: none;
+  }
+}
+
+/* --- Contact photo scene with scroll-bound animated tags --- */
+.booking.section-panel {
+  --contact-photo: url("images/IMG_0555.JPG");
+  --contact-photo-position: center 52%;
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: none;
+  min-height: 148vh;
+  margin-top: 42px;
+  overflow: hidden;
+  isolation: isolate;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(96px, 12vh, 156px) max(24px, calc((100vw - 1080px) / 2)) clamp(132px, 15vh, 190px);
+  background: #050505;
+  view-timeline-name: --contact-reveal;
+  view-timeline-axis: block;
+}
+
+.booking.section-panel::before,
+.booking.section-panel::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  pointer-events: none;
+}
+
+.booking.section-panel::before {
+  background:
+    linear-gradient(180deg, #050505 0%, rgba(5, 5, 5, 0.98) 8%, rgba(5, 5, 5, 0.78) 23%, rgba(0, 0, 0, 0.58) 44%, rgba(0, 0, 0, 0.58) 100%);
+}
+
+.booking.section-panel::after {
+  background:
+    radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.2), transparent 24rem),
+    linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.68) 100%);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+
+.booking.section-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+.booking .contact-photo-slices {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.booking .contact-photo-slices::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--contact-photo);
+  background-position: var(--contact-photo-position);
+  background-size: cover;
+  content: "";
+  filter: blur(6px) brightness(0.72) saturate(0.82);
+  opacity: 0.18;
+  transform: scale(1.02);
+}
+
+.contact-photo-slice {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: var(--contact-photo);
+  background-position: var(--contact-photo-position);
+  background-size: cover;
+  filter: brightness(0.96) saturate(0.96);
+  will-change: auto;
+}
+
+.contact-photo-left {
+  clip-path: polygon(0 0, 68% 0, 68% 72%, 0 72%);
+  mask-image: linear-gradient(90deg, #000 0 54%, rgba(0, 0, 0, 0.72) 62%, transparent 76%);
+  -webkit-mask-image: linear-gradient(90deg, #000 0 54%, rgba(0, 0, 0, 0.72) 62%, transparent 76%);
+}
+
+.contact-photo-right {
+  clip-path: polygon(32% 0, 100% 0, 100% 72%, 32% 72%);
+  mask-image: linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, 0.72) 38%, #000 46% 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, 0.72) 38%, #000 46% 100%);
+}
+
+.contact-photo-bottom {
+  clip-path: polygon(0 54%, 100% 54%, 100% 100%, 0 100%);
+  mask-image: linear-gradient(180deg, transparent 44%, rgba(0, 0, 0, 0.72) 55%, #000 64% 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 44%, rgba(0, 0, 0, 0.72) 55%, #000 64% 100%);
+}
+
+@keyframes contactPhotoLeftMerge {
+  0% {
+    opacity: 0.2;
+    filter: blur(10px) brightness(0.72) saturate(0.8);
+    transform: translate3d(-42vw, 0, 0) scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0) brightness(0.96) saturate(0.96);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes contactPhotoRightMerge {
+  0% {
+    opacity: 0.2;
+    filter: blur(10px) brightness(0.72) saturate(0.8);
+    transform: translate3d(42vw, 0, 0) scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0) brightness(0.96) saturate(0.96);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes contactPhotoBottomMerge {
+  0% {
+    opacity: 0.22;
+    filter: blur(12px) brightness(0.7) saturate(0.8);
+    transform: translate3d(0, 34vh, 0) scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0) brightness(0.96) saturate(0.96);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .contact-photo-left {
+    opacity: 0.2;
+    animation: contactPhotoLeftMerge 1s linear both;
+    animation-timeline: --contact-reveal;
+    animation-range: entry 0% cover 38%;
+    will-change: opacity, transform;
+  }
+
+  .contact-photo-right {
+    opacity: 0.2;
+    animation: contactPhotoRightMerge 1s linear both;
+    animation-timeline: --contact-reveal;
+    animation-range: entry 0% cover 38%;
+    will-change: opacity, transform;
+  }
+
+  .contact-photo-bottom {
+    opacity: 0.22;
+    animation: contactPhotoBottomMerge 1s linear both;
+    animation-timeline: --contact-reveal;
+    animation-range: entry 0% cover 38%;
+    will-change: opacity, transform;
+  }
+}
+
+.booking h2 {
+  margin: 0 0 clamp(34px, 5vw, 64px);
+  color: #fff;
+  text-shadow: 0 18px 42px rgba(0, 0, 0, 0.62);
+}
+
+.booking .contact-grid {
+  display: grid;
+  position: relative;
+  z-index: 4;
+  width: min(1040px, 100%);
+  max-width: none;
+  grid-template-columns: repeat(3, minmax(210px, 1fr));
+  gap: clamp(18px, 2vw, 24px);
+  text-align: left;
+}
+
+.booking .contact-card {
+  --contact-start-x: calc(-50vw - 360px);
+  --contact-start-y: 0px;
+  --contact-mid-x: 0px;
+  display: block;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 28px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.booking .contact-card:hover,
+.booking .contact-card:focus-visible,
+.booking .contact-card.is-hovered {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.booking .contact-card-inner {
+  position: relative;
+  display: flex;
+  min-height: 88px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 21px 24px 21px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 84% 18%, rgba(255, 255, 255, 0.18), transparent 34%),
+    rgba(10, 10, 12, 0.48);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.36), inset 0 1px rgba(255, 255, 255, 0.16);
+  transform-origin: center;
+  will-change: auto;
+  backdrop-filter: blur(18px) saturate(1.18);
+  -webkit-backdrop-filter: blur(18px) saturate(1.18);
+  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+
+.booking .contact-card-inner::before {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.54);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.booking .contact-card:hover .contact-card-inner,
+.booking .contact-card:focus-visible .contact-card-inner,
+.booking .contact-card.is-hovered .contact-card-inner {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: var(--contact-fill);
+  filter: brightness(1.08) saturate(1.08);
+  box-shadow: 0 28px 68px rgba(0, 0, 0, 0.48), 0 0 34px var(--contact-glow);
+}
+
+.booking .contact-card strong {
+  margin-bottom: 0;
+  color: #fff;
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.booking .contact-card span {
+  min-width: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.booking .contact-card.contact-qq {
+  --contact-fill: linear-gradient(135deg, #17b879, #0b4233);
+  --contact-glow: rgba(109, 255, 174, 0.34);
+}
+
+.booking .contact-card:nth-child(1) {
+  --contact-start-x: calc(-50vw - 380px);
+}
+
+.booking .contact-card:nth-child(2) {
+  --contact-start-x: calc(50vw + 380px);
+}
+
+.booking .contact-card:nth-child(3) {
+  --contact-start-x: calc(-50vw - 380px);
+}
+
+.booking .contact-card:nth-child(4) {
+  --contact-start-x: calc(50vw + 380px);
+}
+
+.booking .contact-card:nth-child(5) {
+  --contact-start-x: calc(-50vw - 380px);
+}
+
+.booking .contact-card:nth-child(6) {
+  --contact-start-x: calc(50vw + 380px);
+}
+
+@keyframes contactTagScrollReveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--contact-start-x), var(--contact-start-y), 0) scale(0.58);
+  }
+
+  64% {
+    opacity: 0.92;
+    transform: translate3d(0, 0, 0) scale(1.035);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .booking .contact-card-inner {
+    opacity: 0;
+    animation-name: contactTagScrollReveal;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: --contact-reveal;
+    animation-range: entry 0% cover 78%;
+    will-change: opacity, transform;
+  }
+
+  .booking .contact-card:nth-child(2) .contact-card-inner {
+    animation-range: entry 2% cover 79%;
+  }
+
+  .booking .contact-card:nth-child(3) .contact-card-inner {
+    animation-range: entry 4% cover 80%;
+  }
+
+  .booking .contact-card:nth-child(4) .contact-card-inner {
+    animation-range: entry 6% cover 81%;
+  }
+
+  .booking .contact-card:nth-child(5) .contact-card-inner {
+    animation-range: entry 8% cover 82%;
+  }
+
+  .booking .contact-card:nth-child(6) .contact-card-inner {
+    animation-range: entry 10% cover 82%;
+  }
+}
+
+@media (max-width: 1040px) {
+  .booking .contact-grid {
+    width: min(760px, 100%);
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .booking.section-panel {
+    min-height: 128vh;
+    margin-top: 24px;
+    padding: 86px 20px 130px;
+    --contact-photo-position: 58% 50%;
+    justify-content: flex-start;
+  }
+
+  .booking h2 {
+    font-size: clamp(2.65rem, 14vw, 3.35rem);
+  }
+
+  .booking .contact-grid {
+    width: min(420px, 100%);
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .booking .contact-card-inner {
+    min-height: 82px;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 17px 22px 17px 27px;
+    border-radius: 30px;
+  }
+
+  .booking .contact-card span {
+    font-size: 0.84rem;
+    text-align: left;
+  }
+
+  .booking .contact-card:nth-child(odd) {
+    --contact-start-x: calc(-100vw - 240px);
+  }
+
+  .booking .contact-card:nth-child(even) {
+    --contact-start-x: calc(100vw + 240px);
+  }
+
+  @supports (animation-timeline: view()) {
+    .booking .contact-card-inner,
+    .booking .contact-card:nth-child(2) .contact-card-inner,
+    .booking .contact-card:nth-child(3) .contact-card-inner,
+    .booking .contact-card:nth-child(4) .contact-card-inner,
+    .booking .contact-card:nth-child(5) .contact-card-inner,
+    .booking .contact-card:nth-child(6) .contact-card-inner {
+      animation-range: entry 0% cover 80%;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .booking.section-panel {
+    padding: 62px 18px 118px;
+  }
+
+  .booking h2 {
+    margin-bottom: 24px;
+    font-size: clamp(2.28rem, 12vw, 2.65rem);
+  }
+
+  .booking .contact-grid {
+    gap: 9px;
+  }
+
+  .booking .contact-card-inner {
+    min-height: 68px;
+    gap: 3px;
+    padding: 13px 18px 13px 25px;
+    border-radius: 24px;
+  }
+
+  .booking .contact-card strong {
+    font-size: 0.94rem;
+  }
+
+  .booking .contact-card span {
+    font-size: 0.78rem;
+    line-height: 1.25;
+  }
+
+  .booking .contact-card-inner::before {
+    left: 12px;
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking .contact-card-inner {
+    opacity: 1 !important;
+    filter: none !important;
+    animation: none !important;
+    transform: scale(1) !important;
+    will-change: auto !important;
+  }
+
+  .contact-photo-slice {
+    opacity: 1 !important;
+    filter: blur(0) brightness(0.96) saturate(0.96) !important;
+    animation: none !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+}

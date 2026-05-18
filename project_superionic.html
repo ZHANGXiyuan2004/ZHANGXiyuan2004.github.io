@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Superionic Conductor Materials Screening & Phase Prediction — Shine Yuan</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css?v=20260518-contact-scroll-clear" />
+    <link rel="stylesheet" href="custom.css?v=20260518-contact-scroll-clear" />
+    <style>
+      .project-details-page { padding: 120px 0 60px; max-width: 800px; margin: 0 auto; color: #eee; }
+      .project-details-page h1 { font-size: 3rem; margin: 20px 0; background: linear-gradient(180deg, #fff, #a3a3a3); -webkit-background-clip: text; color: transparent; line-height: 1.1; }
+      .project-details-page h3 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 15px; color: #fff; }
+      .project-details-page p, .project-details-page li { font-size: 1.1rem; line-height: 1.8; color: #a1a1aa; margin-bottom: 15px; }
+      .project-details-page ul { padding-left: 20px; }
+      .project-details-page .back-link { display: inline-flex; align-items: center; gap: 8px; color: #a1a1aa; text-decoration: none; margin-bottom: 30px; transition: color 0.2s; }
+      .project-details-page .back-link:hover { color: #fff; }
+      .project-hero-img { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 12px; margin: 40px 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    </style>
+  </head>
+  <body>
+    <div class="cursor-light" aria-hidden="true"></div>
+    <div class="page-glow" aria-hidden="true"></div>
+
+    <main>
+      <section class="project-details-page section-panel">
+        <a href="index.html#research" class="back-link reveal">← Back to Portfolio</a>
+        
+        <div class="tags reveal"><span>AI4Science</span><span>Materials</span><span>Active Learning</span></div>
+        <h1 class="reveal">Superionic Conductor Materials Screening & Phase Prediction</h1>
+        <p class="reveal" style="color: var(--muted); font-size: 1.1rem;">Lead Researcher | Jan 2025 - May 2025<br>Advisor: Prof. Hong Zhu (SJTU)</p>
+        
+        <img src="images/superionic.png" alt="Superionic Conductor Materials" class="project-hero-img reveal"
+          width="2382" height="1472" loading="lazy" decoding="async" fetchpriority="low" />
+
+        <div class="reveal">
+          <h3>Project Introduction</h3>
+          <p>Using a small amount of data on superionic conductor materials in the Li-N-S system, the general potential model MatterSim is fine-tuned, and then the fine-tuned model is used to screen the generation model MatterGen to obtain stable materials in the Li-N-S system.</p>
+          
+          <h3>Personal Contributions</h3>
+          <p>Constructed an active learning loop to iteratively update the model and data:</p>
+          <ul>
+            <li>Used a small amount of labelled superionic conductor material data to train and test MatterSim.</li>
+            <li>Generated unlabelled superionic conductor structures using MatterGen.</li>
+            <li>Loaded MatterSim as a structure prediction model and used the Query By Committee method to obtain its uncertainty.</li>
+            <li>Performed DFT calculations on the data with the highest uncertainty and added it to the training data for the next round of training.</li>
+          </ul>
+
+          <h3>Achievements</h3>
+          <ul>
+            <li>Selected for SJTU-Global College Research Internship Program 2025.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Shine Yuan</span>
+      <span>Hangzhou, China</span>
+    </footer>
+
+    <script src="script.js?v=20260518-contact-scroll-clear"></script>
+  </body>
+</html>

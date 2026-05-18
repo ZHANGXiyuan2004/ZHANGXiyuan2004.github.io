@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unified Few-Shot Neuroimaging Segmentation — Shine Yuan</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css?v=20260518-contact-scroll-clear" />
+    <link rel="stylesheet" href="custom.css?v=20260518-contact-scroll-clear" />
+    <style>
+      .project-details-page { padding: 120px 0 60px; max-width: 800px; margin: 0 auto; color: #eee; }
+      .project-details-page h1 { font-size: 3rem; margin: 20px 0; background: linear-gradient(180deg, #fff, #a3a3a3); -webkit-background-clip: text; color: transparent; line-height: 1.1; }
+      .project-details-page h3 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 15px; color: #fff; }
+      .project-details-page p, .project-details-page li { font-size: 1.1rem; line-height: 1.8; color: #a1a1aa; margin-bottom: 15px; }
+      .project-details-page ul { padding-left: 20px; }
+      .project-details-page .back-link { display: inline-flex; align-items: center; gap: 8px; color: #a1a1aa; text-decoration: none; margin-bottom: 30px; transition: color 0.2s; }
+      .project-details-page .back-link:hover { color: #fff; }
+      .project-hero-img { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 12px; margin: 40px 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    </style>
+  </head>
+  <body>
+    <div class="cursor-light" aria-hidden="true"></div>
+    <div class="page-glow" aria-hidden="true"></div>
+
+    <main>
+      <section class="project-details-page section-panel">
+        <a href="index.html#research" class="back-link reveal">← Back to Portfolio</a>
+        
+        <div class="tags reveal"><span>MICCAI 2026</span><span>Medical AI</span><span>Few-Shot</span></div>
+        <h1 class="reveal">A Unified Few-Shot Framework for Multi-Atlas Neuroimaging Segmentation Leveraging Vision Foundation Models</h1>
+        <p class="reveal" style="color: var(--muted); font-size: 1.1rem;">Co-First Author | Nov 2025 - Present (MICCAI 2026 Submission)<br>Collaboration with Bocheng Guo, Wei Zhang (UESTC), Fan Zhang, and Ofer Pasternak & Lauren O'Donnell (Harvard Medical School)</p>
+        
+        <img src="images/neuroimaging.png" alt="Neuroimaging Segmentation" class="project-hero-img reveal"
+          width="7638" height="4254" loading="lazy" decoding="async" fetchpriority="low" />
+
+        <div class="reveal">
+          <h3>Project Introduction</h3>
+          <p>Proposed a unified few-shot framework that adapts large-scale vision foundation models (DINOv3-initialized ConvNeXt) to 3D multi-atlas brain MRI segmentation through an efficient "pre-train, fine-tune and inference" paradigm. The approach addresses the high cost of generating large-scale ground truth labels and the prohibitive overhead of re-training models for new atlas protocols.</p>
+          
+          <h3>Personal Contributions</h3>
+          <ul>
+            <li>Designed Stage I Anatomically-Prioritized Representation Learning, including a 2.5D Spatial-Aware Masked Autoencoding (SA-MAE) task with composite L1-SSIM loss to instill volumetric awareness, plus an anatomical anchoring head that aligns the latent space to neuroanatomical boundaries.</li>
+            <li>Implemented Stage II 3D Associative Matching, integrating a 3D ConvNeXt Adapter (3x7x7 depth-wise convolutions) and a Linear Transformer Matcher with O(N) complexity for dense voxel-wise label transfer.</li>
+            <li>Developed an Image-Guided Super-Resolution Refinement module that fuses matched features with raw high-resolution MRI to recover fine boundary details.</li>
+            <li>Proposed the "Lock-and-Finetune" strategy, freezing the backbone and matcher and only updating the lightweight SR Refiner for rapid adaptation to unseen atlases with negligible computational overhead.</li>
+          </ul>
+
+          <h3>Achievements</h3>
+          <ul>
+            <li>Achieves over 95% of fully supervised nnU-Net performance using less than 5% of labeled data on the Human Connectome Project (HCP) dataset.</li>
+            <li>Demonstrates strong generalization across atlases of different granularities: Yeo7 (14 labels), aparc.a2009s+aseg (148 labels), and HCP-MMP1 (360 labels).</li>
+            <li>Submitted to MICCAI 2026 main conference.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Shine Yuan</span>
+      <span>Hangzhou, China</span>
+    </footer>
+
+    <script src="script.js?v=20260518-contact-scroll-clear"></script>
+  </body>
+</html>
