@@ -97,11 +97,17 @@
   box-shadow: var(--shadow);
 }
 
+.avatar-photo picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .avatar-photo img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 /* --- Project description text --- */
@@ -124,13 +130,6 @@
   object-fit: cover;
   display: block;
   border-radius: inherit;
-}
-
-.project-visual.grad-ai4s {
-  background:
-    radial-gradient(circle at 30% 40%, rgba(109, 255, 174, 0.4), transparent 40%),
-    radial-gradient(circle at 70% 60%, rgba(52, 135, 255, 0.35), transparent 40%),
-    linear-gradient(135deg, #0a1628, #1a2a1a);
 }
 
 /* --- Feature card images (carousel) --- */
@@ -362,7 +361,296 @@
 /* --- Blog Section --- */
 .blog-section {
   padding-top: 48px;
-  padding-bottom: 88px;
+  position: relative;
+  padding-bottom: clamp(34px, 4.5vh, 64px);
+  overflow: visible;
+}
+
+.blog-section::after {
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  z-index: 0;
+  width: 100vw;
+  height: clamp(150px, 20vh, 260px);
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0), rgba(5, 5, 5, 0.82) 62%, #050505 100%);
+  content: "";
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.blog-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.blog-section .section-heading {
+  top: clamp(10px, 1.8vh, 16px);
+  margin-bottom: clamp(12px, 2vh, 20px);
+}
+
+.blog-sequence {
+  display: none;
+  margin-top: 34px;
+}
+
+.blog-section.is-blog-sequence-ready {
+  padding-bottom: clamp(2px, 0.75vh, 12px);
+}
+
+.blog-section.is-blog-sequence-ready .blog-sequence {
+  display: block;
+}
+
+.blog-section.is-blog-sequence-ready .blog-fallback-grid {
+  display: none;
+}
+
+.blog-sequence-pin {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.blog-sequence-frame {
+  --blog-frame-exit-y: 0px;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  background: #101010;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.58);
+  translate: 0 calc(-34px + var(--blog-frame-exit-y));
+}
+
+.blog-sequence-media,
+.blog-sequence-shade,
+.blog-sequence-cues,
+.blog-keyhole-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.blog-sequence-media {
+  z-index: 1;
+  background: #0b0b0b;
+}
+
+.blog-section.is-blog-sequence-ready .blog-sequence-slide,
+.blog-section.is-blog-sequence-ready .blog-sequence-cue,
+.blog-section.is-blog-sequence-ready .blog-keyhole,
+.blog-section.is-blog-sequence-ready .blog-keyhole-corner {
+  will-change: opacity, transform, clip-path;
+}
+
+.blog-sequence-slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  opacity: 0;
+  visibility: hidden;
+  background: #101010;
+  backface-visibility: hidden;
+  transform: none;
+  transform-origin: center;
+}
+
+.blog-sequence-slide--contain {
+  box-sizing: border-box;
+}
+
+.blog-sequence-shade {
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.34) 44%, rgba(0, 0, 0, 0.04)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.58), transparent 42%);
+  pointer-events: none;
+}
+
+.blog-sequence-cues {
+  z-index: 3;
+  pointer-events: none;
+}
+
+.blog-sequence-cue {
+  position: absolute;
+  left: clamp(24px, 5vw, 64px);
+  bottom: clamp(46px, 5.6vw, 92px);
+  width: min(700px, calc(100% - clamp(48px, 10vw, 128px)));
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(26px);
+  pointer-events: none;
+}
+
+.blog-sequence-cue > * {
+  translate: 0 42px;
+}
+
+.blog-sequence-cue.is-active {
+  pointer-events: auto;
+}
+
+.blog-sequence-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 12px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.blog-sequence-cue h3 {
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.48rem, 2.55vw, 2.58rem);
+  line-height: 1.12;
+}
+
+.blog-sequence-meta {
+  display: block;
+  max-width: 40rem;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(0.95rem, 1.35vw, 1.12rem);
+  line-height: 1.55;
+}
+
+.blog-sequence-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 17px;
+  margin-top: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.11);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.blog-sequence-action::before {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid currentColor;
+  content: "";
+}
+
+.blog-sequence-cue:hover .blog-sequence-action,
+.blog-sequence-cue:focus-visible .blog-sequence-action {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.blog-keyhole-layer {
+  z-index: 5;
+  pointer-events: none;
+}
+
+.blog-keyhole {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  clip-path: polygon(0% 0%, 0% 100%, 24% 100%, 24% 24%, 76% 24%, 76% 76%, 24% 76%, 24% 100%, 100% 100%, 100% 0%);
+}
+
+.blog-keyhole-corner {
+  --blog-keyhole-radius: clamp(16px, 2.4vw, 30px);
+  --blog-keyhole-color: var(--bg);
+  position: absolute;
+  display: block;
+  width: var(--blog-keyhole-radius);
+  height: var(--blog-keyhole-radius);
+}
+
+.blog-keyhole-corner.top-left {
+  background: radial-gradient(circle at bottom right, transparent calc(var(--blog-keyhole-radius) - 1px), var(--blog-keyhole-color) var(--blog-keyhole-radius));
+}
+
+.blog-keyhole-corner.top-right {
+  background: radial-gradient(circle at bottom left, transparent calc(var(--blog-keyhole-radius) - 1px), var(--blog-keyhole-color) var(--blog-keyhole-radius));
+}
+
+.blog-keyhole-corner.bottom-left {
+  background: radial-gradient(circle at top right, transparent calc(var(--blog-keyhole-radius) - 1px), var(--blog-keyhole-color) var(--blog-keyhole-radius));
+}
+
+.blog-keyhole-corner.bottom-right {
+  background: radial-gradient(circle at top left, transparent calc(var(--blog-keyhole-radius) - 1px), var(--blog-keyhole-color) var(--blog-keyhole-radius));
+}
+
+.blog-sequence-progress {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 0;
+  height: 44px;
+  margin: -10px auto 0;
+}
+
+.blog-sequence-progress::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+  content: "";
+}
+
+.blog-sequence-progress-fill {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.72);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.blog-sequence-marker {
+  position: relative;
+  z-index: 1;
+  justify-self: center;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 50%;
+  background: #111;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.blog-sequence-marker.is-active {
+  border-color: rgba(255, 255, 255, 0.92);
+  background: #fff;
+  transform: scale(1.16);
 }
 
 .blog-grid {
@@ -460,117 +748,6 @@
   color: var(--text);
 }
 
-/* --- Gallery / Photography --- */
-.gallery-section {
-  padding-top: 48px;
-  padding-bottom: 88px;
-}
-
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-.photo-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  aspect-ratio: 3/2;
-  cursor: pointer;
-}
-
-.photo-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 500ms ease, filter 300ms ease;
-}
-
-.photo-item:hover img {
-  transform: scale(1.06);
-  filter: brightness(1.1);
-}
-
-/* --- Contact Grid --- */
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  max-width: 860px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.contact-card {
-  --contact-fill: linear-gradient(135deg, #3487ff, #05265e);
-  --contact-glow: rgba(52, 135, 255, 0.35);
-  position: relative;
-  display: block;
-  padding: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 8px;
-  background:
-    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.06), transparent 34%),
-    #181818;
-  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
-}
-
-.contact-card.contact-email {
-  --contact-fill: linear-gradient(135deg, #ff8a00, #d85c14);
-  --contact-glow: rgba(255, 138, 0, 0.32);
-}
-
-.contact-card.contact-github {
-  --contact-fill: linear-gradient(135deg, #7c3cff, #2d0b5e);
-  --contact-glow: rgba(124, 60, 255, 0.34);
-}
-
-.contact-card.contact-bilibili {
-  --contact-fill: linear-gradient(135deg, #fb7299, #ff4da6 52%, #d4146e);
-  --contact-glow: rgba(251, 114, 153, 0.4);
-}
-
-.contact-card.contact-xiaohongshu {
-  --contact-fill: linear-gradient(135deg, #ff2442, #d80074);
-  --contact-glow: rgba(255, 36, 66, 0.34);
-}
-
-.contact-card.contact-douyin {
-  --contact-fill: linear-gradient(135deg, #00f5ff, #1a1a1a 48%, #ff2d75);
-  --contact-glow: rgba(255, 45, 117, 0.34);
-}
-
-.contact-card:hover,
-.contact-card:focus-visible,
-.contact-card.is-hovered {
-  border-color: rgba(255, 255, 255, 0.18);
-  background: var(--contact-fill);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.48), 0 0 28px var(--contact-glow);
-  transform: translateY(-4px);
-}
-
-.contact-card strong {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 1.1rem;
-  color: #fff;
-}
-
-.contact-card span {
-  color: var(--muted);
-  font-size: 0.88rem;
-  line-height: 1.4;
-  word-break: break-all;
-}
-
-.contact-card:hover span,
-.contact-card:focus-visible span,
-.contact-card.is-hovered span {
-  color: rgba(255, 255, 255, 0.82);
-}
-
 /* --- Responsive adjustments --- */
 @media (max-width: 1040px) {
   .product-card {
@@ -592,22 +769,18 @@
     width: 112px;
     height: 112px;
   }
-
-  .contact-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 720px) {
+  .blog-section.is-blog-sequence-ready .blog-sequence {
+    display: none;
+  }
+
+  .blog-section.is-blog-sequence-ready .blog-fallback-grid {
+    display: grid;
+  }
+
   .blog-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .photo-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-grid {
     grid-template-columns: 1fr;
   }
 
@@ -631,6 +804,22 @@
   .avatar-photo {
     width: 100px;
     height: 100px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-section.is-blog-sequence-ready .blog-sequence {
+    display: none;
+  }
+
+  .blog-section.is-blog-sequence-ready .blog-fallback-grid {
+    display: grid;
+  }
+
+  .blog-sequence-slide,
+  .blog-sequence-cue,
+  .blog-sequence-action {
+    transition: none;
   }
 }
 
@@ -800,174 +989,96 @@
   }
 }
 
-/* --- Contact photo scene with scroll-bound animated tags --- */
+/* --- Contact WebGL image ring with scroll-bound cards --- */
 .booking.section-panel {
-  --contact-photo: url("images/IMG_0555.jpg");
-  --contact-photo-position: center 52%;
+  --contact-landing-y: 0px;
   position: relative;
-  display: flex;
   width: 100%;
   max-width: none;
-  min-height: 148vh;
-  margin-top: 42px;
+  min-height: 100vh;
+  margin-top: -1px;
+  padding: 0;
   overflow: hidden;
   isolation: isolate;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(96px, 12vh, 156px) max(24px, calc((100vw - 1080px) / 2)) clamp(132px, 15vh, 190px);
   background: #050505;
-  view-timeline-name: --contact-reveal;
-  view-timeline-axis: block;
-}
-
-.booking.section-panel::before,
-.booking.section-panel::after {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  content: "";
-  pointer-events: none;
 }
 
 .booking.section-panel::before {
-  background:
-    linear-gradient(180deg, #050505 0%, rgba(5, 5, 5, 0.98) 8%, rgba(5, 5, 5, 0.78) 23%, rgba(0, 0, 0, 0.58) 44%, rgba(0, 0, 0, 0.58) 100%);
-}
-
-.booking.section-panel::after {
-  background:
-    radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.2), transparent 24rem),
-    linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.68) 100%);
-  mix-blend-mode: screen;
-  opacity: 0.55;
-}
-
-.booking.section-panel > * {
-  position: relative;
-  z-index: 2;
-}
-
-.booking .contact-photo-slices {
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: clamp(132px, 18vh, 230px);
+  background:
+    linear-gradient(180deg, #050505 0%, rgba(5, 5, 5, 0.9) 34%, rgba(5, 5, 5, 0) 100%);
+  content: "";
   pointer-events: none;
 }
 
-.booking .contact-photo-slices::before {
+.contact-ring-pin {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  overflow: hidden;
+  place-items: center;
+}
+
+.contact-ring-stage,
+.contact-ring-vignette {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: var(--contact-photo);
-  background-position: var(--contact-photo-position);
-  background-size: cover;
-  content: "";
-  filter: blur(6px) brightness(0.72) saturate(0.82);
-  opacity: 0.18;
-  transform: scale(1.02);
+  pointer-events: none;
+  transform: translate3d(0, var(--contact-landing-y), 0);
 }
 
-.contact-photo-slice {
-  position: absolute;
-  inset: 0;
+.contact-ring-stage {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.08), transparent 28rem),
+    #050505;
+}
+
+.contact-ring-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-ring-vignette {
   z-index: 1;
-  background-image: var(--contact-photo);
-  background-position: var(--contact-photo-position);
-  background-size: cover;
-  filter: brightness(0.96) saturate(0.96);
-  will-change: auto;
+  background:
+    radial-gradient(circle at 50% 48%, transparent 0 23rem, rgba(0, 0, 0, 0.1) 33rem, rgba(0, 0, 0, 0.82) 72rem),
+    linear-gradient(180deg, #050505 0%, rgba(5, 5, 5, 0.26) 22%, rgba(0, 0, 0, 0.18) 54%, rgba(0, 0, 0, 0.78) 100%);
 }
 
-.contact-photo-left {
-  clip-path: polygon(0 0, 68% 0, 68% 72%, 0 72%);
-  mask-image: linear-gradient(90deg, #000 0 54%, rgba(0, 0, 0, 0.72) 62%, transparent 76%);
-  -webkit-mask-image: linear-gradient(90deg, #000 0 54%, rgba(0, 0, 0, 0.72) 62%, transparent 76%);
+.contact-ring-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(1080px, calc(100% - 48px));
+  min-height: min(720px, 100vh);
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(86px, 10vh, 126px) 0 clamp(118px, 13vh, 168px);
+  transform: translate3d(0, var(--contact-landing-y), 0);
 }
 
-.contact-photo-right {
-  clip-path: polygon(32% 0, 100% 0, 100% 72%, 32% 72%);
-  mask-image: linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, 0.72) 38%, #000 46% 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, 0.72) 38%, #000 46% 100%);
+.booking.is-contact-ring-ready .contact-ring-stage,
+.booking.is-contact-ring-ready .contact-ring-vignette,
+.booking.is-contact-ring-ready .contact-ring-content {
+  will-change: transform;
 }
 
-.contact-photo-bottom {
-  clip-path: polygon(0 54%, 100% 54%, 100% 100%, 0 100%);
-  mask-image: linear-gradient(180deg, transparent 44%, rgba(0, 0, 0, 0.72) 55%, #000 64% 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 44%, rgba(0, 0, 0, 0.72) 55%, #000 64% 100%);
-}
-
-@keyframes contactPhotoLeftMerge {
-  0% {
-    opacity: 0.2;
-    filter: blur(10px) brightness(0.72) saturate(0.8);
-    transform: translate3d(-42vw, 0, 0) scale(1.04);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0) brightness(0.96) saturate(0.96);
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@keyframes contactPhotoRightMerge {
-  0% {
-    opacity: 0.2;
-    filter: blur(10px) brightness(0.72) saturate(0.8);
-    transform: translate3d(42vw, 0, 0) scale(1.04);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0) brightness(0.96) saturate(0.96);
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@keyframes contactPhotoBottomMerge {
-  0% {
-    opacity: 0.22;
-    filter: blur(12px) brightness(0.7) saturate(0.8);
-    transform: translate3d(0, 34vh, 0) scale(1.04);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0) brightness(0.96) saturate(0.96);
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@supports (animation-timeline: view()) {
-  .contact-photo-left {
-    opacity: 0.2;
-    animation: contactPhotoLeftMerge 1s linear both;
-    animation-timeline: --contact-reveal;
-    animation-range: entry 0% cover 38%;
-    will-change: opacity, transform;
-  }
-
-  .contact-photo-right {
-    opacity: 0.2;
-    animation: contactPhotoRightMerge 1s linear both;
-    animation-timeline: --contact-reveal;
-    animation-range: entry 0% cover 38%;
-    will-change: opacity, transform;
-  }
-
-  .contact-photo-bottom {
-    opacity: 0.22;
-    animation: contactPhotoBottomMerge 1s linear both;
-    animation-timeline: --contact-reveal;
-    animation-range: entry 0% cover 38%;
-    will-change: opacity, transform;
-  }
+.booking.is-contact-ring-ready h2 {
+  will-change: transform, opacity;
 }
 
 .booking h2 {
-  margin: 0 0 clamp(34px, 5vw, 64px);
+  margin: 0 0 clamp(32px, 4.5vw, 58px);
   color: #fff;
+  text-align: center;
   text-shadow: 0 18px 42px rgba(0, 0, 0, 0.62);
 }
 
@@ -978,21 +1089,24 @@
   width: min(1040px, 100%);
   max-width: none;
   grid-template-columns: repeat(3, minmax(210px, 1fr));
-  gap: clamp(18px, 2vw, 24px);
+  gap: clamp(14px, 1.8vw, 22px);
   text-align: left;
 }
 
 .booking .contact-card {
-  --contact-start-x: calc(-50vw - 360px);
-  --contact-start-y: 0px;
-  --contact-mid-x: 0px;
+  --contact-accent: rgba(255, 255, 255, 0.88);
+  --contact-soft: rgba(255, 255, 255, 0.18);
   display: block;
   min-width: 0;
   padding: 0;
   border: 0;
-  border-radius: 28px;
+  border-radius: 0;
   background: transparent;
+  color: #fff;
   box-shadow: none;
+  outline-offset: 8px;
+  text-decoration: none;
+  transform: none;
 }
 
 .booking .contact-card:hover,
@@ -1001,56 +1115,91 @@
   border-color: transparent;
   background: transparent;
   box-shadow: none;
+  transform: none;
 }
 
 .booking .contact-card-inner {
   position: relative;
-  display: flex;
-  min-height: 88px;
-  overflow: hidden;
+  display: grid;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 78px;
+  margin: 0 auto;
+  overflow: visible;
   align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 21px 24px 21px 28px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 28px;
-  background:
-    radial-gradient(circle at 84% 18%, rgba(255, 255, 255, 0.18), transparent 34%),
-    rgba(10, 10, 12, 0.48);
-  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.36), inset 0 1px rgba(255, 255, 255, 0.16);
+  grid-template-columns: max-content minmax(0, max-content);
+  justify-content: center;
+  gap: clamp(22px, 2vw, 32px);
+  padding: 19px 0 19px clamp(28px, 4vw, 42px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   transform-origin: center;
   will-change: auto;
-  backdrop-filter: blur(18px) saturate(1.18);
-  -webkit-backdrop-filter: blur(18px) saturate(1.18);
-  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .booking .contact-card-inner::before {
   position: absolute;
-  left: 15px;
+  left: 0;
   top: 50%;
-  width: 8px;
-  height: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.54);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  width: clamp(16px, 2.7vw, 34px);
+  height: 1px;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(90deg, var(--contact-accent), rgba(255, 255, 255, 0));
   content: "";
-  transform: translateY(-50%);
+  opacity: 0.56;
+  transform: translateY(-50%) scaleX(0.58);
+  transform-origin: left center;
+  transition: opacity 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.booking .contact-card-inner::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--contact-soft), rgba(255, 255, 255, 0));
+  content: "";
+  opacity: 0.38;
+  transform: scaleX(0.86);
+  transition: opacity 220ms ease, transform 220ms ease;
 }
 
 .booking .contact-card:hover .contact-card-inner,
 .booking .contact-card:focus-visible .contact-card-inner,
 .booking .contact-card.is-hovered .contact-card-inner {
-  border-color: rgba(255, 255, 255, 0.42);
-  background: var(--contact-fill);
-  filter: brightness(1.08) saturate(1.08);
-  box-shadow: 0 28px 68px rgba(0, 0, 0, 0.48), 0 0 34px var(--contact-glow);
+  border-color: transparent;
+  background: transparent;
+  filter: none;
+  box-shadow: none;
+  text-shadow: none;
+  transform: none;
+}
+
+.booking .contact-card.is-active .contact-card-inner::before {
+  opacity: 1;
+  box-shadow: 0 0 20px var(--contact-soft);
+  transform: translateY(-50%) scaleX(1);
+}
+
+.booking .contact-card.is-active .contact-card-inner::after {
+  opacity: 0.78;
+  transform: scaleX(1);
+}
+
+.booking .contact-card:focus-visible {
+  outline: 2px solid var(--contact-accent);
 }
 
 .booking .contact-card strong {
   margin-bottom: 0;
   color: #fff;
-  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  font-size: clamp(1.1rem, 1.35vw, 1.28rem);
   letter-spacing: 0;
   white-space: nowrap;
 }
@@ -1058,88 +1207,81 @@
 .booking .contact-card span {
   min-width: 0;
   color: rgba(255, 255, 255, 0.78);
-  font-size: 0.82rem;
+  font-size: 0.94rem;
   line-height: 1.35;
-  text-align: right;
+  justify-self: start;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.booking .contact-card:hover strong,
+.booking .contact-card:focus-visible strong,
+.booking .contact-card:hover span,
+.booking .contact-card:focus-visible span,
+.booking .contact-card.is-active strong {
+  color: var(--contact-accent);
+}
+
+.booking .contact-card.contact-email {
+  --contact-accent: #ffb15c;
+  --contact-soft: rgba(255, 177, 92, 0.28);
+}
+
+.booking .contact-card.contact-github {
+  --contact-accent: #b79cff;
+  --contact-soft: rgba(183, 156, 255, 0.28);
+}
+
+.booking .contact-card.contact-bilibili {
+  --contact-accent: #ff8fb1;
+  --contact-soft: rgba(255, 143, 177, 0.3);
+}
+
+.booking .contact-card.contact-xiaohongshu {
+  --contact-accent: #ff6376;
+  --contact-soft: rgba(255, 99, 118, 0.3);
+}
+
+.booking .contact-card.contact-douyin {
+  --contact-accent: #77f8ff;
+  --contact-soft: rgba(119, 248, 255, 0.28);
 }
 
 .booking .contact-card.contact-qq {
-  --contact-fill: linear-gradient(135deg, #17b879, #0b4233);
-  --contact-glow: rgba(109, 255, 174, 0.34);
+  --contact-accent: #73e6a6;
+  --contact-soft: rgba(115, 230, 166, 0.28);
 }
 
-.booking .contact-card:nth-child(1) {
-  --contact-start-x: calc(-50vw - 380px);
+.booking.is-contact-ring-ready .contact-grid {
+  display: block;
+  width: min(720px, 100%);
+  min-height: 104px;
 }
 
-.booking .contact-card:nth-child(2) {
-  --contact-start-x: calc(50vw + 380px);
+.booking.is-contact-ring-ready .contact-card {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, 28px, 0) scale(0.96);
+  will-change: transform, opacity;
 }
 
-.booking .contact-card:nth-child(3) {
-  --contact-start-x: calc(-50vw - 380px);
+.booking.is-contact-ring-ready .contact-card.is-active {
+  pointer-events: auto;
 }
 
-.booking .contact-card:nth-child(4) {
-  --contact-start-x: calc(50vw + 380px);
+.booking.is-contact-ring-ready .contact-card-inner {
+  min-height: 104px;
+  background: transparent;
 }
 
-.booking .contact-card:nth-child(5) {
-  --contact-start-x: calc(-50vw - 380px);
+.booking.is-contact-ring-ready .contact-card strong {
+  font-size: clamp(1.22rem, 1.9vw, 1.54rem);
 }
 
-.booking .contact-card:nth-child(6) {
-  --contact-start-x: calc(50vw + 380px);
-}
-
-@keyframes contactTagScrollReveal {
-  0% {
-    opacity: 0;
-    transform: translate3d(var(--contact-start-x), var(--contact-start-y), 0) scale(0.58);
-  }
-
-  64% {
-    opacity: 0.92;
-    transform: translate3d(0, 0, 0) scale(1.035);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@supports (animation-timeline: view()) {
-  .booking .contact-card-inner {
-    opacity: 0;
-    animation-name: contactTagScrollReveal;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-fill-mode: both;
-    animation-timeline: --contact-reveal;
-    animation-range: entry 0% cover 78%;
-    will-change: opacity, transform;
-  }
-
-  .booking .contact-card:nth-child(2) .contact-card-inner {
-    animation-range: entry 2% cover 79%;
-  }
-
-  .booking .contact-card:nth-child(3) .contact-card-inner {
-    animation-range: entry 4% cover 80%;
-  }
-
-  .booking .contact-card:nth-child(4) .contact-card-inner {
-    animation-range: entry 6% cover 81%;
-  }
-
-  .booking .contact-card:nth-child(5) .contact-card-inner {
-    animation-range: entry 8% cover 82%;
-  }
-
-  .booking .contact-card:nth-child(6) .contact-card-inner {
-    animation-range: entry 10% cover 82%;
-  }
+.booking.is-contact-ring-ready .contact-card span {
+  font-size: clamp(0.96rem, 1.18vw, 1.12rem);
 }
 
 @media (max-width: 1040px) {
@@ -1147,112 +1289,136 @@
     width: min(760px, 100%);
     grid-template-columns: repeat(2, minmax(220px, 1fr));
   }
+
+  .booking.is-contact-ring-ready .contact-grid {
+    width: min(560px, 100%);
+  }
 }
 
 @media (max-width: 720px) {
   .booking.section-panel {
-    min-height: 128vh;
-    margin-top: 24px;
-    padding: 86px 20px 130px;
-    --contact-photo-position: 58% 50%;
-    justify-content: flex-start;
+    margin-top: -1px;
+  }
+
+  .contact-ring-content {
+    width: min(100% - 36px, 430px);
+    min-height: 100vh;
+    padding: 72px 0 118px;
+  }
+
+  .contact-ring-vignette {
+    background:
+      radial-gradient(circle at 50% 44%, transparent 0 10rem, rgba(0, 0, 0, 0.22) 18rem, rgba(0, 0, 0, 0.86) 42rem),
+      linear-gradient(180deg, #050505 0%, rgba(5, 5, 5, 0.34) 22%, rgba(0, 0, 0, 0.2) 54%, rgba(0, 0, 0, 0.82) 100%);
   }
 
   .booking h2 {
+    margin-bottom: 26px;
     font-size: clamp(2.65rem, 14vw, 3.35rem);
   }
 
-  .booking .contact-grid {
+  .booking .contact-grid,
+  .booking.is-contact-ring-ready .contact-grid {
     width: min(420px, 100%);
     grid-template-columns: 1fr;
     gap: 14px;
   }
 
-  .booking .contact-card-inner {
-    min-height: 82px;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    padding: 17px 22px 17px 27px;
-    border-radius: 30px;
+  .booking.is-contact-ring-ready .contact-grid {
+    min-height: 116px;
   }
 
-  .booking .contact-card span {
-    font-size: 0.84rem;
+  .booking .contact-card-inner,
+  .booking.is-contact-ring-ready .contact-card-inner {
+    min-height: 92px;
+    align-items: center;
+    grid-template-columns: max-content minmax(0, max-content);
+    gap: 14px;
+    padding: 17px 0 17px 30px;
+    border-radius: 0;
+  }
+
+  .booking .contact-card span,
+  .booking.is-contact-ring-ready .contact-card span {
+    font-size: 0.9rem;
+    justify-self: start;
     text-align: left;
-  }
-
-  .booking .contact-card:nth-child(odd) {
-    --contact-start-x: calc(-100vw - 240px);
-  }
-
-  .booking .contact-card:nth-child(even) {
-    --contact-start-x: calc(100vw + 240px);
-  }
-
-  @supports (animation-timeline: view()) {
-    .booking .contact-card-inner,
-    .booking .contact-card:nth-child(2) .contact-card-inner,
-    .booking .contact-card:nth-child(3) .contact-card-inner,
-    .booking .contact-card:nth-child(4) .contact-card-inner,
-    .booking .contact-card:nth-child(5) .contact-card-inner,
-    .booking .contact-card:nth-child(6) .contact-card-inner {
-      animation-range: entry 0% cover 80%;
-    }
   }
 }
 
 @media (max-width: 420px) {
-  .booking.section-panel {
-    padding: 62px 18px 118px;
+  .contact-ring-content {
+    width: min(100% - 28px, 360px);
+    padding: 58px 0 108px;
   }
 
   .booking h2 {
-    margin-bottom: 24px;
+    margin-bottom: 22px;
     font-size: clamp(2.28rem, 12vw, 2.65rem);
   }
 
-  .booking .contact-grid {
+  .booking .contact-grid,
+  .booking.is-contact-ring-ready .contact-grid {
     gap: 9px;
   }
 
-  .booking .contact-card-inner {
-    min-height: 68px;
-    gap: 3px;
-    padding: 13px 18px 13px 25px;
-    border-radius: 24px;
+  .booking .contact-card-inner,
+  .booking.is-contact-ring-ready .contact-card-inner {
+    min-height: 82px;
+    gap: 10px;
+    padding: 13px 0 13px 26px;
+    border-radius: 0;
   }
 
-  .booking .contact-card strong {
-    font-size: 0.94rem;
+  .booking .contact-card strong,
+  .booking.is-contact-ring-ready .contact-card strong {
+    font-size: 1rem;
   }
 
-  .booking .contact-card span {
-    font-size: 0.78rem;
+  .booking .contact-card span,
+  .booking.is-contact-ring-ready .contact-card span {
+    font-size: 0.82rem;
     line-height: 1.25;
   }
 
   .booking .contact-card-inner::before {
-    left: 12px;
-    width: 7px;
-    height: 7px;
+    left: 0;
+    width: clamp(14px, 6vw, 24px);
+    height: 1px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .booking.section-panel {
+    min-height: auto;
+    --contact-landing-y: 0px !important;
+  }
+
+  .contact-ring-pin {
+    min-height: auto;
+  }
+
+  .contact-ring-content {
+    min-height: auto;
+    transform: none !important;
+  }
+
+  .contact-ring-stage,
+  .contact-ring-vignette {
+    transform: none !important;
+  }
+
+  .booking .contact-card,
   .booking .contact-card-inner {
     opacity: 1 !important;
     filter: none !important;
     animation: none !important;
-    transform: scale(1) !important;
+    transform: none !important;
     will-change: auto !important;
   }
 
-  .contact-photo-slice {
+  .booking h2 {
     opacity: 1 !important;
-    filter: blur(0) brightness(0.96) saturate(0.96) !important;
-    animation: none !important;
     transform: none !important;
     will-change: auto !important;
   }

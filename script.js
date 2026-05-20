@@ -7,6 +7,8 @@
   let stopLocationRotation = () => {};
   let startCarouselAnimation = () => {};
   let stopCarouselAnimation = () => {};
+  let startContactRingAnimation = () => {};
+  let stopContactRingAnimation = () => {};
   let cancelSmoothScroll = () => {};
 
   const parseCssTime = (value, fallback) => {
@@ -49,6 +51,10 @@
     Promise.allSettled(images.map(decodeImage)),
     wait(timeout),
   ]);
+
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  const lerp = (start, end, amount) => start + (end - start) * amount;
+  const easeOutCubic = (value) => 1 - Math.pow(1 - clamp(value, 0, 1), 3);
 
   const getTarget = (selector) => {
     if (!selector || selector === "#") return null;
@@ -565,7 +571,7 @@
 
   const initInteractiveHover = () => {
     const hoverItems = document.querySelectorAll(
-      ".call-button, .small-call, .product-btn, .contact-card"
+      ".product-btn"
     );
     if (hoverItems.length === 0) return;
 
@@ -768,6 +774,740 @@
     });
   };
 
+  const initBlogSequence = () => {
+    const section = document.querySelector("#blog");
+    const sequence = section?.querySelector("[data-blog-sequence]");
+    const gsapRuntime = window.gsap;
+    const ScrollTriggerRuntime = window.ScrollTrigger;
+    if (!section || !sequence || !gsapRuntime || !ScrollTriggerRuntime) return;
+    if (typeof gsapRuntime.matchMedia !== "function") return;
+
+    const pin = sequence.querySelector(".blog-sequence-pin");
+    const frame = sequence.querySelector(".blog-sequence-frame");
+    const slides = [...sequence.querySelectorAll(".blog-sequence-slide")];
+    const cues = [...sequence.querySelectorAll(".blog-sequence-cue")];
+    const keyhole = sequence.querySelector(".blog-keyhole");
+    const corners = {
+      topLeft: sequence.querySelector(".blog-keyhole-corner.top-left"),
+      topRight: sequence.querySelector(".blog-keyhole-corner.top-right"),
+      bottomLeft: sequence.querySelector(".blog-keyhole-corner.bottom-left"),
+      bottomRight: sequence.querySelector(".blog-keyhole-corner.bottom-right"),
+    };
+    const progressFill = sequence.querySelector(".blog-sequence-progress-fill");
+    const markers = [...sequence.querySelectorAll(".blog-sequence-marker")];
+    if (!pin || !frame || slides.length === 0 || cues.length === 0 || !keyhole) return;
+    if (Object.values(corners).some((corner) => !corner)) return;
+    if (!progressFill || markers.length !== slides.length) return;
+
+    const timelineDuration = Math.max(Number.parseFloat(sequence.dataset.duration) || slides.length * 2, 1);
+    const desktopQuery = "(min-width: 721px) and (prefers-reduced-motion: no-preference)";
+    const defaultWindowDuration = timelineDuration / Math.max(slides.length, 1);
+    const keyholeInner = 76;
+    const keyholeOuter = 100 - keyholeInner;
+    const collapsedKeyhole = [
+      "0% 0%", "0% 100%", `${keyholeOuter}% 100%`, `${keyholeOuter}% ${keyholeOuter}%`,
+      `${keyholeInner}% ${keyholeOuter}%`, `${keyholeInner}% ${keyholeInner}%`,
+      `${keyholeOuter}% ${keyholeInner}%`, `${keyholeOuter}% 100%`,
+      "100% 100%", "100% 0%",
+    ].join(",");
+    const revealedKeyhole = [
+      "0% 0%", "0% 100%", "0% 100%", "0% 0%",
+      "100% 0%", "100% 100%", "0% 100%", "0% 100%",
+      "100% 100%", "100% 0%",
+    ].join(",");
+
+    const getCueWindow = (element, fallbackStart, fallbackEnd) => {
+      const start = Number.parseFloat(element.dataset.start);
+      const end = Number.parseFloat(element.dataset.end);
+      return {
+        start: Number.isFinite(start) ? start : fallbackStart,
+        end: Number.isFinite(end) ? end : fallbackEnd,
+      };
+    };
+
+    const slideWindows = slides.map((slide, index) => (
+      getCueWindow(
+        slide,
+        index * defaultWindowDuration,
+        Math.min((index + 1) * defaultWindowDuration, timelineDuration)
+      )
+    ));
+    const cueWindows = cues.map((cue, index) => (
+      getCueWindow(cue, slideWindows[index]?.start ?? 0, slideWindows[index]?.end ?? timelineDuration)
+    ));
+
+    let sequenceImagesWarmed = false;
+    let sequencePrewarmObserver = null;
+    let sequencePrewarmIdle = 0;
+    let sequencePrewarmUsesTimeout = false;
+    let sequencePrewarmIndex = 0;
+
+    const runWhenIdle = (callback, timeout = 1200) => {
+      if ("requestIdleCallback" in window) {
+        sequencePrewarmUsesTimeout = false;
+        return window.requestIdleCallback(callback, { timeout });
+      }
+
+      sequencePrewarmUsesTimeout = true;
+      return window.setTimeout(callback, Math.min(timeout, 180));
+    };
+
+    const prewarmNextSequenceImage = () => {
+      if (sequencePrewarmIndex >= slides.length) {
+        sequencePrewarmIdle = 0;
+        return;
+      }
+
+      const slide = slides[sequencePrewarmIndex];
+      sequencePrewarmIndex += 1;
+      const src = slide.dataset.src;
+      if (src && slide.getAttribute("src") !== src) {
+        slide.loading = "eager";
+        slide.decoding = "async";
+        if ("fetchPriority" in slide) slide.fetchPriority = "low";
+        slide.src = src;
+      }
+
+      const scheduleNext = () => {
+        sequencePrewarmIdle = runWhenIdle(prewarmNextSequenceImage, 900);
+      };
+
+      decodeImage(slide).finally(scheduleNext);
+    };
+
+    const warmSequenceImages = () => {
+      if (sequenceImagesWarmed) return;
+      sequenceImagesWarmed = true;
+      sequencePrewarmObserver?.disconnect();
+      sequencePrewarmObserver = null;
+
+      sequencePrewarmIndex = 0;
+      prewarmNextSequenceImage();
+    };
+
+    const cancelSequenceImagePrewarm = () => {
+      sequencePrewarmObserver?.disconnect();
+      sequencePrewarmObserver = null;
+      if (!sequencePrewarmIdle) return;
+      if (sequencePrewarmUsesTimeout) {
+        window.clearTimeout(sequencePrewarmIdle);
+      } else if ("cancelIdleCallback" in window) {
+        window.cancelIdleCallback(sequencePrewarmIdle);
+      }
+      sequencePrewarmIdle = 0;
+      sequencePrewarmIndex = 0;
+    };
+
+    const queueSequenceImagePrewarm = () => {
+      if (sequenceImagesWarmed) return;
+
+      if ("IntersectionObserver" in window) {
+        if (!sequencePrewarmObserver) {
+          sequencePrewarmObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) warmSequenceImages();
+          }, { rootMargin: "2400px 0px" });
+          sequencePrewarmObserver.observe(section);
+        }
+        return;
+      }
+
+      if (sequencePrewarmIdle) return;
+      sequencePrewarmIdle = runWhenIdle(() => {
+        sequencePrewarmIdle = 0;
+        warmSequenceImages();
+      }, 1800);
+    };
+
+    let activeCueStateIndex = -2;
+    let activeMarkerStateIndex = -2;
+
+    const resetActiveState = () => {
+      cues.forEach((cue) => {
+        cue.classList.remove("is-active");
+        cue.removeAttribute("aria-current");
+        cue.removeAttribute("tabindex");
+      });
+      markers.forEach((marker) => marker.classList.remove("is-active"));
+      progressFill.style.removeProperty("transform");
+      activeCueStateIndex = -2;
+      activeMarkerStateIndex = -2;
+    };
+
+    const setActiveState = (progress) => {
+      const clampedProgress = clamp(progress, 0, 1);
+      const currentTime = clampedProgress * timelineDuration;
+      progressFill.style.setProperty("transform", `scaleX(${clampedProgress})`);
+
+      const activeCueIndex = slideWindows.findIndex((slideWindow, index) => (
+        currentTime >= slideWindow.start
+        && (currentTime < slideWindow.end || (index === slideWindows.length - 1 && clampedProgress >= 1))
+      ));
+
+      const activeMarkerIndex = slideWindows.findIndex((slideWindow, index) => (
+        currentTime >= slideWindow.start
+        && (currentTime < slideWindow.end || (index === slideWindows.length - 1 && clampedProgress >= 1))
+      ));
+
+      if (activeCueIndex !== activeCueStateIndex) {
+        cues.forEach((cue, index) => {
+          const isActive = index === activeCueIndex;
+          cue.classList.toggle("is-active", isActive);
+          cue.tabIndex = isActive ? 0 : -1;
+          if (isActive) {
+            cue.setAttribute("aria-current", "true");
+          } else {
+            cue.removeAttribute("aria-current");
+          }
+        });
+        activeCueStateIndex = activeCueIndex;
+      }
+
+      if (activeMarkerIndex !== activeMarkerStateIndex) {
+        markers.forEach((marker, index) => {
+          marker.classList.toggle("is-active", index === activeMarkerIndex);
+        });
+        activeMarkerStateIndex = activeMarkerIndex;
+      }
+    };
+
+    gsapRuntime.registerPlugin(ScrollTriggerRuntime);
+
+    const media = gsapRuntime.matchMedia();
+    media.add(desktopQuery, () => {
+      section.classList.add("is-blog-sequence-ready");
+      queueSequenceImagePrewarm();
+
+      const context = gsapRuntime.context(() => {
+        gsapRuntime.set(pin, { autoAlpha: 0 });
+        gsapRuntime.set(slides, { autoAlpha: 0, scale: 1, force3D: true });
+        gsapRuntime.set(cues, { autoAlpha: 0, y: 26, force3D: true });
+        gsapRuntime.set(keyhole, { clipPath: `polygon(${collapsedKeyhole})` });
+        gsapRuntime.set(corners.topLeft, { top: `${keyholeOuter}%`, left: `${keyholeOuter}%` });
+        gsapRuntime.set(corners.topRight, { top: `${keyholeOuter}%`, left: `${keyholeInner}%` });
+        gsapRuntime.set(corners.bottomLeft, { top: `${keyholeInner}%`, left: `${keyholeOuter}%` });
+        gsapRuntime.set(corners.bottomRight, { top: `${keyholeInner}%`, left: `${keyholeInner}%` });
+
+        const timeline = gsapRuntime.timeline({
+          defaults: { ease: "none" },
+          scrollTrigger: {
+            trigger: sequence,
+            pin,
+            start: "top 12%",
+            end: () => `+=${Math.max(window.innerHeight * 1.54, frame.offsetHeight * 1.68)}`,
+            scrub: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onEnter: warmSequenceImages,
+            onEnterBack: warmSequenceImages,
+            onUpdate: (self) => setActiveState(self.progress),
+            onRefresh: (self) => setActiveState(self.progress),
+          },
+        });
+
+        const slideInDuration = Math.min(defaultWindowDuration * 0.3, 0.6);
+        const firstSlideInDuration = Math.min(defaultWindowDuration * 0.46, 0.92);
+        const slideOutDuration = Math.min(defaultWindowDuration * 0.28, 0.56);
+        const slideOutLead = Math.min(defaultWindowDuration * 0.24, 0.48);
+        const cueTransitionDuration = Math.min(defaultWindowDuration * 0.24, 0.48);
+        const firstCueTransitionDuration = Math.min(defaultWindowDuration * 0.36, 0.72);
+        const finalExitDuration = Math.min(defaultWindowDuration * 0.56, 1.12);
+        const finalExitStart = Math.max(timelineDuration - finalExitDuration, 0);
+        const keyholeExitDuration = Math.min(finalExitDuration * 0.55, 0.62);
+        const keyholeExitStart = Math.max(timelineDuration - keyholeExitDuration, finalExitStart);
+
+        timeline
+          .to(pin, { autoAlpha: 1, duration: 0.7, ease: "power1.out" }, 0)
+          .to(keyhole, { clipPath: `polygon(${revealedKeyhole})`, duration: 0.9 }, 0)
+          .to(corners.topLeft, { top: "0%", left: "0%", duration: 0.9 }, 0)
+          .to(corners.topRight, { top: "0%", left: "100%", duration: 0.9 }, 0)
+          .to(corners.bottomLeft, { top: "100%", left: "0%", duration: 0.9 }, 0)
+          .to(corners.bottomRight, { top: "100%", left: "100%", duration: 0.9 }, 0)
+          .to(pin, { autoAlpha: 0, duration: finalExitDuration, ease: "power1.inOut" }, finalExitStart)
+          .to(frame, { "--blog-frame-exit-y": "-180px", duration: finalExitDuration, ease: "power2.inOut" }, finalExitStart)
+          .to(keyhole, { clipPath: `polygon(${collapsedKeyhole})`, duration: keyholeExitDuration }, keyholeExitStart)
+          .to(corners.topLeft, { top: `${keyholeOuter}%`, left: `${keyholeOuter}%`, duration: keyholeExitDuration }, keyholeExitStart)
+          .to(corners.topRight, { top: `${keyholeOuter}%`, left: `${keyholeInner}%`, duration: keyholeExitDuration }, keyholeExitStart)
+          .to(corners.bottomLeft, { top: `${keyholeInner}%`, left: `${keyholeOuter}%`, duration: keyholeExitDuration }, keyholeExitStart)
+          .to(corners.bottomRight, { top: `${keyholeInner}%`, left: `${keyholeInner}%`, duration: keyholeExitDuration }, keyholeExitStart);
+
+        slides.forEach((slide, index) => {
+          const slideWindow = slideWindows[index];
+          timeline.to(slide, {
+            autoAlpha: 1,
+            scale: 1,
+            duration: index === 0 ? firstSlideInDuration : slideInDuration,
+            ease: "power2.out",
+          }, slideWindow.start);
+
+          if (index < slides.length - 1) {
+            timeline.to(slide, {
+              autoAlpha: 0,
+              scale: 1,
+              duration: slideOutDuration,
+              ease: "power1.inOut",
+            }, Math.max(slideWindow.start, slideWindow.end - slideOutLead));
+          }
+        });
+
+        cues.forEach((cue, index) => {
+          const cueWindow = cueWindows[index];
+          const cueInDuration = index === 0 ? firstCueTransitionDuration : cueTransitionDuration;
+          timeline
+            .to(cue, {
+              autoAlpha: 1,
+              y: 0,
+              duration: cueInDuration,
+              ease: "power2.out",
+            }, cueWindow.start)
+            .to(cue, {
+              autoAlpha: 0,
+              y: -24,
+              duration: cueTransitionDuration,
+              ease: "power1.inOut",
+            }, Math.max(cueWindow.start, cueWindow.end - cueTransitionDuration));
+        });
+
+        setActiveState(0);
+      }, section);
+
+      return () => {
+        context.revert();
+        section.classList.remove("is-blog-sequence-ready");
+        cancelSequenceImagePrewarm();
+        resetActiveState();
+      };
+    });
+  };
+
+  const initContactRing = () => {
+    const section = document.querySelector("#contact");
+    const stage = section?.querySelector("[data-contact-ring]");
+    const pin = section?.querySelector(".contact-ring-pin");
+    const cards = section ? [...section.querySelectorAll("[data-contact-step]")] : [];
+    const title = section?.querySelector("#contact-title");
+    const gsapRuntime = window.gsap;
+    const ScrollTriggerRuntime = window.ScrollTrigger;
+    const ThreeRuntime = window.THREE;
+    if (!section || !stage || !pin || cards.length === 0) return;
+    if (!gsapRuntime || !ScrollTriggerRuntime || !ThreeRuntime) return;
+    if (typeof gsapRuntime.matchMedia !== "function") return;
+
+    const imagePaths = (stage.dataset.images || "")
+      .split(",")
+      .map((path) => path.trim())
+      .filter(Boolean);
+    if (imagePaths.length === 0) return;
+
+    gsapRuntime.registerPlugin(ScrollTriggerRuntime);
+
+    const scene = new ThreeRuntime.Scene();
+    const camera = new ThreeRuntime.PerspectiveCamera(42, 1, 0.1, 140);
+    let renderer = null;
+    try {
+      renderer = new ThreeRuntime.WebGLRenderer({
+        antialias: true,
+        alpha: false,
+        powerPreference: "high-performance",
+      });
+    } catch {
+      section.classList.add("is-contact-ring-static", "is-contact-ring-unavailable");
+      return;
+    }
+    renderer.setClearColor(0x050505, 1);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+    if ("outputColorSpace" in renderer && ThreeRuntime.SRGBColorSpace) {
+      renderer.outputColorSpace = ThreeRuntime.SRGBColorSpace;
+    } else if ("outputEncoding" in renderer && ThreeRuntime.sRGBEncoding) {
+      renderer.outputEncoding = ThreeRuntime.sRGBEncoding;
+    }
+    stage.appendChild(renderer.domElement);
+
+    const rootGroup = new ThreeRuntime.Group();
+    scene.add(rootGroup);
+
+    const ringSpecs = [
+      { count: 12, radius: 5.4, size: 1.26, opacity: 0.92 },
+      { count: 18, radius: 8.55, size: 1.46, opacity: 0.82 },
+      { count: 24, radius: 11.85, size: 1.68, opacity: 0.7 },
+    ];
+    const rings = [];
+    const ringMaterials = [];
+    const materialsByPath = new Map();
+    let imageIndex = 0;
+
+    ringSpecs.forEach((spec, ringIndex) => {
+      const ring = new ThreeRuntime.Group();
+      ring.userData.baseRotation = ringIndex * 0.22;
+      rootGroup.add(ring);
+      rings.push(ring);
+
+      for (let index = 0; index < spec.count; index += 1) {
+        const path = imagePaths[imageIndex % imagePaths.length];
+        imageIndex += 1;
+
+        const pivot = new ThreeRuntime.Group();
+        const angle = (index / spec.count) * Math.PI * 2;
+        pivot.rotation.z = angle;
+        ring.add(pivot);
+
+        const geometry = new ThreeRuntime.PlaneGeometry(spec.size, spec.size);
+        const material = new ThreeRuntime.MeshBasicMaterial({
+          color: 0x252525,
+          opacity: 0,
+          side: ThreeRuntime.DoubleSide,
+          transparent: true,
+        });
+        material.userData.baseOpacity = spec.opacity;
+        const mesh = new ThreeRuntime.Mesh(geometry, material);
+        mesh.position.x = spec.radius;
+        mesh.rotation.z = -Math.PI / 2;
+        pivot.add(mesh);
+        ringMaterials.push(material);
+
+        if (!materialsByPath.has(path)) materialsByPath.set(path, []);
+        materialsByPath.get(path).push(material);
+      }
+    });
+
+    const textureLoader = new ThreeRuntime.TextureLoader();
+    let texturesStarted = false;
+    let textureObserver = null;
+
+    const applySquareCrop = (texture) => {
+      const image = texture.image || {};
+      const width = image.naturalWidth || image.videoWidth || image.width || 1;
+      const height = image.naturalHeight || image.videoHeight || image.height || 1;
+      const aspect = width / height;
+
+      texture.center.set(0.5, 0.5);
+      if (aspect > 1) {
+        texture.repeat.set(1 / aspect, 1);
+      } else {
+        texture.repeat.set(1, aspect);
+      }
+      texture.offset.set((1 - texture.repeat.x) / 2, (1 - texture.repeat.y) / 2);
+      if ("colorSpace" in texture && ThreeRuntime.SRGBColorSpace) {
+        texture.colorSpace = ThreeRuntime.SRGBColorSpace;
+      } else if ("encoding" in texture && ThreeRuntime.sRGBEncoding) {
+        texture.encoding = ThreeRuntime.sRGBEncoding;
+      }
+      texture.needsUpdate = true;
+    };
+
+    let currentRingProgress = 0;
+    const renderContactRing = (progress = currentRingProgress) => {
+      if (Number.isFinite(progress)) currentRingProgress = clamp(progress, 0, 1);
+      const width = stage.clientWidth || window.innerWidth || 1;
+      const isCompact = width <= 720;
+      const entry = easeOutCubic(clamp(currentRingProgress / 0.34, 0, 1));
+      const sequence = easeOutCubic(currentRingProgress);
+      const entryOpacity = clamp((currentRingProgress - 0.015) / 0.22, 0, 1);
+      const scale = lerp(isCompact ? 0.28 : 0.24, isCompact ? 0.74 : 0.98, entry);
+
+      rootGroup.scale.setScalar(scale);
+      rootGroup.rotation.z = lerp(-0.58, 0.36, sequence);
+      rings.forEach((ring, index) => {
+        const direction = index % 2 === 0 ? 1 : -1;
+        const turn = currentRingProgress * Math.PI * (isCompact ? 2.45 : 3.25) * (1 + index * 0.24);
+        const ringScale = lerp(0.56 + index * 0.05, 1, entry);
+        ring.rotation.z = ring.userData.baseRotation + direction * turn;
+        ring.position.z = lerp(18 + index * 4.6, -index * 0.8, entry);
+        ring.scale.setScalar(ringScale);
+        ring.visible = !isCompact || index < 2;
+      });
+
+      ringMaterials.forEach((material) => {
+        material.opacity = (material.userData.baseOpacity || 1) * entryOpacity;
+        material.needsUpdate = true;
+      });
+
+      renderer.render(scene, camera);
+    };
+
+    const resizeRenderer = () => {
+      const width = Math.max(stage.clientWidth || window.innerWidth || 1, 1);
+      const height = Math.max(stage.clientHeight || window.innerHeight || 1, 1);
+      const isCompact = width <= 720;
+
+      renderer.setSize(width, height, false);
+      camera.aspect = width / height;
+      camera.fov = isCompact ? 48 : 42;
+      camera.position.set(0, 0, isCompact ? 17.5 : 18.5);
+      camera.updateProjectionMatrix();
+      renderContactRing();
+    };
+
+    const loadTexturesOnce = () => {
+      if (texturesStarted) return;
+      texturesStarted = true;
+      textureObserver?.disconnect();
+
+      imagePaths.forEach((path) => {
+        textureLoader.load(
+          path,
+          (texture) => {
+            applySquareCrop(texture);
+            const materials = materialsByPath.get(path) || [];
+            materials.forEach((material) => {
+              material.map = texture;
+              material.color.set(0xffffff);
+              material.needsUpdate = true;
+            });
+            renderContactRing();
+          },
+          undefined,
+          () => {}
+        );
+      });
+    };
+
+    const queueTextureLoading = () => {
+      if (texturesStarted) return;
+      if ("IntersectionObserver" in window) {
+        textureObserver = new IntersectionObserver((entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) loadTexturesOnce();
+        }, { rootMargin: "600px 0px" });
+        textureObserver.observe(section);
+        return;
+      }
+
+      const idle = window.requestIdleCallback || ((callback) => window.setTimeout(callback, 1200));
+      idle(loadTexturesOnce);
+    };
+
+    const originalTabIndex = new Map();
+    cards.forEach((card) => {
+      originalTabIndex.set(card, card.getAttribute("tabindex"));
+    });
+
+    const setCardFocusable = (card, isFocusable) => {
+      if (!card.matches("a, button, input, select, textarea, [tabindex]")) return;
+      if (isFocusable) {
+        const value = originalTabIndex.get(card);
+        if (value === null) {
+          card.removeAttribute("tabindex");
+        } else {
+          card.setAttribute("tabindex", value);
+        }
+        return;
+      }
+
+      card.setAttribute("tabindex", "-1");
+    };
+
+    const restoreCards = () => {
+      cards.forEach((card) => {
+        card.classList.remove("is-active");
+        card.removeAttribute("aria-hidden");
+        setCardFocusable(card, true);
+      });
+    };
+
+    const setActiveCard = (progress, hasVisibleCard = true) => {
+      const activeIndex = clamp(Math.floor(progress * cards.length), 0, cards.length - 1);
+      cards.forEach((card, index) => {
+        const isActive = hasVisibleCard && index === activeIndex;
+        card.classList.toggle("is-active", isActive);
+        card.setAttribute("aria-hidden", isActive ? "false" : "true");
+        setCardFocusable(card, isActive);
+      });
+    };
+
+    const easeInOutSine = (value) => {
+      const amount = clamp(value, 0, 1);
+      return 0.5 - Math.cos(amount * Math.PI) / 2;
+    };
+
+    const resetLandingOffset = () => {
+      section.style.setProperty("--contact-landing-y", "0px");
+    };
+
+    const updateLandingOffset = () => {
+      const viewportHeight = window.innerHeight || 1;
+      const viewportWidth = stage.clientWidth || window.innerWidth || 1;
+      const entryDistance = Math.max(viewportHeight * 1.08, 1);
+      const sectionTop = section.getBoundingClientRect().top;
+      const rawProgress = clamp((entryDistance - sectionTop) / entryDistance, 0, 1);
+      const settleProgress = easeOutCubic(clamp((rawProgress - 0.02) / 0.98, 0, 1));
+      const lift = Math.min(viewportHeight * 0.14, viewportWidth <= 720 ? 72 : 118);
+      const offset = -lift * (1 - settleProgress);
+      section.style.setProperty("--contact-landing-y", `${offset.toFixed(2)}px`);
+    };
+
+    const softenContactProgress = (progress) => {
+      const amount = clamp(progress, 0, 1);
+      const landingBand = 0.28;
+      if (amount >= landingBand) return amount;
+      const easedLanding = landingBand * easeInOutSine(clamp(amount / landingBand, 0, 1));
+      return lerp(amount, easedLanding, 0.52);
+    };
+
+    let context = null;
+
+    const showStaticContactRing = () => {
+      section.classList.remove("is-contact-ring-ready");
+      section.classList.add("is-contact-ring-static");
+      resetLandingOffset();
+      restoreCards();
+      renderContactRing(0.72);
+    };
+
+    const stopPinnedContactRing = () => {
+      if (context) {
+        context.revert();
+        context = null;
+      }
+      section.classList.remove("is-contact-ring-ready");
+      resetLandingOffset();
+      restoreCards();
+      renderContactRing(0.72);
+      ScrollTriggerRuntime.refresh();
+    };
+
+    const startPinnedContactRing = () => {
+      if (context) return;
+      if (prefersReducedMotion()) {
+        stopPinnedContactRing();
+        showStaticContactRing();
+        return;
+      }
+
+      section.classList.remove("is-contact-ring-static");
+      section.classList.add("is-contact-ring-ready");
+
+      context = gsapRuntime.context(() => {
+        const introDuration = 0.78;
+        const firstCardStart = 0.24;
+        const totalTimelineDuration = introDuration + cards.length;
+        const syncActiveCard = (progress) => {
+          const time = clamp(progress, 0, 1) * totalTimelineDuration;
+          const cardProgress = clamp((time - introDuration) / cards.length, 0, 1);
+          setActiveCard(cardProgress, time >= firstCardStart);
+        };
+
+        if (title) gsapRuntime.set(title, { autoAlpha: 0, y: 38, scale: 0.985 });
+        gsapRuntime.set(cards, { autoAlpha: 0, y: 28, scale: 0.96 });
+        setActiveCard(0, false);
+
+        const getPinDistance = () => {
+          const isCompact = (stage.clientWidth || window.innerWidth || 0) <= 720;
+          const viewportDistance = window.innerHeight * (isCompact ? 3.75 : 5.05);
+          const cardDistance = (cards.length + 0.9) * (isCompact ? 300 : 430);
+          return Math.max(viewportDistance, cardDistance);
+        };
+
+        ScrollTriggerRuntime.create({
+          trigger: section,
+          start: "top 82%",
+          end: () => {
+            const isCompact = (stage.clientWidth || window.innerWidth || 0) <= 720;
+            const entryDistance = window.innerHeight * 0.74;
+            const motionDistance = getPinDistance() + entryDistance;
+            const minimumDistance = window.innerHeight * (isCompact ? 4.15 : 5.2);
+            return `+=${Math.max(motionDistance, minimumDistance)}`;
+          },
+          scrub: true,
+          invalidateOnRefresh: true,
+          onEnter: loadTexturesOnce,
+          onEnterBack: loadTexturesOnce,
+          onUpdate: (self) => {
+            renderContactRing(softenContactProgress(self.progress));
+            updateLandingOffset();
+          },
+          onRefresh: (self) => {
+            resizeRenderer();
+            renderContactRing(softenContactProgress(self.progress));
+            updateLandingOffset();
+          },
+        });
+
+        const timeline = gsapRuntime.timeline({
+          defaults: { ease: "none" },
+          scrollTrigger: {
+            trigger: section,
+            pin,
+            start: "top top",
+            end: () => `+=${getPinDistance()}`,
+            scrub: 0.18,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onEnter: loadTexturesOnce,
+            onEnterBack: loadTexturesOnce,
+            onUpdate: (self) => syncActiveCard(self.progress),
+            onRefresh: (self) => {
+              resizeRenderer();
+              updateLandingOffset();
+              syncActiveCard(self.progress);
+            },
+          },
+        });
+
+        if (title) {
+          timeline.to(title, {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.42,
+            ease: "power2.out",
+          }, 0);
+        }
+
+        timeline.to(cards[0], {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.38,
+          ease: "power2.out",
+        }, firstCardStart);
+
+        cards.forEach((card, index) => {
+          const start = index === 0 ? firstCardStart : introDuration + index;
+          if (index > 0) {
+            timeline.to(card, {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.36,
+              ease: "power2.out",
+            }, start);
+          }
+
+          if (index < cards.length - 1) {
+            const exitStart = index === 0 ? introDuration + 0.74 : start + 0.74;
+            timeline.to(card, {
+              autoAlpha: 0,
+              y: -28,
+              scale: 0.96,
+              duration: 0.34,
+              ease: "power1.inOut",
+            }, exitStart);
+          }
+        });
+      }, section);
+
+      ScrollTriggerRuntime.refresh();
+    };
+
+    resizeRenderer();
+    queueTextureLoading();
+    window.addEventListener("resize", () => {
+      resizeRenderer();
+      ScrollTriggerRuntime.refresh();
+    }, { passive: true });
+
+    startContactRingAnimation = startPinnedContactRing;
+    stopContactRingAnimation = () => {
+      stopPinnedContactRing();
+      showStaticContactRing();
+    };
+
+    if (prefersReducedMotion()) {
+      showStaticContactRing();
+    } else {
+      startPinnedContactRing();
+    }
+  };
+
   const initCarousel = () => {
     const carouselWindows = Array.from(document.querySelectorAll(".carousel-window"));
     if (carouselWindows.length === 0) return;
@@ -940,6 +1680,8 @@
   initDock();
   initInteractiveHover();
   initLocationRotation();
+  initBlogSequence();
+  initContactRing();
   initHashScroll();
   initCarousel();
 
@@ -947,9 +1689,12 @@
     if (event.matches) {
       stopLocationRotation();
       stopCarouselAnimation();
+      stopContactRingAnimation();
       cancelSmoothScroll();
       return;
     }
+
+    startContactRingAnimation();
 
     const startPostEntranceMotion = () => {
       startLocationRotation();

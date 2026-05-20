@@ -9,8 +9,8 @@
     content="Personal portfolio of Shine Yuan (张晰元). Ph.D. student at ZJU-UIUC Institute, Zhejiang University. Research in Multimodal AI and AI for Science." />
   <link rel="icon" type="image/png" sizes="64x64" href="images/logo.png?v=20260518-tab-logo" />
   <link rel="preload" as="image" href="images/victorian-desk.png" />
-  <link rel="stylesheet" href="styles.css?v=20260518-top-glow-clear" />
-  <link rel="stylesheet" href="custom.css?v=20260518-top-glow-clear" />
+  <link rel="stylesheet" href="styles.css?v=20260520-load-cleanup" />
+  <link rel="stylesheet" href="custom.css?v=20260520-load-cleanup" />
 </head>
 
 <body>
@@ -62,7 +62,15 @@
       <div class="hero-row reveal">
         <aside class="avatar-card" aria-label="Profile card">
           <div class="avatar-photo">
-            <img src="images/me.jpeg" alt="Shine Yuan" width="3999" height="3066" decoding="async" />
+            <picture>
+              <source type="image/webp"
+                srcset="images/optimized/avatar/me-256.webp 256w, images/optimized/avatar/me-512.webp 512w, images/optimized/avatar/me-768.webp 768w"
+                sizes="(max-width: 720px) 100px, (max-width: 1040px) 112px, 142px" />
+              <img src="images/optimized/avatar/me-512.jpg"
+                srcset="images/optimized/avatar/me-256.jpg 256w, images/optimized/avatar/me-512.jpg 512w, images/optimized/avatar/me-768.jpg 768w"
+                sizes="(max-width: 720px) 100px, (max-width: 1040px) 112px, 142px" alt="Shine Yuan"
+                width="768" height="589" decoding="async" />
+            </picture>
           </div>
           <div class="location-pill">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -154,64 +162,88 @@
         <div class="carousel-track">
           <!-- 1st Set -->
           <article class="feature-card">
-            <div class="feature-img"><img src="images/DSC_2365.jpg" alt="Dunhuang" width="5085" height="3251"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2365-1280.webp"
+                srcset="images/optimized/gallery/DSC_2365-800.webp 800w, images/optimized/gallery/DSC_2365-1280.webp 1280w"
+                sizes="640px" alt="Dunhuang" width="1280" height="818" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Dunhuang</span></div>
           </article>
           <article class="feature-card">
-            <div class="feature-img"><img src="images/DSC_2671.jpg" alt="Chongqing" width="6048" height="4024"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2671-1280.webp"
+                srcset="images/optimized/gallery/DSC_2671-800.webp 800w, images/optimized/gallery/DSC_2671-1280.webp 1280w"
+                sizes="640px" alt="Chongqing" width="1280" height="852" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card">
-            <div class="feature-img"><img src="images/1.jpg" alt="Xiamen" width="4986" height="3324" loading="lazy"
-                decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/1-1280.webp"
+                srcset="images/optimized/gallery/1-800.webp 800w, images/optimized/gallery/1-1280.webp 1280w"
+                sizes="640px" alt="Xiamen" width="1280" height="853" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Xiamen</span></div>
           </article>
           <article class="feature-card">
-            <div class="feature-img"><img src="images/DSC_2683.jpg" alt="Chongqing" width="6048" height="4024"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2683-1280.webp"
+                srcset="images/optimized/gallery/DSC_2683-800.webp 800w, images/optimized/gallery/DSC_2683-1280.webp 1280w"
+                sizes="640px" alt="Chongqing" width="1280" height="852" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card">
-            <div class="feature-img"><img src="images/DSC_2788.jpg" alt="Chongqing" width="5918" height="3763"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2788-1280.webp"
+                srcset="images/optimized/gallery/DSC_2788-800.webp 800w, images/optimized/gallery/DSC_2788-1280.webp 1280w"
+                sizes="640px" alt="Chongqing" width="1280" height="814" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card">
-            <div class="feature-img"><img src="images/DSC_2470.jpg" alt="Chongqing" width="6048" height="4024"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2470-1280.webp"
+                srcset="images/optimized/gallery/DSC_2470-800.webp 800w, images/optimized/gallery/DSC_2470-1280.webp 1280w"
+                sizes="640px" alt="Chongqing" width="1280" height="852" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <!-- 2nd Set for seamless looping -->
           <article class="feature-card">
-            <div class="feature-img"><img src="images/DSC_2365.jpg" alt="Dunhuang" width="5085" height="3251"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2365-1280.webp"
+                srcset="images/optimized/gallery/DSC_2365-800.webp 800w, images/optimized/gallery/DSC_2365-1280.webp 1280w"
+                sizes="640px" alt="Dunhuang" width="1280" height="818" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Dunhuang</span></div>
           </article>
           <article class="feature-card">
-            <div class="feature-img"><img src="images/DSC_2671.jpg" alt="Chongqing" width="6048" height="4024"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2671-1280.webp"
+                srcset="images/optimized/gallery/DSC_2671-800.webp 800w, images/optimized/gallery/DSC_2671-1280.webp 1280w"
+                sizes="640px" alt="Chongqing" width="1280" height="852" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card">
-            <div class="feature-img"><img src="images/1.jpg" alt="Xiamen" width="4986" height="3324" loading="lazy"
-                decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/1-1280.webp"
+                srcset="images/optimized/gallery/1-800.webp 800w, images/optimized/gallery/1-1280.webp 1280w"
+                sizes="640px" alt="Xiamen" width="1280" height="853" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Xiamen</span></div>
           </article>
           <article class="feature-card">
-            <div class="feature-img"><img src="images/DSC_2683.jpg" alt="Chongqing" width="6048" height="4024"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2683-1280.webp"
+                srcset="images/optimized/gallery/DSC_2683-800.webp 800w, images/optimized/gallery/DSC_2683-1280.webp 1280w"
+                sizes="640px" alt="Chongqing" width="1280" height="852" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card">
-            <div class="feature-img"><img src="images/DSC_2788.jpg" alt="Chongqing" width="5918" height="3763"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2788-1280.webp"
+                srcset="images/optimized/gallery/DSC_2788-800.webp 800w, images/optimized/gallery/DSC_2788-1280.webp 1280w"
+                sizes="640px" alt="Chongqing" width="1280" height="814" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card">
-            <div class="feature-img"><img src="images/DSC_2470.jpg" alt="Chongqing" width="6048" height="4024"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2470-1280.webp"
+                srcset="images/optimized/gallery/DSC_2470-800.webp 800w, images/optimized/gallery/DSC_2470-1280.webp 1280w"
+                sizes="640px" alt="Chongqing" width="1280" height="852" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
         </div>
@@ -221,64 +253,88 @@
         <div class="carousel-track carousel-track--reverse">
           <!-- 1st Set -->
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/photo2.jpg" alt="Chongqing" width="3322" height="5871"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/photo2-1280.webp"
+                srcset="images/optimized/gallery/photo2-544.webp 544w, images/optimized/gallery/photo2-1280.webp 724w"
+                sizes="272px" alt="Chongqing" width="724" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/photo3.jpg" alt="Chongqing" width="3798" height="5722"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/photo3-1280.webp"
+                srcset="images/optimized/gallery/photo3-544.webp 544w, images/optimized/gallery/photo3-1280.webp 850w"
+                sizes="272px" alt="Chongqing" width="850" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/photo5.jpg" alt="Shenzhen" width="12288" height="16320"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/photo5-1280.webp"
+                srcset="images/optimized/gallery/photo5-544.webp 544w, images/optimized/gallery/photo5-1280.webp 960w"
+                sizes="272px" alt="Shenzhen" width="960" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Shenzhen</span></div>
           </article>
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/DSC_2695.jpg" alt="Chongqing" width="3949" height="5936"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2695-1280.webp"
+                srcset="images/optimized/gallery/DSC_2695-544.webp 544w, images/optimized/gallery/DSC_2695-1280.webp 852w"
+                sizes="272px" alt="Chongqing" width="852" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/IMG_4453.jpg" alt="Dunhuang" width="3016" height="4290"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/IMG_4453-1280.webp"
+                srcset="images/optimized/gallery/IMG_4453-544.webp 544w, images/optimized/gallery/IMG_4453-1280.webp 900w"
+                sizes="272px" alt="Dunhuang" width="900" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Dunhuang</span></div>
           </article>
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/DSC_2187.jpg" alt="Dunhuang" width="4024" height="6048"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2187-1280.webp"
+                srcset="images/optimized/gallery/DSC_2187-544.webp 544w, images/optimized/gallery/DSC_2187-1280.webp 852w"
+                sizes="272px" alt="Dunhuang" width="852" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Dunhuang</span></div>
           </article>
           <!-- 2nd Set for seamless looping -->
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/photo2.jpg" alt="Chongqing" width="3322" height="5871"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/photo2-1280.webp"
+                srcset="images/optimized/gallery/photo2-544.webp 544w, images/optimized/gallery/photo2-1280.webp 724w"
+                sizes="272px" alt="Chongqing" width="724" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/photo3.jpg" alt="Chongqing" width="3798" height="5722"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/photo3-1280.webp"
+                srcset="images/optimized/gallery/photo3-544.webp 544w, images/optimized/gallery/photo3-1280.webp 850w"
+                sizes="272px" alt="Chongqing" width="850" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/photo5.jpg" alt="Shenzhen" width="12288" height="16320"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/photo5-1280.webp"
+                srcset="images/optimized/gallery/photo5-544.webp 544w, images/optimized/gallery/photo5-1280.webp 960w"
+                sizes="272px" alt="Shenzhen" width="960" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Shenzhen</span></div>
           </article>
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/DSC_2695.jpg" alt="Chongqing" width="3949" height="5936"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2695-1280.webp"
+                srcset="images/optimized/gallery/DSC_2695-544.webp 544w, images/optimized/gallery/DSC_2695-1280.webp 852w"
+                sizes="272px" alt="Chongqing" width="852" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Chongqing</span></div>
           </article>
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/IMG_4453.jpg" alt="Dunhuang" width="3016" height="4290"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/IMG_4453-1280.webp"
+                srcset="images/optimized/gallery/IMG_4453-544.webp 544w, images/optimized/gallery/IMG_4453-1280.webp 900w"
+                sizes="272px" alt="Dunhuang" width="900" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Dunhuang</span></div>
           </article>
           <article class="feature-card feature-card--portrait">
-            <div class="feature-img"><img src="images/DSC_2187.jpg" alt="Dunhuang" width="4024" height="6048"
-                loading="lazy" decoding="async" fetchpriority="low" /></div>
+            <div class="feature-img"><img src="images/optimized/gallery/DSC_2187-1280.webp"
+                srcset="images/optimized/gallery/DSC_2187-544.webp 544w, images/optimized/gallery/DSC_2187-1280.webp 852w"
+                sizes="272px" alt="Dunhuang" width="852" height="1280" loading="lazy" decoding="async"
+                fetchpriority="low" /></div>
             <div class="feature-label"><span>Dunhuang</span></div>
           </article>
         </div>
@@ -303,8 +359,10 @@
           <p class="project-desc">Adapts vision foundation models to 3D multi-atlas brain MRI segmentation. Achieves
             95%+ of fully-supervised performance with &lt;5% labeled data.</p>
         </div>
-        <div class="project-visual has-img"><img src="images/neuroimaging.png" alt="" width="7638" height="4254"
-            loading="lazy" decoding="async" fetchpriority="low" /></div>
+        <div class="project-visual has-img"><img src="images/optimized/projects/neuroimaging-card-900.webp"
+            srcset="images/optimized/projects/neuroimaging-card-600.webp 600w, images/optimized/projects/neuroimaging-card-900.webp 900w"
+            sizes="(max-width: 720px) 290px, 380px" alt="" width="900" height="501" loading="lazy"
+            decoding="async" fetchpriority="low" /></div>
       </a>
       <a href="project_emotion.html" class="project-card reveal color-orange" data-tilt
         style="text-decoration: none; color: inherit; display: grid;">
@@ -314,8 +372,10 @@
           <p class="project-desc">Wearable device integrating voice &amp; EEG for emotion detection. National First
             Prize, 4 patents filed.</p>
         </div>
-        <div class="project-visual has-img"><img src="images/emotion.png" alt="" width="3540" height="2118"
-            loading="lazy" decoding="async" fetchpriority="low" /></div>
+        <div class="project-visual has-img"><img src="images/optimized/projects/emotion-card-900.webp"
+            srcset="images/optimized/projects/emotion-card-600.webp 600w, images/optimized/projects/emotion-card-900.webp 900w"
+            sizes="(max-width: 720px) 290px, 380px" alt="" width="900" height="538" loading="lazy"
+            decoding="async" fetchpriority="low" /></div>
       </a>
       <a href="project_rsvg.html" class="project-card reveal color-green" data-tilt
         style="text-decoration: none; color: inherit; display: grid;">
@@ -325,8 +385,10 @@
           <p class="project-desc">Training-free framework for zero-shot remote sensing visual grounding. Surpasses best
             baseline by 20.95% on DIOR-RSVG.</p>
         </div>
-        <div class="project-visual has-img"><img src="images/rsvg.png" alt="" width="2016" height="1506"
-            loading="lazy" decoding="async" fetchpriority="low" /></div>
+        <div class="project-visual has-img"><img src="images/optimized/projects/rsvg-card-900.webp"
+            srcset="images/optimized/projects/rsvg-card-600.webp 600w, images/optimized/projects/rsvg-card-900.webp 900w"
+            sizes="(max-width: 720px) 290px, 380px" alt="" width="900" height="672" loading="lazy"
+            decoding="async" fetchpriority="low" /></div>
       </a>
       <a href="project_superionic.html" class="project-card reveal color-purple" data-tilt
         style="text-decoration: none; color: inherit; display: grid;">
@@ -336,8 +398,10 @@
           <p class="project-desc">Active learning loop with MatterSim &amp; MatterGen to screen stable Li-N-S superionic
             conductor materials via DFT.</p>
         </div>
-        <div class="project-visual has-img"><img src="images/superionic.png" alt="" width="2382" height="1472"
-            loading="lazy" decoding="async" fetchpriority="low" /></div>
+        <div class="project-visual has-img"><img src="images/optimized/projects/superionic-card-900.webp"
+            srcset="images/optimized/projects/superionic-card-600.webp 600w, images/optimized/projects/superionic-card-900.webp 900w"
+            sizes="(max-width: 720px) 290px, 380px" alt="" width="900" height="556" loading="lazy"
+            decoding="async" fetchpriority="low" /></div>
       </a>
     </section>
 
@@ -354,7 +418,7 @@
           <p class="project-desc">An AI Agent Skill that surfaces uncertainty as focused decision questions, guiding
             users through traceable thinking paths. Supports Cursor, Claude Code, Codex and more.</p>
           <div class="product-links">
-            <a href="https://github.com/maxkura/Ask_Why" target="_blank" class="product-btn product-github">
+            <a href="https://github.com/maxkura/Ask_Why" target="_blank" rel="noopener" class="product-btn product-github">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.8.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10Z">
@@ -362,7 +426,7 @@
               </svg>
               View on GitHub
             </a>
-            <a href="https://b23.tv/7KZexrM" target="_blank" class="product-btn product-video">
+            <a href="https://b23.tv/7KZexrM" target="_blank" rel="noopener" class="product-btn product-video">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
@@ -379,79 +443,153 @@
     <section id="blog" class="blog-section section-panel" aria-labelledby="blog-title">
       <div class="section-heading reveal">
         <p>Content &amp; Blog</p>
-        <h2 id="blog-title">Videos &amp; tutorials.<br />1.12M+ views, 4K+ followers.</h2>
+        <h2 id="blog-title">Videos &amp; tutorials.<br /><span class="about-stat-number">1.12M+</span> views, <span class="about-stat-number">4K+</span> followers.</h2>
       </div>
-      <div class="blog-grid">
-        <a href="https://b23.tv/yFE5ydx" target="_blank" class="blog-card reveal" data-tilt>
-          <div class="blog-thumb"><img src="images/blogpost1.png" alt="" width="7680" height="4320" loading="lazy"
+      <div class="blog-sequence" data-blog-sequence data-duration="8" aria-label="Featured video tutorials">
+        <div class="blog-sequence-pin">
+          <div class="blog-sequence-frame">
+            <div class="blog-sequence-media" aria-hidden="true">
+              <img class="blog-sequence-slide" data-start="0" data-end="2"
+                data-src="images/optimized/blog/blogpost1-1200.webp?v=20260520-load-cleanup"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9'%3E%3C/svg%3E"
+                alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low" />
+              <img class="blog-sequence-slide" data-start="2" data-end="4"
+                data-src="images/optimized/blog/blogpost2-1200.webp?v=20260520-load-cleanup"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9'%3E%3C/svg%3E"
+                alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low" />
+              <img class="blog-sequence-slide" data-start="4" data-end="6"
+                data-src="images/optimized/blog/blogpost3-1200.webp?v=20260520-load-cleanup"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9'%3E%3C/svg%3E"
+                alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low" />
+              <img class="blog-sequence-slide blog-sequence-slide--contain" data-start="6" data-end="8"
+                data-src="images/optimized/blog/blogpost4-1200.webp?v=20260520-load-cleanup"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9'%3E%3C/svg%3E"
+                alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low" />
+            </div>
+            <div class="blog-sequence-shade" aria-hidden="true"></div>
+            <div class="blog-sequence-cues">
+              <a class="blog-sequence-cue" href="https://b23.tv/yFE5ydx" target="_blank" rel="noopener"
+                data-start="0.15" data-end="1.85">
+                <span class="blog-sequence-kicker">Competition Guide</span>
+                <h3>Competition Guide —<br />Lessons from National Award Winners</h3>
+                <span class="blog-sequence-meta">Strategy, review flow, and repeatable contest habits.</span>
+                <span class="blog-sequence-action">Watch video</span>
+              </a>
+              <a class="blog-sequence-cue" href="https://b23.tv/TSkpUM4" target="_blank" rel="noopener"
+                data-start="2.15" data-end="3.85">
+                <span class="blog-sequence-kicker">Academic Figures</span>
+                <h3>Academic Figure Design —<br />CCF-A Accepted Paper Walkthrough</h3>
+                <span class="blog-sequence-meta">Publication-ready visual structure from a real paper.</span>
+                <span class="blog-sequence-action">Watch video</span>
+              </a>
+              <a class="blog-sequence-cue" href="https://b23.tv/GXQFJDy" target="_blank" rel="noopener"
+                data-start="4.15" data-end="5.85">
+                <span class="blog-sequence-kicker">AI Image Workflow</span>
+                <h3>Beyond ChatGPT Image 2.0 —<br />Publication-Ready Figures</h3>
+                <span class="blog-sequence-meta">Prompting, refinement, and figure polish for research work.</span>
+                <span class="blog-sequence-action">Watch video</span>
+              </a>
+              <a class="blog-sequence-cue" href="https://b23.tv/7KZexrM" target="_blank" rel="noopener"
+                data-start="6.15" data-end="7.85">
+                <span class="blog-sequence-kicker">Agent Skills</span>
+                <h3>Ask Why Skills —<br />Let Agents Ask Before They Act</h3>
+                <span class="blog-sequence-meta">A practical workflow for agent planning and product thinking.</span>
+                <span class="blog-sequence-action">Watch video</span>
+              </a>
+            </div>
+            <div class="blog-keyhole-layer" aria-hidden="true">
+              <div class="blog-keyhole"></div>
+              <span class="blog-keyhole-corner top-left"></span>
+              <span class="blog-keyhole-corner top-right"></span>
+              <span class="blog-keyhole-corner bottom-left"></span>
+              <span class="blog-keyhole-corner bottom-right"></span>
+            </div>
+          </div>
+          <div class="blog-sequence-progress" aria-hidden="true">
+            <span class="blog-sequence-progress-fill"></span>
+            <span class="blog-sequence-marker"></span>
+            <span class="blog-sequence-marker"></span>
+            <span class="blog-sequence-marker"></span>
+            <span class="blog-sequence-marker"></span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-grid blog-fallback-grid">
+        <a href="https://b23.tv/yFE5ydx" target="_blank" rel="noopener" class="blog-card reveal" data-tilt>
+          <div class="blog-thumb"><img src="images/optimized/blog/blogpost1-1200.webp?v=20260520-load-cleanup" alt="" width="1200" height="675" loading="lazy"
               decoding="async" fetchpriority="low" />
             <div class="play-icon">▶</div>
           </div>
-          <h3>Competition Guide — Lessons from National Award Winners</h3>
+          <h3>Competition Guide —<br />Lessons from National Award Winners</h3>
         </a>
-        <a href="https://b23.tv/TSkpUM4" target="_blank" class="blog-card reveal" data-tilt>
-          <div class="blog-thumb"><img src="images/blogpost2.png" alt="" width="897" height="579" loading="lazy"
+        <a href="https://b23.tv/TSkpUM4" target="_blank" rel="noopener" class="blog-card reveal" data-tilt>
+          <div class="blog-thumb"><img src="images/optimized/blog/blogpost2-1200.webp?v=20260520-load-cleanup" alt="" width="1200" height="675" loading="lazy"
               decoding="async" fetchpriority="low" />
             <div class="play-icon">▶</div>
           </div>
-          <h3>Academic Figure Design — CCF-A Accepted Paper Walkthrough</h3>
+          <h3>Academic Figure Design —<br />CCF-A Accepted Paper Walkthrough</h3>
         </a>
-        <a href="https://b23.tv/GXQFJDy" target="_blank" class="blog-card reveal" data-tilt>
-          <div class="blog-thumb"><img src="images/blogpost3.png" alt="" width="836" height="581" loading="lazy"
+        <a href="https://b23.tv/GXQFJDy" target="_blank" rel="noopener" class="blog-card reveal" data-tilt>
+          <div class="blog-thumb"><img src="images/optimized/blog/blogpost3-1200.webp?v=20260520-load-cleanup" alt="" width="1200" height="675" loading="lazy"
               decoding="async" fetchpriority="low" />
             <div class="play-icon">▶</div>
           </div>
-          <h3>Beyond ChatGPT Image 2.0 — Publication-Ready Figures</h3>
+          <h3>Beyond ChatGPT Image 2.0 —<br />Publication-Ready Figures</h3>
         </a>
-        <a href="https://b23.tv/7KZexrM" target="_blank" class="blog-card reveal" data-tilt>
-          <div class="blog-thumb blog-thumb--contain"><img src="images/blogpost4.png" alt="" width="1672" height="941"
+        <a href="https://b23.tv/7KZexrM" target="_blank" rel="noopener" class="blog-card reveal" data-tilt>
+          <div class="blog-thumb blog-thumb--contain"><img src="images/optimized/blog/blogpost4-1200.webp?v=20260520-load-cleanup" alt="" width="1200" height="675"
               loading="lazy" decoding="async" fetchpriority="low" />
             <div class="play-icon">▶</div>
           </div>
-          <h3>Ask Why Skills — Let Agents Ask Before They Act</h3>
+          <h3>Ask Why Skills —<br />Let Agents Ask Before They Act</h3>
         </a>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="booking section-panel" aria-labelledby="contact-title">
-      <div class="contact-photo-slices" aria-hidden="true">
-        <span class="contact-photo-slice contact-photo-left"></span>
-        <span class="contact-photo-slice contact-photo-right"></span>
-        <span class="contact-photo-slice contact-photo-bottom"></span>
-      </div>
-      <h2 id="contact-title" class="reveal">let's <em>connect</em>.</h2>
-      <div class="contact-grid" aria-label="Contact channels">
-        <a href="mailto:mail_Xiyuan_Zhang@126.com" class="contact-card contact-email">
-          <div class="contact-card-inner">
-            <strong>Email</strong><span>mail_Xiyuan_Zhang@126.com</span>
-          </div>
-        </a>
-        <a href="https://github.com/ZHANGXiyuan2004" target="_blank" rel="noopener" class="contact-card contact-github">
-          <div class="contact-card-inner">
-            <strong>GitHub</strong><span>ZHANGXiyuan2004</span>
-          </div>
-        </a>
-        <a href="https://space.bilibili.com/627492887" target="_blank" rel="noopener" class="contact-card contact-bilibili">
-          <div class="contact-card-inner">
-            <strong>Bilibili</strong><span>627492887 · 840K+ views</span>
-          </div>
-        </a>
-        <a href="https://www.xiaohongshu.com/user/profile/660d61f5000000000600fcdc" target="_blank"
-          rel="noopener" class="contact-card contact-xiaohongshu">
-          <div class="contact-card-inner">
-            <strong>Xiaohongshu</strong><span>11493226950</span>
-          </div>
-        </a>
-        <a href="https://www.douyin.com/user/MS4wLjABAAAAnvG1Vw82Zareta_IZQyJIRwFGX2Y7MhekSde7Wa-_T_GOH5b9F9SRw03mhwAuThd?from_tab_name=main&amp;relation=0&amp;vid=7632235084963845049"
-          target="_blank" rel="noopener" class="contact-card contact-douyin">
-          <div class="contact-card-inner">
-            <strong>Douyin</strong><span>74741606998</span>
-          </div>
-        </a>
-        <div class="contact-card contact-qq" aria-label="QQ 3438036864">
-          <div class="contact-card-inner">
-            <strong>QQ</strong><span>3438036864</span>
+    <section id="contact" class="booking contact-ring-section section-panel" aria-labelledby="contact-title">
+      <div class="contact-ring-pin">
+        <div class="contact-ring-stage" data-contact-ring
+          data-images="images/contact-ring/1.jpg,images/contact-ring/DSC_2187.jpg,images/contact-ring/DSC_2365.jpg,images/contact-ring/DSC_2470.jpg,images/contact-ring/DSC_2671.jpg,images/contact-ring/DSC_2683.jpg,images/contact-ring/DSC_2695.jpg,images/contact-ring/DSC_2788.jpg,images/contact-ring/IMG_0555.jpg,images/contact-ring/IMG_4453.jpg,images/contact-ring/photo1.jpg,images/contact-ring/photo2.jpg,images/contact-ring/photo3.jpg,images/contact-ring/photo4.jpg,images/contact-ring/photo5.jpg"
+          aria-hidden="true"></div>
+        <div class="contact-ring-vignette" aria-hidden="true"></div>
+        <div class="contact-ring-content">
+          <h2 id="contact-title" class="reveal">let's <em>connect</em>.</h2>
+          <div class="contact-grid" aria-label="Contact channels">
+            <a href="mailto:mail_Xiyuan_Zhang@126.com" class="contact-card contact-email" data-contact-step="0">
+              <div class="contact-card-inner">
+                <strong>Email</strong><span>mail_Xiyuan_Zhang@126.com</span>
+              </div>
+            </a>
+            <a href="https://github.com/ZHANGXiyuan2004" target="_blank" rel="noopener"
+              class="contact-card contact-github" data-contact-step="1">
+              <div class="contact-card-inner">
+                <strong>GitHub</strong><span>ZHANGXiyuan2004</span>
+              </div>
+            </a>
+            <a href="https://space.bilibili.com/627492887" target="_blank" rel="noopener"
+              class="contact-card contact-bilibili" data-contact-step="2">
+              <div class="contact-card-inner">
+                <strong>Bilibili</strong><span>627492887 · 840K+ views</span>
+              </div>
+            </a>
+            <a href="https://www.xiaohongshu.com/user/profile/660d61f5000000000600fcdc" target="_blank"
+              rel="noopener" class="contact-card contact-xiaohongshu" data-contact-step="3">
+              <div class="contact-card-inner">
+                <strong>Xiaohongshu</strong><span>11493226950</span>
+              </div>
+            </a>
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAnvG1Vw82Zareta_IZQyJIRwFGX2Y7MhekSde7Wa-_T_GOH5b9F9SRw03mhwAuThd?from_tab_name=main&amp;relation=0&amp;vid=7632235084963845049"
+              target="_blank" rel="noopener" class="contact-card contact-douyin" data-contact-step="4">
+              <div class="contact-card-inner">
+                <strong>Douyin</strong><span>74741606998</span>
+              </div>
+            </a>
+            <div class="contact-card contact-qq" aria-label="QQ 3438036864" data-contact-step="5">
+              <div class="contact-card-inner">
+                <strong>QQ</strong><span>3438036864</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -497,7 +635,10 @@
     <span>Hangzhou, China</span>
   </footer>
 
-  <script src="script.js?v=20260518-top-glow-clear"></script>
+  <script src="libs/gsap/gsap.min.js?v=20260520-load-cleanup"></script>
+  <script src="libs/gsap/ScrollTrigger.min.js?v=20260520-load-cleanup"></script>
+  <script src="libs/three/three.min.js?v=20260520-load-cleanup"></script>
+  <script src="script.js?v=20260520-load-cleanup"></script>
 </body>
 
 </html>
