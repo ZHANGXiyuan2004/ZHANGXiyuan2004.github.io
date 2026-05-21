@@ -147,9 +147,8 @@
   const pointerFrameSubscribers = new Set();
 
   const initGlobalPointer = () => {
-    const cursorLight = document.querySelector(".cursor-light");
     const deskScene = document.querySelector(".desk-scene");
-    if (globalPointerStarted || (!cursorLight && !deskScene)) return;
+    if (globalPointerStarted || !deskScene) return;
 
     globalPointerStarted = true;
     let frame = 0;
@@ -162,22 +161,10 @@
           frame = 0;
           if (!latestPointerPosition) return;
 
-          if (cursorLight) {
-            root.style.setProperty("--cursor-x", `${latestPointerPosition.x}px`);
-            root.style.setProperty("--cursor-y", `${latestPointerPosition.y}px`);
-          }
-
           pointerFrameSubscribers.forEach((callback) => callback(latestPointerPosition));
         });
       }
     }, { passive: true });
-
-    window.addEventListener("pointerleave", () => {
-      if (cursorLight) {
-        root.style.setProperty("--cursor-x", "50%");
-        root.style.setProperty("--cursor-y", "30%");
-      }
-    });
   };
 
   const initDeskScene = () => {
