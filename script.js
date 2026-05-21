@@ -784,6 +784,7 @@
 
     const pin = sequence.querySelector(".blog-sequence-pin");
     const frame = sequence.querySelector(".blog-sequence-frame");
+    const shade = sequence.querySelector(".blog-sequence-shade");
     const slides = [...sequence.querySelectorAll(".blog-sequence-slide")];
     const cues = [...sequence.querySelectorAll(".blog-sequence-cue")];
     const keyhole = sequence.querySelector(".blog-keyhole");
@@ -795,7 +796,7 @@
     };
     const progressFill = sequence.querySelector(".blog-sequence-progress-fill");
     const markers = [...sequence.querySelectorAll(".blog-sequence-marker")];
-    if (!pin || !frame || slides.length === 0 || cues.length === 0 || !keyhole) return;
+    if (!pin || !frame || !shade || slides.length === 0 || cues.length === 0 || !keyhole) return;
     if (Object.values(corners).some((corner) => !corner)) return;
     if (!progressFill || markers.length !== slides.length) return;
 
@@ -978,7 +979,7 @@
       queueSequenceImagePrewarm();
 
       const context = gsapRuntime.context(() => {
-        gsapRuntime.set(pin, { autoAlpha: 0 });
+        gsapRuntime.set(shade, { autoAlpha: 0 });
         gsapRuntime.set(slides, { autoAlpha: 0, scale: 1, force3D: true });
         gsapRuntime.set(cues, { autoAlpha: 0, y: 26, force3D: true });
         gsapRuntime.set(keyhole, { clipPath: `polygon(${collapsedKeyhole})` });
@@ -1016,8 +1017,8 @@
         const keyholeExitStart = Math.max(timelineDuration - keyholeExitDuration, finalExitStart);
 
         timeline
-          .to(pin, { autoAlpha: 1, duration: 0.7, ease: "power1.out" }, 0)
           .to(keyhole, { clipPath: `polygon(${revealedKeyhole})`, duration: 0.9 }, 0)
+          .to(shade, { autoAlpha: 1, duration: firstSlideInDuration, ease: "power2.out" }, 0)
           .to(corners.topLeft, { top: "0%", left: "0%", duration: 0.9 }, 0)
           .to(corners.topRight, { top: "0%", left: "100%", duration: 0.9 }, 0)
           .to(corners.bottomLeft, { top: "100%", left: "0%", duration: 0.9 }, 0)

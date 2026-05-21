@@ -386,7 +386,7 @@
 }
 
 .blog-section .section-heading {
-  top: clamp(10px, 1.8vh, 16px);
+  top: -36px;
   margin-bottom: clamp(12px, 2vh, 20px);
 }
 
@@ -414,6 +414,11 @@
 }
 
 .blog-sequence-frame {
+  --blog-sequence-surface:
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.04), rgba(13, 13, 13, 0) 58%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.018), transparent),
+    #0d0d0d;
+  --blog-sequence-surface-color: #0d0d0d;
   --blog-frame-exit-y: 0px;
   position: relative;
   isolation: isolate;
@@ -422,7 +427,7 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 8px;
-  background: #101010;
+  background: var(--blog-sequence-surface);
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.58);
   translate: 0 calc(-34px + var(--blog-frame-exit-y));
 }
@@ -437,7 +442,7 @@
 
 .blog-sequence-media {
   z-index: 1;
-  background: #0b0b0b;
+  background: var(--blog-sequence-surface);
 }
 
 .blog-section.is-blog-sequence-ready .blog-sequence-slide,
@@ -457,7 +462,7 @@
   object-position: center center;
   opacity: 0;
   visibility: hidden;
-  background: #101010;
+  background: var(--blog-sequence-surface);
   backface-visibility: hidden;
   transform: none;
   transform-origin: center;
@@ -472,6 +477,7 @@
   background:
     linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.34) 44%, rgba(0, 0, 0, 0.04)),
     linear-gradient(0deg, rgba(0, 0, 0, 0.58), transparent 42%);
+  opacity: 0;
   pointer-events: none;
 }
 
@@ -575,15 +581,15 @@
 .blog-keyhole {
   position: absolute;
   inset: 0;
-  background: var(--bg);
+  background: var(--blog-sequence-surface);
   clip-path: polygon(0% 0%, 0% 100%, 24% 100%, 24% 24%, 76% 24%, 76% 76%, 24% 76%, 24% 100%, 100% 100%, 100% 0%);
 }
 
 .blog-keyhole-corner {
   --blog-keyhole-radius: clamp(16px, 2.4vw, 30px);
-  --blog-keyhole-color: var(--bg);
+  --blog-keyhole-color: var(--blog-sequence-surface-color);
   position: absolute;
-  display: block;
+  display: none;
   width: var(--blog-keyhole-radius);
   height: var(--blog-keyhole-radius);
 }
@@ -1001,6 +1007,12 @@
   overflow: hidden;
   isolation: isolate;
   background: #050505;
+}
+
+@media (min-width: 721px) {
+  .booking.section-panel {
+    margin-top: clamp(-460px, -48vh, -300px);
+  }
 }
 
 .booking.section-panel::before {
