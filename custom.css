@@ -1030,12 +1030,7 @@
     font-size: 1.42rem;
   }
 
-  #product .product-info .tags,
   #product .product-info .project-desc {
-    display: none;
-  }
-
-  #product .product-visual {
     display: none;
   }
 
