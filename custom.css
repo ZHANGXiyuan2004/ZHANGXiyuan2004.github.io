@@ -891,61 +891,269 @@
 }
 
 @media (max-width: 720px) {
+  .desk-scene {
+    --desk-bg-position: center 51%;
+    --desk-bg-size: 178% auto;
+    --desk-vignette-opacity: 0.68;
+    height: clamp(226px, 61vw, 250px);
+  }
+
+  .pencil,
+  .digital-clock,
+  .homepod-set {
+    display: block;
+  }
+
+  .app-stack {
+    display: grid;
+  }
+
+  .desk-hover-label {
+    display: none;
+  }
+
+  .digital-clock {
+    left: 4%;
+    top: 7%;
+    width: clamp(76px, 22vw, 108px);
+    height: clamp(56px, 16vw, 81px);
+  }
+
+  .pencil {
+    left: 16%;
+    top: 18%;
+    width: clamp(150px, 49vw, 230px);
+    height: clamp(38px, 12vw, 58px);
+  }
+
+  .laptop {
+    left: 53%;
+    top: 28%;
+    width: clamp(146px, 42vw, 190px);
+    height: clamp(114px, 33vw, 148px);
+    --macbook-model-scale: 1.24;
+  }
+
+  .notebook {
+    left: 2%;
+    top: 52%;
+    width: clamp(118px, 34vw, 168px);
+    height: clamp(74px, 21vw, 106px);
+    --book-model-scale: 1;
+    transform: rotate(-9deg);
+  }
+
+  .homepod-set {
+    right: 7%;
+    top: 11%;
+    width: clamp(48px, 15vw, 72px);
+    height: clamp(49px, 15.2vw, 73px);
+  }
+
+  .mouse {
+    right: 15%;
+    top: 62%;
+    width: clamp(46px, 14vw, 66px);
+    height: clamp(31px, 9vw, 44px);
+    --mouse-rotation: 70deg;
+  }
+
+  .app-stack {
+    right: 4.5%;
+    bottom: 8%;
+    grid-template-columns: repeat(2, 20px);
+    gap: 6px;
+    transform: rotate(-7deg);
+  }
+
+  .app-stack span {
+    width: 20px;
+    height: 20px;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 11px;
+  }
+
+  .app-stack span::after {
+    display: none;
+  }
+
+  .desk-scene.entrance-complete .app-stack:hover,
+  .desk-scene.entrance-complete .app-stack.is-tools-hot {
+    transform: rotate(-7deg) translateY(-2px) scale(1.04);
+  }
+
   .hero-title-single {
     max-width: 100%;
     white-space: normal;
-    font-size: 3.7rem !important;
+    font-size: 3.25rem !important;
+    line-height: 0.92;
   }
 
   .hero-socials {
-    gap: 10px 12px;
-    margin-top: 30px;
+    gap: 8px 10px;
+    margin-top: 22px;
+  }
+
+  .hero-social-link {
+    padding: 5px 11px;
+    font-size: 0.78rem;
+  }
+
+  .about-line {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .section-heading h2 {
+    font-size: 2rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.48rem;
+  }
+
+  .product-info h3 {
+    font-size: 1.42rem;
   }
 }
 
 @media (max-width: 420px) {
   .desk-scene {
-    height: 302px;
+    --desk-bg-size: 190% auto;
+    height: 232px;
+  }
+
+  .digital-clock {
+    left: 3.5%;
+    top: 7.5%;
+    width: 76px;
+    height: 57px;
+  }
+
+  .pencil {
+    left: 15%;
+    top: 17%;
+    width: 166px;
+    height: 42px;
   }
 
   .notebook {
-    left: -0.8%;
-    top: 50%;
-    width: 194px;
-    height: 127px;
-    --book-model-scale: 1.06;
+    left: 1%;
+    top: 58%;
+    width: 124px;
+    height: 78px;
+    --book-model-scale: 1;
   }
 
   .laptop {
-    left: 56%;
-    top: 13%;
-    width: 246px;
+    left: 53.5%;
+    top: 29%;
+    width: 154px;
+    height: 120px;
+    --macbook-model-scale: 1.22;
+  }
+
+  .homepod-set {
+    right: 6%;
+    top: 12%;
+    width: 52px;
+    height: 53px;
   }
 
   .mouse {
-    right: 6%;
-    top: 65%;
-    width: 72px;
-    height: 50px;
+    right: 15%;
+    top: 63%;
+    width: 49px;
+    height: 33px;
+  }
+
+  .app-stack {
+    right: 4%;
+    bottom: 8%;
   }
 
   .hero-title-single {
-    font-size: 2.85rem !important;
-    line-height: 0.9;
+    font-size: 2.48rem !important;
+    line-height: 0.92;
   }
 
   .hero-socials {
-    gap: 9px;
-    margin-top: 24px;
+    gap: 8px;
+    margin-top: 20px;
   }
 
   .hero-social-link {
-    padding: 6px 10px;
-    font-size: 0.78rem;
+    padding: 5px 9px;
+    font-size: 0.74rem;
+  }
+
+  .about-line {
+    font-size: 0.94rem;
+  }
+
+  .section-heading h2 {
+    font-size: 1.78rem;
+  }
+
+  .project-card h3,
+  .product-info h3 {
+    font-size: 1.36rem;
   }
 }
 
 @media (max-width: 360px) {
+  .desk-scene {
+    --desk-bg-size: 198% auto;
+    height: 226px;
+  }
+
+  .digital-clock {
+    width: 70px;
+    height: 52px;
+  }
+
+  .pencil {
+    left: 13%;
+    width: 148px;
+    height: 38px;
+  }
+
+  .laptop {
+    left: 54%;
+    top: 30%;
+    width: 142px;
+    height: 111px;
+    --macbook-model-scale: 1.2;
+  }
+
+  .notebook {
+    width: 116px;
+    height: 73px;
+  }
+
+  .homepod-set {
+    right: 5%;
+    width: 48px;
+    height: 49px;
+  }
+
+  .mouse {
+    right: 13%;
+    width: 46px;
+    height: 31px;
+  }
+
+  .app-stack {
+    right: 3%;
+  }
+
+  .app-stack span {
+    width: 19px;
+    height: 19px;
+    font-size: 10px;
+  }
+
   .hero-copy {
     width: 100%;
     max-width: calc(100vw - 48px);
@@ -954,9 +1162,13 @@
 
   .hero-title-single {
     max-width: calc(100vw - 48px);
-    font-size: 2rem !important;
-    line-height: 0.98;
+    font-size: 1.9rem !important;
+    line-height: 1;
     white-space: nowrap;
+  }
+
+  .section-heading h2 {
+    font-size: 1.62rem;
   }
 
   .dock {
@@ -1326,7 +1538,7 @@
 
   .booking h2 {
     margin-bottom: 26px;
-    font-size: clamp(2.65rem, 14vw, 3.35rem);
+    font-size: clamp(2.35rem, 11vw, 2.9rem);
   }
 
   .booking .contact-grid,
@@ -1366,7 +1578,7 @@
 
   .booking h2 {
     margin-bottom: 22px;
-    font-size: clamp(2.28rem, 12vw, 2.65rem);
+    font-size: clamp(2.05rem, 10vw, 2.38rem);
   }
 
   .booking .contact-grid,
