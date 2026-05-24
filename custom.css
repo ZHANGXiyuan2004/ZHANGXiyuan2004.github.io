@@ -913,65 +913,65 @@
   }
 
   .digital-clock {
-    left: 4%;
+    left: 3%;
     top: 7%;
-    width: clamp(76px, 22vw, 108px);
-    height: clamp(56px, 16vw, 81px);
+    width: clamp(86px, 24vw, 124px);
+    height: clamp(64px, 18vw, 92px);
   }
 
   .pencil {
-    left: 16%;
+    left: 10.5%;
     top: 18%;
-    width: clamp(150px, 49vw, 230px);
-    height: clamp(38px, 12vw, 58px);
+    width: clamp(168px, 54vw, 250px);
+    height: clamp(42px, 13.5vw, 64px);
   }
 
   .laptop {
-    left: 53%;
+    left: 48.5%;
     top: 28%;
-    width: clamp(146px, 42vw, 190px);
-    height: clamp(114px, 33vw, 148px);
-    --macbook-model-scale: 1.24;
+    width: clamp(162px, 48vw, 218px);
+    height: clamp(126px, 37vw, 170px);
+    --macbook-model-scale: 1.28;
   }
 
   .notebook {
     left: 2%;
-    top: 52%;
-    width: clamp(118px, 34vw, 168px);
-    height: clamp(74px, 21vw, 106px);
+    top: 46%;
+    width: clamp(132px, 38vw, 188px);
+    height: clamp(83px, 24vw, 118px);
     --book-model-scale: 1;
     transform: rotate(-9deg);
   }
 
   .homepod-set {
-    right: 7%;
+    right: 13%;
     top: 11%;
-    width: clamp(48px, 15vw, 72px);
-    height: clamp(49px, 15.2vw, 73px);
+    width: clamp(56px, 17vw, 82px);
+    height: clamp(57px, 17.2vw, 83px);
   }
 
   .mouse {
-    right: 15%;
+    right: 22%;
     top: 62%;
-    width: clamp(46px, 14vw, 66px);
-    height: clamp(31px, 9vw, 44px);
+    width: clamp(54px, 16vw, 76px);
+    height: clamp(36px, 10.5vw, 51px);
     --mouse-rotation: 70deg;
   }
 
   .app-stack {
-    right: 4.5%;
+    right: 6%;
     bottom: 8%;
-    grid-template-columns: repeat(2, 20px);
+    grid-template-columns: repeat(2, 22px);
     gap: 6px;
     transform: rotate(-7deg);
   }
 
   .app-stack span {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     border-width: 1px;
     border-radius: 5px;
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .app-stack span::after {
@@ -1025,51 +1025,51 @@
   }
 
   .digital-clock {
-    left: 3.5%;
+    left: 2.5%;
     top: 7.5%;
-    width: 76px;
-    height: 57px;
+    width: 86px;
+    height: 64px;
   }
 
   .pencil {
-    left: 15%;
+    left: 8%;
     top: 17%;
-    width: 166px;
-    height: 42px;
+    width: 190px;
+    height: 48px;
   }
 
   .notebook {
     left: 1%;
     top: 58%;
-    width: 124px;
-    height: 78px;
+    width: 138px;
+    height: 87px;
     --book-model-scale: 1;
   }
 
   .laptop {
-    left: 53.5%;
+    left: 48%;
     top: 29%;
-    width: 154px;
-    height: 120px;
-    --macbook-model-scale: 1.22;
+    width: 174px;
+    height: 136px;
+    --macbook-model-scale: 1.25;
   }
 
   .homepod-set {
-    right: 6%;
+    right: 13%;
     top: 12%;
-    width: 52px;
-    height: 53px;
+    width: 60px;
+    height: 61px;
   }
 
   .mouse {
-    right: 15%;
+    right: 24%;
     top: 63%;
-    width: 49px;
-    height: 33px;
+    width: 56px;
+    height: 38px;
   }
 
   .app-stack {
-    right: 4%;
+    right: 6%;
     bottom: 8%;
   }
 
@@ -1109,49 +1109,50 @@
   }
 
   .digital-clock {
-    width: 70px;
-    height: 52px;
+    left: 2%;
+    width: 78px;
+    height: 58px;
   }
 
   .pencil {
-    left: 13%;
-    width: 148px;
-    height: 38px;
+    left: 7%;
+    width: 166px;
+    height: 42px;
   }
 
   .laptop {
-    left: 54%;
+    left: 48%;
     top: 30%;
-    width: 142px;
-    height: 111px;
-    --macbook-model-scale: 1.2;
+    width: 158px;
+    height: 123px;
+    --macbook-model-scale: 1.23;
   }
 
   .notebook {
-    width: 116px;
-    height: 73px;
+    width: 126px;
+    height: 79px;
   }
 
   .homepod-set {
-    right: 5%;
-    width: 48px;
-    height: 49px;
+    right: 12%;
+    width: 55px;
+    height: 56px;
   }
 
   .mouse {
-    right: 13%;
-    width: 46px;
-    height: 31px;
+    right: 22%;
+    width: 51px;
+    height: 34px;
   }
 
   .app-stack {
-    right: 3%;
+    right: 5%;
   }
 
   .app-stack span {
-    width: 19px;
-    height: 19px;
-    font-size: 10px;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
   }
 
   .hero-copy {
