@@ -844,6 +844,13 @@
   height: 408px !important;
 }
 
+@media (max-width: 720px) {
+  .feature-card,
+  .feature-card.feature-card--portrait {
+    height: 204px !important;
+  }
+}
+
 /* --- Increase gap between Gallery and Research --- */
 #research {
   margin-top: 180px;
@@ -895,7 +902,7 @@
     --desk-bg-position: center 51%;
     --desk-bg-size: 178% auto;
     --desk-vignette-opacity: 0.68;
-    height: clamp(226px, 61vw, 250px);
+    height: clamp(206px, 55vw, 228px);
   }
 
   .pencil,
@@ -914,14 +921,14 @@
 
   .digital-clock {
     left: 3%;
-    top: 7%;
+    top: 12%;
     width: clamp(86px, 24vw, 124px);
     height: clamp(64px, 18vw, 92px);
   }
 
   .pencil {
-    left: 10.5%;
-    top: 18%;
+    left: 6.5%;
+    top: 23%;
     width: clamp(168px, 54vw, 250px);
     height: clamp(42px, 13.5vw, 64px);
   }
@@ -945,7 +952,7 @@
 
   .homepod-set {
     right: 13%;
-    top: 11%;
+    top: 16%;
     width: clamp(56px, 17vw, 82px);
     height: clamp(57px, 17.2vw, 83px);
   }
@@ -1021,19 +1028,19 @@
 @media (max-width: 420px) {
   .desk-scene {
     --desk-bg-size: 190% auto;
-    height: 232px;
+    height: 212px;
   }
 
   .digital-clock {
     left: 2.5%;
-    top: 7.5%;
+    top: 12.5%;
     width: 86px;
     height: 64px;
   }
 
   .pencil {
-    left: 8%;
-    top: 17%;
+    left: 4.5%;
+    top: 22%;
     width: 190px;
     height: 48px;
   }
@@ -1056,7 +1063,7 @@
 
   .homepod-set {
     right: 13%;
-    top: 12%;
+    top: 17%;
     width: 60px;
     height: 61px;
   }
@@ -1105,7 +1112,7 @@
 @media (max-width: 360px) {
   .desk-scene {
     --desk-bg-size: 198% auto;
-    height: 226px;
+    height: 206px;
   }
 
   .digital-clock {
@@ -1115,7 +1122,7 @@
   }
 
   .pencil {
-    left: 7%;
+    left: 3.5%;
     width: 166px;
     height: 42px;
   }
