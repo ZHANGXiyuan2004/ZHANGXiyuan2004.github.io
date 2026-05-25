@@ -909,6 +909,7 @@
     --desk-bg-size: 178% auto;
     --desk-vignette-opacity: 0.68;
     height: clamp(194px, 52vw, 216px);
+    border-radius: clamp(18px, 5vw, 28px);
   }
 
   .pencil,
@@ -927,7 +928,7 @@
 
   .digital-clock {
     left: 3%;
-    top: 15%;
+    top: 17%;
     width: clamp(86px, 24vw, 124px);
     height: clamp(64px, 18vw, 92px);
   }
@@ -948,7 +949,7 @@
   }
 
   .notebook {
-    left: 4%;
+    left: 2%;
     top: 37%;
     width: clamp(132px, 38vw, 188px);
     height: clamp(83px, 24vw, 118px);
@@ -958,7 +959,7 @@
 
   .homepod-set {
     right: 13%;
-    top: 19%;
+    top: 21%;
     width: clamp(56px, 17vw, 82px);
     height: clamp(57px, 17.2vw, 83px);
   }
@@ -1013,9 +1014,9 @@
     font-size: 0.78rem;
   }
 
-  .about-line {
-    font-size: 0.98rem;
-    line-height: 1.55;
+  #about .about-line {
+    font-size: 0.9rem;
+    line-height: 1.52;
   }
 
   .section-heading h2 {
@@ -1035,7 +1036,20 @@
   }
 
   #product .product-links {
+    align-items: flex-start;
+    gap: 10px;
     margin-top: 22px;
+  }
+
+  #product .product-btn {
+    gap: 6px;
+    padding: 8px 15px;
+    font-size: 0.76rem;
+  }
+
+  #product .product-btn svg {
+    width: 14px;
+    height: 14px;
   }
 }
 
@@ -1047,7 +1061,7 @@
 
   .digital-clock {
     left: 2.5%;
-    top: 15.5%;
+    top: 17.5%;
     width: 86px;
     height: 64px;
   }
@@ -1060,7 +1074,7 @@
   }
 
   .notebook {
-    left: 5%;
+    left: 3%;
     top: 48%;
     width: 138px;
     height: 87px;
@@ -1077,7 +1091,7 @@
 
   .homepod-set {
     right: 13%;
-    top: 20%;
+    top: 22%;
     width: 60px;
     height: 61px;
   }
@@ -1109,8 +1123,8 @@
     font-size: 0.74rem;
   }
 
-  .about-line {
-    font-size: 0.94rem;
+  #about .about-line {
+    font-size: 0.86rem;
   }
 
   .section-heading h2 {
@@ -1120,6 +1134,11 @@
   .project-card h3,
   .product-info h3 {
     font-size: 1.36rem;
+  }
+
+  #product .product-btn {
+    padding: 7px 13px;
+    font-size: 0.72rem;
   }
 }
 
