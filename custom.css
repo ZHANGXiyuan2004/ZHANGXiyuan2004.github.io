@@ -907,7 +907,11 @@
   .desk-scene {
     --desk-bg-position: center 51%;
     --desk-bg-size: 178% auto;
-    --desk-vignette-opacity: 0.68;
+    --desk-vignette-opacity: 0.82;
+    --desk-vignette-top-y: -6%;
+    --desk-vignette-left-x: -26%;
+    --desk-vignette-right-x: 126%;
+    --desk-vignette-side-y: 39%;
     height: clamp(194px, 52vw, 216px);
     border-radius: clamp(18px, 5vw, 28px);
   }
@@ -1056,6 +1060,10 @@
 @media (max-width: 420px) {
   .desk-scene {
     --desk-bg-size: 190% auto;
+    --desk-vignette-opacity: 0.84;
+    --desk-vignette-top-y: -4%;
+    --desk-vignette-left-x: -30%;
+    --desk-vignette-right-x: 130%;
     height: 200px;
   }
 
