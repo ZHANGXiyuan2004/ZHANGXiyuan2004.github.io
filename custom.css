@@ -183,6 +183,11 @@
   padding-bottom: 88px;
 }
 
+.product-list {
+  display: grid;
+  gap: 24px;
+}
+
 .product-card {
   position: relative;
   display: grid;
@@ -352,6 +357,11 @@
   object-position: 52% 42%;
   display: block;
   transition: transform 400ms ease;
+}
+
+.product-visual--contain img {
+  object-fit: contain;
+  object-position: center;
 }
 
 .product-card:hover .product-visual img {
@@ -613,7 +623,7 @@
 .blog-sequence-progress {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   align-items: center;
   gap: 0;
   height: 44px;

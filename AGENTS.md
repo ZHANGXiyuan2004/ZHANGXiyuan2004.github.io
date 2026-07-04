@@ -14,7 +14,7 @@ The older Minecraft/pixel-art portfolio files may still appear in git history or
 Do not treat `.DS_Store` or `.local-server-*` files as meaningful site assets.
 
 ## Current Site Files
-- `index.html`: Portfolio homepage with desk hero, profile/about copy, photography carousels, research cards, product card, GSAP-enhanced blog/video slideshow with static fallback cards, pinned WebGL contact ring section with borderless contact signals, footer, and floating dock navigation.
+- `index.html`: Portfolio homepage with desk hero, profile/about copy, photography carousels, research cards, product cards, GSAP-enhanced blog/video slideshow with static fallback cards, pinned WebGL contact ring section with borderless contact signals, footer, and floating dock navigation.
 - `project_neuroimaging.html`: Project detail page for unified few-shot neuroimaging segmentation.
 - `project_emotion.html`: Project detail page for self-powered multimodal emotion recognition.
 - `project_rsvg.html`: Project detail page for remote sensing visual grounding.
@@ -23,7 +23,7 @@ Do not treat `.DS_Store` or `.local-server-*` files as meaningful site assets.
 - `custom.css`: Additional section styles, image/card overrides, blog sequence styles, contact WebGL ring styles, and small-screen patches.
 - `script.js`: Runtime interaction logic organized by guarded init functions. Most features are dependency-free; the homepage blog sequence and contact ring progressively enhance with local GSAP/ScrollTrigger when available.
 - `images/`: Local image assets, including pre-rendered desk item PNGs, original gallery photos, original project images, product/blog thumbnails, avatar source images, and photography textures.
-- `images/optimized/`: Generated derivative assets used by the live pages. Contains responsive avatar JPG/WebP variants, Blog WebP thumbnails, gallery WebP display assets, and project card/hero WebP assets. Do not overwrite originals when adding derivatives.
+- `images/optimized/`: Generated derivative assets used by the live pages. Contains responsive avatar JPG/WebP variants, Blog and product WebP assets, gallery WebP display assets, and project card/hero WebP assets. Do not overwrite originals when adding derivatives.
 - `images/contact-ring/`: Compressed local photography copies used only by the homepage WebGL contact ring.
 - `libs/gsap/`: Local GSAP 3.13.0 runtime files used only by the homepage blog scroll sequence and contact ring:
   - `gsap.min.js`
@@ -67,7 +67,7 @@ The homepage is organized as:
 - `#gallery`: Two auto-scrolling photography carousels, one landscape and one portrait.
 - `#research`: Research heading.
 - `.project-grid`: Four research cards linking to project detail pages.
-- `#product`: Ask Why product/open-source card.
+- `#product`: Ask Why and Yuan Knowledge Base product/open-source cards.
 - `#blog`: Desktop/tablet scroll-synced video/tutorial slideshow with keyhole reveal, cue text, progress markers, and static fallback cards for mobile, reduced motion, no-JS, or GSAP failure.
 - `#contact`: Pinned WebGL square-photo ring using local photography textures, a landing-eased entrance, and six sequential borderless contact signals.
 - `.dock`: Floating section navigation.
@@ -105,7 +105,7 @@ Below-the-fold content:
 - Keep the current Blog and Contact image compression chain: do not revert Blog to root PNG thumbnails and do not revert Contact ring to root original photos.
 
 Cache busting:
-- HTML pages currently use `?v=20260520-load-cleanup` on `styles.css`, `custom.css`, and `script.js`.
+- HTML pages currently use `?v=20260704-yuankb-progress` on `styles.css`, `custom.css`, and `script.js`.
 - `index.html` also uses the same cache token on `libs/gsap/gsap.min.js`, `libs/gsap/ScrollTrigger.min.js`, and `libs/three/three.min.js`.
 - If CSS, JS, or local runtime loading paths change after deployment, update this version string consistently across `index.html` and all `project_*.html` pages. Project detail pages should still only reference shared CSS and `script.js`, not GSAP or Three.js.
 
@@ -159,7 +159,7 @@ Rules:
 - Keep shared visual behavior in `styles.css` when possible; use `custom.css` for section-specific overrides, image/card adjustments, contact scene styling, and small-screen patches.
 - Blog slideshow card width should align with the current `.section-panel` content width and the `#product .product-card` visual width.
 - Blog slideshow images should use `object-fit: contain` and avoid cropping important image content. Accept dark letterboxing rather than cutting off the top-left of thumbnails.
-- Blog slideshow title lines intentionally break after the em dash (`—<br />`) for all four videos. Keep the desktop slideshow titles and static fallback card titles in sync.
+- Blog slideshow title lines intentionally break after the em dash (`—<br />`) for all five videos. Keep the desktop slideshow titles and static fallback card titles in sync.
 - The blog section heading reuses `.about-stat-number` for `1.12M+` and `4K+` so its stat emphasis matches the About section.
 
 ## Local Preview
@@ -234,7 +234,7 @@ After changing HTML, CSS, JS, image placement, or animation logic:
 - Confirm below-the-fold images and project detail hero images are lazy/async/low priority with intrinsic dimensions and use optimized derivatives where applicable.
 - Confirm homepage desk entrance, avatar, title, social links, dock, and waterfall timing still look unchanged.
 - Confirm carousel pauses offscreen/background and resumes when visible.
-- Confirm desktop blog sequence pins, opens the keyhole, advances all four cues, uses full-width product-card alignment, does not crop images, fades in/out, and exits cleanly into contact.
+- Confirm desktop blog sequence pins, opens the keyhole, advances all five cues, uses full-width product-card alignment, does not crop images, fades in/out, and exits cleanly into contact.
 - Confirm blog fallback cards remain visible at 640px, 320px, reduced motion, no-JS, or GSAP failure.
 - Confirm desktop/tablet contact ring fades in, expands from a smaller ring to the full ring, keeps rotating continuously through the pre-pin and pinned phases, and lands smoothly before pinning.
 - Confirm the six contact entries appear one by one, stay centered, borderless, clickable, and keyboard-focusable when active, and keep the existing labels/hrefs.

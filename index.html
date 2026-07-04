@@ -9,8 +9,8 @@
     content="Personal portfolio of Shine Yuan (张晰元). Ph.D. student at ZJU-UIUC Institute, Zhejiang University. Research in Multimodal AI and AI for Science." />
   <link rel="icon" type="image/png" sizes="64x64" href="images/logo.png?v=20260518-tab-logo" />
   <link rel="preload" as="image" href="images/victorian-desk.png" />
-  <link rel="stylesheet" href="styles.css?v=20260525-mobile-desk-vignette" />
-  <link rel="stylesheet" href="custom.css?v=20260525-mobile-desk-vignette" />
+  <link rel="stylesheet" href="styles.css?v=20260704-yuankb-progress" />
+  <link rel="stylesheet" href="custom.css?v=20260704-yuankb-progress" />
 </head>
 
 <body>
@@ -411,33 +411,65 @@
         <p>Open Source</p>
         <h2 id="product-title">Tools I build for the AI community.</h2>
       </div>
-      <article class="product-card reveal" data-tilt>
-        <div class="product-info">
-          <div class="tags"><span>AI Agent</span><span>Skill</span><span>Open Source</span></div>
-          <h3>Ask Why —<br>Decision-Making Skill</h3>
-          <p class="project-desc">An AI Agent Skill that surfaces uncertainty as focused decision questions, guiding
-            users through traceable thinking paths. Supports Cursor, Claude Code, Codex and more.</p>
-          <div class="product-links">
-            <a href="https://github.com/maxkura/Ask_Why" target="_blank" rel="noopener"
-              class="product-btn product-github">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.8.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10Z">
-                </path>
-              </svg>
-              View on GitHub
-            </a>
-            <a href="https://b23.tv/7KZexrM" target="_blank" rel="noopener" class="product-btn product-video">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              Watch Video
-            </a>
+      <div class="product-list">
+        <article class="product-card reveal" data-tilt>
+          <div class="product-info">
+            <div class="tags"><span>AI Agent</span><span>Skill</span><span>Open Source</span></div>
+            <h3>Ask Why —<br>Decision-Making Skill</h3>
+            <p class="project-desc">An AI Agent Skill that surfaces uncertainty as focused decision questions, guiding
+              users through traceable thinking paths. Supports Cursor, Claude Code, Codex and more.</p>
+            <div class="product-links">
+              <a href="https://github.com/maxkura/Ask_Why" target="_blank" rel="noopener"
+                class="product-btn product-github">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.8.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10Z">
+                  </path>
+                </svg>
+                View on GitHub
+              </a>
+              <a href="https://b23.tv/7KZexrM" target="_blank" rel="noopener" class="product-btn product-video">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Watch Video
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="product-visual"><img src="images/ask-why-dark.jpg" alt="Ask Why Skill" width="2400" height="1749"
-            loading="lazy" decoding="async" fetchpriority="low" /></div>
-      </article>
+          <div class="product-visual"><img src="images/ask-why-dark.jpg" alt="Ask Why Skill" width="2400"
+              height="1749" loading="lazy" decoding="async" fetchpriority="low" /></div>
+        </article>
+
+        <article class="product-card reveal" data-tilt>
+          <div class="product-info">
+            <div class="tags"><span>AI Agent</span><span>Knowledge Base</span><span>Open Source</span></div>
+            <h3>Yuan Knowledge Base —<br>Personal AI Learning Workspace</h3>
+            <p class="project-desc">A personalized knowledge workspace for researching new material, reviewing AI
+              fundamentals, practicing mock interviews, and evolving reusable Agent Skills.</p>
+            <div class="product-links">
+              <a href="https://github.com/ZetaZeroHub/yuan-knowledge-base" target="_blank" rel="noopener"
+                class="product-btn product-github">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.8.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10Z">
+                  </path>
+                </svg>
+                View on GitHub
+              </a>
+              <a href="https://www.bilibili.com/video/BV1cyTE6rE2Z/" target="_blank" rel="noopener"
+                class="product-btn product-video">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Watch Video
+              </a>
+            </div>
+          </div>
+          <div class="product-visual product-visual--contain"><img
+              src="images/optimized/product/yuankb-1200.webp" alt="Yuan Knowledge Base" width="1200" height="900"
+              loading="lazy" decoding="async" fetchpriority="low" /></div>
+        </article>
+      </div>
     </section>
 
     <!-- BLOG -->
@@ -447,7 +479,7 @@
         <h2 id="blog-title">Videos &amp; tutorials.<br /><span class="about-stat-number">1.25M+</span> views · <span
             class="about-stat-number">5K+</span> followers.</h2>
       </div>
-      <div class="blog-sequence" data-blog-sequence data-duration="8" aria-label="Featured video tutorials">
+      <div class="blog-sequence" data-blog-sequence data-duration="10" aria-label="Featured video tutorials">
         <div class="blog-sequence-pin">
           <div class="blog-sequence-frame">
             <div class="blog-sequence-media" aria-hidden="true">
@@ -465,6 +497,10 @@
                 alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low" />
               <img class="blog-sequence-slide blog-sequence-slide--contain" data-start="6" data-end="8"
                 data-src="images/optimized/blog/blogpost4-1200.webp?v=20260525-mobile-desk-vignette"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9'%3E%3C/svg%3E"
+                alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low" />
+              <img class="blog-sequence-slide" data-start="8" data-end="10"
+                data-src="images/optimized/blog/blogpost5-1200.webp?v=20260704-yuankb"
                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9'%3E%3C/svg%3E"
                 alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low" />
             </div>
@@ -498,6 +534,13 @@
                 <span class="blog-sequence-meta">A practical workflow for agent planning and product thinking.</span>
                 <span class="blog-sequence-action">Watch video</span>
               </a>
+              <a class="blog-sequence-cue" href="https://www.bilibili.com/video/BV1cyTE6rE2Z/" target="_blank"
+                rel="noopener" data-start="8.15" data-end="9.85">
+                <span class="blog-sequence-kicker">Personal Knowledge</span>
+                <h3>Yuan Knowledge Base —<br />Build Knowledge That Sticks</h3>
+                <span class="blog-sequence-meta">Research, review, and mock interviews in one agent-powered workspace.</span>
+                <span class="blog-sequence-action">Watch video</span>
+              </a>
             </div>
             <div class="blog-keyhole-layer" aria-hidden="true">
               <div class="blog-keyhole"></div>
@@ -509,6 +552,7 @@
           </div>
           <div class="blog-sequence-progress" aria-hidden="true">
             <span class="blog-sequence-progress-fill"></span>
+            <span class="blog-sequence-marker"></span>
             <span class="blog-sequence-marker"></span>
             <span class="blog-sequence-marker"></span>
             <span class="blog-sequence-marker"></span>
@@ -545,6 +589,14 @@
             <div class="play-icon">▶</div>
           </div>
           <h3>Ask Why Skills —<br />Let Agents Ask Before They Act</h3>
+        </a>
+        <a href="https://www.bilibili.com/video/BV1cyTE6rE2Z/" target="_blank" rel="noopener"
+          class="blog-card reveal" data-tilt>
+          <div class="blog-thumb"><img src="images/optimized/blog/blogpost5-1200.webp?v=20260704-yuankb" alt=""
+              width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low" />
+            <div class="play-icon">▶</div>
+          </div>
+          <h3>Yuan Knowledge Base —<br />Build Knowledge That Sticks</h3>
         </a>
       </div>
     </section>
@@ -638,10 +690,10 @@
     <span>Hangzhou, China</span>
   </footer>
 
-  <script src="libs/gsap/gsap.min.js?v=20260525-mobile-desk-vignette"></script>
-  <script src="libs/gsap/ScrollTrigger.min.js?v=20260525-mobile-desk-vignette"></script>
-  <script src="libs/three/three.min.js?v=20260525-mobile-desk-vignette"></script>
-  <script src="script.js?v=20260525-mobile-desk-vignette"></script>
+  <script src="libs/gsap/gsap.min.js?v=20260704-yuankb-progress"></script>
+  <script src="libs/gsap/ScrollTrigger.min.js?v=20260704-yuankb-progress"></script>
+  <script src="libs/three/three.min.js?v=20260704-yuankb-progress"></script>
+  <script src="script.js?v=20260704-yuankb-progress"></script>
 </body>
 
 </html>
