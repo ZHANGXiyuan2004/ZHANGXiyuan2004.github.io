@@ -5,6 +5,11 @@ set -euo pipefail
 SCRIPT_DIR="${0:A:h}"
 cd "$SCRIPT_DIR"
 
+if [[ ! -d node_modules ]]; then
+  npm ci
+fi
+npm run build
+
 PORT=8765
 while lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; do
   PORT=$((PORT + 1))
@@ -18,7 +23,7 @@ echo "Directory: $SCRIPT_DIR"
 echo "URL: $URL"
 echo
 
-nohup python3 -m http.server "$PORT" --bind 127.0.0.1 >"$LOG_FILE" 2>&1 &
+nohup python3 -m http.server "$PORT" --bind 127.0.0.1 --directory out >"$LOG_FILE" 2>&1 &
 SERVER_PID=$!
 
 sleep 1

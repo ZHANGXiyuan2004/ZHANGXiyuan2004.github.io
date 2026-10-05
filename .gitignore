@@ -1,2 +1,12 @@
 .DS_Store
 .local-server-*.log
+node_modules/
+.next/
+out/
+public/
+*.tsbuildinfo
+
+output/qa/
+
+test-results/
+playwright-report/

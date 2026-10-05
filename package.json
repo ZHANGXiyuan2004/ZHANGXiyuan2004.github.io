@@ -1,0 +1,35 @@
+{
+  "name": "shine-yuan-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "prepare:assets": "node scripts/prepare-assets.mjs",
+    "dev": "npm run prepare:assets && next dev --hostname 127.0.0.1",
+    "build": "npm run prepare:assets && next build",
+    "preview": "python3 -m http.server 8765 --bind 127.0.0.1 --directory out",
+    "typecheck": "tsc --noEmit",
+    "test": "playwright test"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.27.15",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "motion": "^12.23.24",
+    "next": "^16.3.8",
+    "radix-ui": "^1.6.7",
+    "react": "^19.1.2",
+    "react-dom": "^19.1.2",
+    "react-use-measure": "^2.1.7",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^24.0.7",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
+  }
+}

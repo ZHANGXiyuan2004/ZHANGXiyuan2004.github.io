@@ -6,7 +6,16 @@ param(
 $ErrorActionPreference = "Stop"
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$RootPath = [System.IO.Path]::GetFullPath($ScriptDir).TrimEnd('\') + '\'
+Push-Location $ScriptDir
+try {
+  if (-not (Test-Path "node_modules")) {
+    & npm.cmd ci
+    if ($LASTEXITCODE -ne 0) { throw "npm ci failed" }
+  }
+  & npm.cmd run build
+  if ($LASTEXITCODE -ne 0) { throw "Build failed" }
+} finally { Pop-Location }
+$RootPath = [System.IO.Path]::GetFullPath((Join-Path $ScriptDir 'out')).TrimEnd('\') + '\'
 
 function Test-PortAvailable {
   param([int]$Port)
