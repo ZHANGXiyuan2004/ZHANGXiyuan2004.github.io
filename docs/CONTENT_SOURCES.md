@@ -8,11 +8,11 @@
 
 | 工作 | 状态与作者身份依据 |
 |---|---|
-| BrainMATCH | 用户提供标题，确认 Nature Communications 在投、共同第一作者；列表置顶 |
+| BrainMATCH | 用户提供标题与摘要，确认 Nature Communications 在投、共同第一作者；列表置顶 |
 | Ada-Fave | 文件名 TOIS.pdf，但封面与正文为 IEEE TKDE；共同贡献脚注确认共同第一作者 |
 | Unified Few-Shot Neuroimaging | 用户确认 MICCAI 2026 已发表；脚注确认共同第一作者 |
 
-展开简介概括对应摘要；BrainMATCH 仅概括用户提供的标题，不补写实验结果。中文标题为译名，英文标题保留原题。
+展开简介概括对应摘要；BrainMATCH 依据用户提供的摘要概括方法与评估结论，不添加未提供的数值。中文标题为译名，英文标题保留原题。
 
 Earlier work 按用户提供的材料、硬件、物联网经历，以及上海交通大学朱虹老师指导的 DFT 与主动学习材料性能预测工作撰写，不再列旧论文明细。当前研究方向为 Harness 和多模态。
 

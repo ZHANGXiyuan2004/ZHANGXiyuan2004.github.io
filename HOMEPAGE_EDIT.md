@@ -44,7 +44,8 @@
 - 期刊：Nature Communications
 - 状态：在投 / Under review
 - 作者：共同第一作者 / Co-first author
-- 详情：脑 MRI 图谱在不同队列与扫描协议之间的数据高效迁移。
+- 中文详情：仅用少量带标注的参考脑 MRI，通过解剖表征学习、跨个体匹配与图谱特定解码，将新图谱迁移到目标扫描。在五个队列、八种图谱协议的少样本评估中优于配准传播和三维分割基线，并在未见中心保持泛化性能。
+- 英文详情：Transfers atlas definitions to new brain MRI scans from a few annotated references through anatomical representation learning, cross-subject matching and atlas-specific decoding. Outperforms registration-based label propagation and 3D segmentation baselines in few-shot evaluations across five cohorts and eight atlas protocols, with generalization to an unseen center.
 
 ### ada-fave
 
