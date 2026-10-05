@@ -39,10 +39,7 @@ img { display:block; max-width:100%; }
 .navigation a:hover,.navigation a[aria-current] { color:#171717; }
 .navigation a[aria-current]::after { content:''; position:absolute; bottom:2px; left:calc(50% - 2px); width:4px; height:4px; border-radius:50%; background:currentColor; }
 .mobile-nav-zh,.menu-toggle { display:none; }
-.hero { padding-top:59px; }
-.hero-eyebrow { display:flex; justify-content:space-between; align-items:center; font-family:inherit; font-size:10px; letter-spacing:1.6px; color:#62625f; }
-.hero-eyebrow>span:first-child { display:flex; align-items:center; gap:9px; }
-.status-dot { display:inline-block; width:5px; height:5px; border-radius:50%; background:currentColor; flex-shrink:0; }
+.hero { padding-top:24px; }
 .hero-main { display:flex; align-items:center; justify-content:space-between; gap:50px; padding:60px 0 61px; }
 .hero-greeting { font-size:14px; color:#73736f; margin:0 0 14px; letter-spacing:1px; }
 h1 { font-size:clamp(60px,8.6vw,104px); font-weight:500; letter-spacing:-2px; line-height:1.09; margin:0 0 24px -6px; }
@@ -53,7 +50,7 @@ h1 { font-size:clamp(60px,8.6vw,104px); font-weight:500; letter-spacing:-2px; li
 .portrait-block { width:194px; flex-shrink:0; margin-right:30px; }
 .portrait-frame { aspect-ratio: .92; background:#e6e6e3; overflow:hidden; border-radius:4px; }
 .portrait-frame img { width:100%; height:100%; object-fit:cover; object-position:50% 50%; }
-.portrait-caption { display:flex; align-items:center; justify-content:center; gap:5px; margin-top:12px; font-family:monospace; font-size:10px; color:#777; }
+.portrait-caption { display:flex; align-items:center; justify-content:center; gap:5px; margin-top:12px; font-family:inherit; font-size:14px; line-height:1.5; color:#656560; }
 .about-strip { display:grid; grid-template-columns:190px 1fr; gap:50px; padding:35px 0 44px; border-top:1px solid var(--line); }
 .section-label { display:flex; align-items:center; gap:18px; font-family:monospace; font-size:10px; letter-spacing:.9px; line-height:1.6; color:#6c6c68; white-space:nowrap; }
 .section-label>span:first-child { color:#a1a19a; }
@@ -182,15 +179,13 @@ h2>span { color:#969690; }
   .navigation a { display:flex; justify-content:space-between; gap:8px; padding:12px 0; border-bottom:1px solid #eee; }
   .navigation a[aria-current]::after { display:none; }
   .mobile-nav-zh { display:inline; font-size:10px; color:#999; }
-  .hero { padding-top:32px; }
-  .hero-eyebrow { font-size:8px; letter-spacing:.8px; }
-  .edition { font-size:7px; }
+  .hero { padding-top:16px; }
   .hero-main { padding:40px 0; gap:22px; }
   h1 { font-size:clamp(42px,8.8vw,62px); letter-spacing:-3px; margin-left:-2px; margin-bottom:20px; }
   .hero-greeting { font-size:11px; margin-bottom:12px; }
   .hero-tagline { font-size:13px; letter-spacing:.3px; }
   .portrait-block { width:120px; }
-  .portrait-caption { font-size:8px; }
+  .portrait-caption { font-size:13px; }
   .hero-actions { gap:15px; margin-top:24px; }
   .hero-actions .text-link { font-size:10px; }
   .hero-actions button,.hero-actions>a:first-child { font-size:11px; height:33px; padding-inline:15px; }
@@ -245,7 +240,7 @@ h2>span { color:#969690; }
   .hero-type { width:100%; }
   .portrait-block { position:absolute; top:28px; right:0; width:63px; }
   .portrait-caption { display:none; }
-  .hero-greeting { margin-bottom:40px; }
+  .hero-greeting { margin-bottom:96px; }
   h1 { font-size:clamp(44px,13vw,62px); letter-spacing:-3px; }
   .hero-tagline { font-size:14px; }
   .section-heading { flex-direction:column; gap:12px; }
@@ -409,8 +404,8 @@ h2>span { color:#969690; }
 .portrait-caption>div { width:94px; text-align:left; }
 .portrait-caption [data-slot] { white-space:nowrap; }
 @media(max-width:480px) {
-  .portrait-caption { display:flex; width:100px; margin-left:-37px; font-size:9px; justify-content:flex-end; gap:3px; }
-  .portrait-caption>div { width:auto; min-width:53px; }
+  .portrait-caption { display:flex; width:100px; margin-left:-37px; font-size:12px; justify-content:flex-end; gap:3px; }
+  .portrait-caption>div { width:78px; min-width:78px; }
 }
 
 /* Center the About text block while keeping each line left aligned. */
@@ -418,9 +413,14 @@ h2>span { color:#969690; }
 .about-description { width:auto; max-width:100%; text-align:left; }
 
 /* Hero Contact: plain text and arrow, matching Watch demo. */
-.hero-actions .hero-contact-link { background:transparent; border:0; box-shadow:none; border-radius:0; color:var(--foreground); padding:0; height:auto; font-size:16px; gap:10px; }
+/* Borderless contact link: Animate UI flips its text and directional arrow. */
+.hero-actions .hero-contact-link { background:transparent; border:0; box-shadow:none; border-radius:0; color:var(--foreground); padding:0; min-height:44px; height:auto; overflow:hidden; }
 .hero-actions .hero-contact-link:hover { background:transparent; box-shadow:none; }
-@media(max-width:480px) { .hero-actions .hero-contact-link { font-size:14px; padding:0; height:auto; } }
+.hero-contact-link [data-slot="flip-button-front"],.hero-contact-link [data-slot="flip-button-back"] { width:100%; min-height:44px; padding:6px 0; justify-content:space-between; gap:24px; font-size:18px; font-weight:500; letter-spacing:-.02em; }
+.hero-actions .hero-contact-link svg { width:24px; height:24px; stroke-width:1.4; }
+.hero-actions .hero-contact-link:focus-visible { outline:2px solid currentColor; outline-offset:5px; }
+@media(max-width:480px) { .hero-contact-link [data-slot="flip-button-front"],.hero-contact-link [data-slot="flip-button-back"] { font-size:16px; gap:20px; } }
+
 
 /* Size the centered biography to its longest explicit line. */
 .about-content { width:max-content; max-width:100%; }
@@ -432,3 +432,7 @@ h2>span { color:#969690; }
 /* Three-line biography, aligned with the section heading. */
 .about-content { width:100%; max-width:none; margin-inline:0; }
 .about-description { width:100%; text-align:left; white-space:normal; text-wrap:wrap; line-height:2; }
+
+/* Mask the name reveal while preserving its natural line breaks. */
+#hero-title > span > span { overflow:clip; vertical-align:bottom; padding-bottom:.08em; margin-bottom:-.08em; }
+.portrait-caption svg { flex-shrink:0; }

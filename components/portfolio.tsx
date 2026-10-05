@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState, type ReactNode, type KeyboardEvent } from 'react';
-import { MotionConfig, useReducedMotion } from 'motion/react';
-import { ArrowUpRight, Github, Copy, Check, Menu, X, Star, GitFork, Play, Camera, MoveUpRight, MapPin, Footprints, CircleDot, ChevronDown, Users, Maximize2, Mail } from 'lucide-react';
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode, type KeyboardEvent } from 'react';
+import { MotionConfig, useReducedMotion, useAnimationControls, useInView } from 'motion/react';
+import { ArrowUpRight, ArrowDownRight, Github, Copy, Check, Menu, X, Star, GitFork, Play, Camera, MoveUpRight, MapPin, Footprints, CircleDot, ChevronDown, Users, Maximize2, Mail } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContents, TabsContent } from '@/components/animate-ui/components/animate/tabs';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/animate-ui/components/animate/tooltip';
 import { Button } from '@/components/animate-ui/components/buttons/button';
@@ -16,6 +16,9 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogClose } fr
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/animate-ui/primitives/radix/collapsible';
 import { FlipButton, FlipButtonFront, FlipButtonBack } from '@/components/animate-ui/components/buttons/flip';
 
+const EntranceLanguage = createContext<Language>('zh');
+const entranceEase = [0.22, 1, 0.36, 1] as const;
+
 const cities = { zh: ['杭州', '北京', '上海', '成都', '深圳', '香港'], en: ['Hangzhou', 'Beijing', 'Shanghai', 'Chengdu', 'Shenzhen', 'Hong Kong'] };
 function CityLocation({ language }: { language: Language }) {
   const reduced = useReducedMotion();
@@ -25,12 +28,33 @@ function CityLocation({ language }: { language: Language }) {
     document.addEventListener('visibilitychange', update);
     return () => document.removeEventListener('visibilitychange', update);
   }, []);
-  return <div className="portrait-caption" aria-label={cities[language].join(' · ')}><MapPin size={12} /><div aria-hidden="true">{reduced ? <span>{cities[language][0]}</span> : <RotatingTextContainer key={language} text={cities[language]} duration={2400} delay={2400} inView inViewOnce={false} paused={!visible}><RotatingText /></RotatingTextContainer>}</div></div>;
+  return <div className="portrait-caption" aria-label={cities[language].join(' · ')}><MapPin size={14} /><div aria-hidden="true">{reduced ? <span>{cities[language][0]}</span> : <RotatingTextContainer key={language} text={cities[language]} duration={2400} delay={2400} inView inViewOnce={false} paused={!visible}><RotatingText /></RotatingTextContainer>}</div></div>;
 }
 
 function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   const reduced = useReducedMotion();
-  return <Fade inView inViewOnce initialOpacity={reduced ? 1 : 0} delay={reduced ? 0 : delay} transition={{ duration: reduced ? 0 : .55 }} className={`section-reveal ${className}`}>{children}</Fade>;
+  const language = useContext(EntranceLanguage);
+  const ref = useRef<HTMLDivElement>(null);
+  const entered = useInView(ref, { once: true });
+  const controls = useAnimationControls();
+  const offset = ['hero-greeting-reveal', 'hero-actions', 'portrait-block', 'about-strip'].includes(className) ? 16 : 0;
+  const previousLanguage = useRef(language);
+  useEffect(() => {
+    const switching = previousLanguage.current !== language;
+    previousLanguage.current = language;
+    if (reduced) {
+      controls.set({ opacity: 1, y: 0 });
+      return;
+    }
+    if (!entered) return;
+    controls.set({ opacity: switching ? .25 : 0, y: switching ? offset / 2 : offset });
+    void controls.start({ opacity: 1, y: 0, transition: {
+      duration: switching ? .42 : .7, ease: entranceEase,
+      delay: switching ? 0 : delay / 1000,
+    } });
+    return () => controls.stop();
+  }, [controls, delay, entered, language, offset, reduced]);
+  return <Fade ref={ref} initial={{ opacity: 0, y: offset }} animate={controls} className={`section-reveal ${className}`}>{children}</Fade>;
 }
 function NumberStat({ number, decimals = 0, suffix = '' }: { number: number; decimals?: number; suffix?: string }) {
   const reduced = useReducedMotion();
@@ -110,7 +134,7 @@ export default function Portfolio() {
     const next = event.key === 'Home' ? 'products' : event.key === 'End' ? 'videos' : tab === 'products' ? 'videos' : 'products';
     setTab(next); document.getElementById(`tab-${next}`)?.focus();
   }
-  return <MotionConfig reducedMotion="user"><TooltipProvider openDelay={120}>
+  return <MotionConfig reducedMotion="user"><TooltipProvider openDelay={120}><EntranceLanguage.Provider value={language}>
     <a href="#main" className="skip-link">{tr('跳转到正文', 'Skip to content')}</a>
     <header className="site-header">
       <div className="header-inner">
@@ -124,19 +148,18 @@ export default function Portfolio() {
     </header>
     <main id="main" className={`page-shell locale-${language}`}>
       <section id="about" className="hero section-anchor" aria-labelledby="hero-title">
-        <div className="hero-eyebrow"><span><span className="status-dot" /> {tr('个人主页', 'Portfolio')}</span><span className="edition">2026</span></div>
         <div className="hero-main">
           <div className="hero-type">
-            <p className="hero-greeting">{tr("Shine Yuan", "张晰元 / Xiyuan Zhang")}</p>
-            <h1 id="hero-title"><SplittingText key={language} text={tr("张晰元", "Shine Yuan.")} type="chars" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} stagger={.035} delay={60} disableAnimation={!!reduced} /></h1>
-            <div className="hero-actions"><Button asChild variant="ghost" className="hero-contact-link" hoverScale={1.03}><a href="#contact">{tr('联系我', 'Contact')} <ArrowUpRight /></a></Button></div>
+            <Reveal className="hero-greeting-reveal" delay={40}><p className="hero-greeting">{tr("Shine Yuan", "张晰元 / Xiyuan Zhang")}</p></Reveal>
+            <h1 id="hero-title"><SplittingText key={language} text={tr("张晰元", "Shine Yuan.")} type="chars" initial={{ opacity: 0, y: '55%', rotate: 3 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: .75, ease: entranceEase }} stagger={language === 'zh' ? .09 : .035} delay={100} disableAnimation={!!reduced} /></h1>
+            <Reveal className="hero-actions" delay={260}><FlipButton asChild variant="ghost" from="bottom" className="hero-contact-link" whileFocus="hover" aria-label={tr('联系我', 'Contact')}><a href="#contact"><FlipButtonFront><span>{tr('联系我', 'Contact')}</span><ArrowUpRight aria-hidden="true" /></FlipButtonFront><FlipButtonBack aria-hidden="true"><span>{tr('联系方式', 'Contact details')}</span><ArrowDownRight /></FlipButtonBack></a></FlipButton></Reveal>
           </div>
           <Reveal className="portrait-block" delay={160}>
             <div className="portrait-frame"><img src="/images/optimized/avatar/me-512.webp" srcSet="/images/optimized/avatar/me-256.webp 256w, /images/optimized/avatar/me-512.webp 512w" sizes="(max-width: 640px) 120px, 194px" alt="Shine Yuan 张晰元" width="768" height="589" decoding="async" fetchPriority="high" /></div>
             <CityLocation language={language} />
           </Reveal>
         </div>
-        <Reveal className="about-strip">
+        <Reveal className="about-strip" delay={320}>
           <SectionLabel number="01">{tr('关于我', 'About')}</SectionLabel>
           <div className="about-content"><p className="about-description">{language === 'en' ? <>Incoming Ph.D. student at <External href="https://www.zju.edu.cn/"><strong>ZJU‑UIUC Institute</strong></External>, Zhejiang University.<br />Graduated from <External href="https://en.uestc.edu.cn/"><strong>UESTC</strong></External> — <strong><em>Outstanding Student Award</em></strong> nominee; founded the <External href="https://uestc-ia.github.io/"><strong>UESTC Interdisciplinary Association</strong></External>.<br />My work focuses on Harness and multimodal AI, alongside open-source community building, open-source product development and technical content creation.</> : <>浙江大学<External href="https://www.zju.edu.cn/"><strong>伊利诺伊大学厄巴纳香槟校区联合学院（ZJU‑UIUC Institute）</strong></External>准博士生。<br />毕业于<External href="https://en.uestc.edu.cn/"><strong>电子科技大学</strong></External>，获校级最高荣誉<strong><em>「成电杰出学生」</em></strong>提名，并创立<External href="https://uestc-ia.github.io/"><strong>电子科技大学交叉学科协会</strong></External>。<br />工作主要关注 Harness 和多模态，同时参与开源社区建设、开源项目与产品开发，以及自媒体技术内容创作。</>}</p></div>
         </Reveal>
@@ -165,7 +188,7 @@ export default function Portfolio() {
       <section id="beyond" className="content-section section-anchor" aria-labelledby="beyond-title">
         <Reveal><SectionLabel number="05">{tr('兴趣爱好', 'Interests')}</SectionLabel><div className="section-heading"><h2 id="beyond-title">{tr('网球、摄影与跑步', 'Tennis, photography & running')}</h2></div></Reveal>
         <Collapsible open={photosOpen} onOpenChange={setPhotosOpen}><div className="hobby-grid">
-          <Reveal><article className="hobby-card"><div className="hobby-top"><CircleDot size={23} strokeWidth={1.3} /><span className="small-label">{tr('01 / 网球', '01 / TENNIS')}</span></div><h3>{tr('网球', 'Tennis')}</h3><div className="hobby-big">3.5<span>{tr('网球评级', 'Tennis rating')}</span></div><ul><li>{tr('两次校级网球比赛亚军', 'Two-time university tennis tournament runner-up')}</li><li>{tr('受邀观赛中国网球公开赛', 'Invited spectator at the China Open')}</li></ul></article></Reveal>
+          <Reveal><article className="hobby-card"><div className="hobby-top"><CircleDot size={23} strokeWidth={1.3} /><span className="small-label">{tr('01 / 网球', '01 / TENNIS')}</span></div><h3>{tr('网球', 'Tennis')}</h3><div className="hobby-big">3.5<span>NTRP</span></div><ul><li>{tr('两次校级网球比赛亚军', 'Two-time university tennis tournament runner-up')}</li><li>{tr('受邀观赛中国网球公开赛', 'Invited spectator at the China Open')}</li></ul></article></Reveal>
           <Reveal delay={60}><article className="hobby-card"><div className="hobby-top"><Camera size={23} strokeWidth={1.3} /><span className="small-label">{tr('02 / 摄影', '02 / PHOTOGRAPHY')}</span></div><h3>{tr('摄影', 'Photography')}</h3><div className="hobby-big">500px<span>{tr('供稿人', 'Contributor')}</span></div><CollapsibleTrigger asChild><Button variant="outline" className="detail-button" aria-controls="photographs">{photosOpen ? tr('收起摄影作品', 'Hide photographs') : tr('查看摄影作品', 'View photographs')}<ChevronDown size={14} className={photosOpen ? 'rotate-180' : ''} /></Button></CollapsibleTrigger></article></Reveal>
           <Reveal delay={120}><article className="hobby-card"><div className="hobby-top"><Footprints size={23} strokeWidth={1.3} /><span className="small-label">{tr('03 / 跑步', '03 / RUNNING')}</span></div><h3>{tr('跑步', 'Running')}</h3><div className="hobby-big">42.195<span>{tr('km · 马拉松大众一级', 'km · Marathon amateur level 1')}</span></div><ul><li>{tr('参加四川省运动会', 'Sichuan Provincial Games participant')}</li><li>{tr('电子科技大学跑步协会副会长', 'Vice president, UESTC Running Association')}</li></ul></article></Reveal>
         </div>
@@ -179,5 +202,5 @@ export default function Portfolio() {
     </main>
     <Dialog open={detail !== null} onOpenChange={open => { if (!open) setDetail(null); }}><DialogContent showCloseButton={false} transition={reduced ? { duration: 0 } : undefined} className={detail?.image ? 'detail-dialog photo-dialog' : 'detail-dialog'} onCloseAutoFocus={event => { event.preventDefault(); detailOpener.current?.focus(); }}><DialogTitle>{detail?.title}</DialogTitle><DialogDescription>{detail?.text}</DialogDescription>{detail?.image && <img src={detail.image} alt={detail.title} width="1280" height="853" className="dialog-photo" />}<DialogClose asChild><Button variant="outline" size="icon" className="dialog-close" aria-label={tr('关闭详情', 'Close details')}><X size={18} /></Button></DialogClose></DialogContent></Dialog>
     <noscript><style>{`.section-reveal, #hero-title span { opacity: 1 !important; transform: none !important; } [data-slot="tabs-contents"] { height: auto !important; } [data-slot="tabs-contents"] > div { display: block !important; transform: none !important; } [data-slot="tabs-content"] { filter: none !important; } [data-slot="tabs-list"], .menu-toggle, .copy-button, .language-switch { display: none !important; } .navigation { display: flex !important; position: static !important; flex-wrap: wrap; } .header-inner { flex-wrap: wrap; height: auto; padding-block: 12px; } .site-header { height: auto; position: static; }`}</style></noscript>
-  </TooltipProvider></MotionConfig>;
+  </EntranceLanguage.Provider></TooltipProvider></MotionConfig>;
 }
