@@ -46,14 +46,6 @@
 - 作者：共同第一作者 / Co-first author
 - 详情：脑 MRI 图谱在不同队列与扫描协议之间的数据高效迁移。
 
-### iclr-submission / kdd-submission
-
-- 会议：ICLR 2027 / KDD
-- 状态：在投 / Under review
-- 显示标题：研究论文投稿 / Research paper submission
-- 保留论文条目外观；不提供展开箭头、交互或详情。
-- 不公开具体题目、方法名称、摘要、作者排序及论文或代码链接。
-
 ### ada-fave
 
 - 中文：Ada-Fave：用于序列推荐的自适应先验增强流式平均速度方法
@@ -85,7 +77,7 @@
 - Earlier work 正文使用完整内容宽度，不留右侧空列。
 - 不再展示早期论文列表、会议和状态，RSVG 从主页移除。
 - 论文行：顶部为会议/期刊与状态，右侧为作者排序；Animate UI Accordion 展开后显示研究简介，不提供复制标题按钮。
-- MICCAI、Ada-Fave、BrainMATCH 为共同第一作者；ICLR 和 KDD 只展示投稿状态。
+- MICCAI、Ada-Fave、BrainMATCH 为共同第一作者。
 
 ## 3. 开源社区 / Open-source community
 
@@ -215,7 +207,7 @@
 - 产品与内容板块保留原设计。
 - 板块编号改为方形徽标；About 等标题改为 18px 的清晰分节标题。
 - About 按最新文案显示院校、奖项、协会信息及三个指定超链接。
-- 当前研究列表 5 项；Earlier work 为跨学科研究经历。
+- 当前研究列表 3 项；Earlier work 为跨学科研究经历。
 - 网球和跑步卡片不设详情按钮；摄影按钮展开下方照片。
 - 摄影图片保持彩色，点击通过 Dialog 以透视、缩放和模糊入场动效打开大图，支持 Esc 关闭并返回触发按钮焦点。
 - 继续遵守系统减少动态效果偏好，不自行编写关键帧。

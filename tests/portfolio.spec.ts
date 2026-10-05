@@ -26,7 +26,7 @@ for (const width of [1440, 640, 390, 320]) {
       await expect(paper.locator('.status')).toHaveText(language === 'zh' ? '已发表' : 'Published');
       await expect(page.locator('.partner-list a')).toHaveCount(0);
       await expect(page.locator('#community a')).toHaveCount(2);
-      await expect(page.locator('.paper-list .research-entry')).toHaveCount(5);
+      await expect(page.locator('.paper-list .research-entry')).toHaveCount(3);
       await expect(page.locator('.earlier-narrative')).toContainText('DFT');
       await expect(page.locator('.photo-grid img')).toHaveCount(0);
       await page.getByRole('button', { name: language === 'zh' ? '查看摄影作品' : 'View photographs', exact: true }).click();
@@ -99,9 +99,7 @@ for (const width of [1440, 320]) {
     await expect(page.locator('.about-content a')).toHaveCount(3);
     for (const venue of ['ICLR 2027', 'KDD']) {
       const entry = page.locator('.research-entry').filter({ hasText: venue });
-      await expect(entry.getByRole('button')).toHaveCount(0);
-      await expect(entry).toContainText('研究论文投稿');
-      await expect(entry.locator('svg')).toHaveCount(0);
+      await expect(entry).toHaveCount(0);
     }
     const paper = page.locator('.paper-list .research-entry').filter({ hasText: 'MICCAI 2026' });
     await paper.getByRole('button').first().click();
