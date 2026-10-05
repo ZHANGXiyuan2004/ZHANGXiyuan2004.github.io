@@ -9,8 +9,8 @@
 | 工作 | 状态与作者身份依据 |
 |---|---|
 | BrainMATCH | 用户提供标题，确认 Nature Communications 在投、共同第一作者；列表置顶 |
-| Mem-SONAR | ICLR 稿件首页标为 ICLR 2027 在审；匿名稿，作者顺序未确认，暂不显示 |
-| GATE | KDD 在投；用户确认共同第一作者，无可靠届次，不填年份 |
+| ICLR 2027 | 仅显示会议名与在投状态，不展示可定位具体论文的信息 |
+| KDD | 仅显示会议名与在投状态，不展示可定位具体论文的信息 |
 | Ada-Fave | 文件名 TOIS.pdf，但封面与正文为 IEEE TKDE；共同贡献脚注确认共同第一作者 |
 | Unified Few-Shot Neuroimaging | 用户确认 MICCAI 2026 已发表；脚注确认共同第一作者 |
 

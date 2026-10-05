@@ -14,8 +14,8 @@ export const navigation = [
 ];
 export const papers = [
   { id: 'brainmatch', title: 'BrainMATCH：实现跨队列与扫描协议的高数据效率脑 MRI 图谱迁移', venue: 'Nature Communications', status: 'Under review', topic: '医学影像', authorship: '共同第一作者', authorshipEn: 'Co-first author', summary: '研究脑 MRI 图谱在不同人群队列和扫描协议之间的数据高效迁移，减少图谱迁移对标注数据的依赖。', summaryEn: 'Studies data-efficient transfer of brain MRI atlases across cohorts and imaging protocols, reducing the reliance on labeled data for atlas transfer.' },
-  { id: 'mem-sonar', title: 'Mem-SONAR：基于交替强化学习的自组织与自导航记忆', venue: 'ICLR 2027', status: 'Under review', topic: '智能体记忆', authorship: '', authorshipEn: '', summary: '将记忆组织与检索建模为同一语言模型的两种可训练能力：Organizer 用语义路径构建记忆树，Navigator 根据问题沿路径检索证据。通过多轮交替强化学习，让组织策略与检索行为相互改进。', summaryEn: 'Models memory organization and retrieval as two trainable capabilities of the same LLM. An Organizer builds a memory tree using semantic paths, while a Navigator follows those paths to retrieve evidence. Multi-round alternating reinforcement learning aligns the two capabilities.' },
-  { id: 'gate', title: 'GATE：面向证据感知智能体推荐的粒度自适应记忆分层', venue: 'KDD', status: 'Submitted', topic: '推荐系统', authorship: '共同第一作者', authorshipEn: 'Co-first author', summary: '针对用户偏好复杂度不同带来的记忆粒度失配，构建多层偏好记忆。结合证据感知的语言模型重排序器与轻量路由器，为每次请求选择适合的记忆层级，兼顾推荐质量和推理开销。', summaryEn: 'Builds preference memories at multiple levels of detail to handle differences in user preference complexity. An evidence-aware LLM reranker and a lightweight router select an appropriate memory tier for each request, balancing recommendation quality and inference cost.' },
+  { id: 'iclr-submission', title: '研究论文投稿', venue: 'ICLR 2027', status: 'Under review', topic: '', authorship: '', authorshipEn: '', summary: '', summaryEn: '' },
+  { id: 'kdd-submission', title: '研究论文投稿', venue: 'KDD', status: 'Under review', topic: '', authorship: '', authorshipEn: '', summary: '', summaryEn: '' },
   { id: 'ada-fave', title: 'Ada-Fave：用于序列推荐的自适应先验增强流式平均速度方法', venue: 'IEEE TKDE', status: 'Submitted', topic: '推荐系统', authorship: '共同第一作者', authorshipEn: 'Co-first author', summary: '从用户交互序列构建自适应语义先验，以平均速度实现单步生成式推荐。结合分阶段双时间条件注入与 JVP 轨迹约束，减少从噪声出发的先验失配和多步求解冗余。', summaryEn: 'Constructs an adaptive semantic prior from interaction sequences for one-step generative recommendation using average velocity. Stage-aware dual-time conditioning and a JVP-based trajectory constraint address prior mismatch and redundant iterative generation.' },
   { id: 'neuroimaging', title: '基于视觉基础模型的多图谱神经影像统一少样本分割框架', venue: 'MICCAI 2026', status: 'Published', topic: '医学影像', authorship: '共同第一作者', authorshipEn: 'Co-first author', summary: '将视觉基础模型适配到三维多图谱脑影像分割。结合解剖先验自监督、线性 Transformer 匹配与轻量细化模块，在少量标注下进行跨图谱标签迁移，并通过冻结主干、微调细化模块适配新图谱。', summaryEn: 'Adapts vision foundation models to 3D multi-atlas brain segmentation. Anatomically informed self-supervision, linear Transformer matching and a lightweight refinement module support label transfer with few annotations. New atlases are accommodated by freezing the backbone and tuning the refinement module.' },
 ];
@@ -58,8 +58,8 @@ export function getContent(language: Language) {
   if (language === 'zh') return { profile, papers, products, videos, social, photos, community };
   const englishPapers = [
     ['BrainMATCH enables data-efficient transfer of brain MRI atlases across cohorts and protocols', 'Medical AI'],
-    ['Mem-SONAR: Self-Organizing and Self-Navigating Memory via Alternating Reinforcement Learning', 'Agent memory'],
-    ['GATE: Granularity-Adaptive Memory Tiering for Evidence-Aware Agentic Recommendation', 'Recommendation'],
+    ['Research paper submission', ''],
+    ['Research paper submission', ''],
     ['Ada-Fave: Adaptive Prior Enhanced Flow-based Average Velocity for Sequential Recommendation', 'Recommendation'],
     ['A Unified Few-Shot Framework for Multi-Atlas Neuroimaging Segmentation Leveraging Vision Foundation Models', 'Medical AI · Co-first author'],
   ];

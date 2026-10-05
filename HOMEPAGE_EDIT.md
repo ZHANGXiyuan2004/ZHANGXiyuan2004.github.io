@@ -46,30 +46,13 @@
 - 作者：共同第一作者 / Co-first author
 - 详情：脑 MRI 图谱在不同队列与扫描协议之间的数据高效迁移。
 
-### mem-sonar
+### iclr-submission / kdd-submission
 
-- 中文：Mem-SONAR：基于交替强化学习的自组织与自导航记忆
-- 英文：Mem-SONAR: Self-Organizing and Self-Navigating Memory via Alternating Reinforcement Learning
-- 投稿/发表处：ICLR 2027
+- 会议：ICLR 2027 / KDD
 - 状态：在投 / Under review
-- 中文补充：智能体记忆
-- 英文补充：Agent memory
-
-- 中文详情：将记忆组织与检索建模为同一语言模型的两种可训练能力：Organizer 用语义路径构建记忆树，Navigator 根据问题沿路径检索证据。通过多轮交替强化学习，让组织策略与检索行为相互改进。
-- 英文详情：Models memory organization and retrieval as two trainable capabilities of the same LLM. An Organizer builds a memory tree using semantic paths, while a Navigator follows those paths to retrieve evidence. Multi-round alternating reinforcement learning aligns the two capabilities.
-
-### gate
-
-- 中文：GATE：面向证据感知智能体推荐的粒度自适应记忆分层
-- 英文：GATE: Granularity-Adaptive Memory Tiering for Evidence-Aware Agentic Recommendation
-- 投稿/发表处：KDD
-- 作者：共同第一作者 / Co-first author
-- 状态：在投 / Under review
-- 中文补充：推荐系统
-- 英文补充：Recommendation
-
-- 中文详情：针对用户偏好复杂度不同带来的记忆粒度失配，构建多层偏好记忆。结合证据感知的语言模型重排序器与轻量路由器，为每次请求选择适合的记忆层级，兼顾推荐质量和推理开销。
-- 英文详情：Builds preference memories at multiple levels of detail to handle differences in user preference complexity. An evidence-aware LLM reranker and a lightweight router select an appropriate memory tier for each request, balancing recommendation quality and inference cost.
+- 显示标题：研究论文投稿 / Research paper submission
+- 保留论文条目外观；不提供展开箭头、交互或详情。
+- 不公开具体题目、方法名称、摘要、作者排序及论文或代码链接。
 
 ### ada-fave
 
@@ -102,7 +85,7 @@
 - Earlier work 正文使用完整内容宽度，不留右侧空列。
 - 不再展示早期论文列表、会议和状态，RSVG 从主页移除。
 - 论文行：顶部为会议/期刊与状态，右侧为作者排序；Animate UI Accordion 展开后显示研究简介，不提供复制标题按钮。
-- MICCAI、Ada-Fave、BrainMATCH 和 KDD 为共同第一作者；ICLR 作者顺序待用户补充。
+- MICCAI、Ada-Fave、BrainMATCH 为共同第一作者；ICLR 和 KDD 只展示投稿状态。
 
 ## 3. 开源社区 / Open-source community
 

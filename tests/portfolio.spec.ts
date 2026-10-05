@@ -97,10 +97,16 @@ for (const width of [1440, 320]) {
     await page.goto('/');
     await expect(page.locator('.profile-buttons')).toHaveCount(0);
     await expect(page.locator('.about-content a')).toHaveCount(3);
-    const paper = page.locator('.paper-list .research-entry').filter({ hasText: 'Mem-SONAR' });
+    for (const venue of ['ICLR 2027', 'KDD']) {
+      const entry = page.locator('.research-entry').filter({ hasText: venue });
+      await expect(entry.getByRole('button')).toHaveCount(0);
+      await expect(entry).toContainText('研究论文投稿');
+      await expect(entry.locator('svg')).toHaveCount(0);
+    }
+    const paper = page.locator('.paper-list .research-entry').filter({ hasText: 'MICCAI 2026' });
     await paper.getByRole('button').first().click();
     await expect(paper.locator('[data-slot="accordion-content"]')).toBeVisible();
-    await expect(paper.locator('.paper-details')).toContainText('Organizer');
+    await expect(paper.locator('.paper-details')).toContainText('视觉基础模型');
     await expect(paper.getByRole('button', { name: '复制论文标题' })).toHaveCount(0);
     const gallery = page.getByRole('button', { name: '查看摄影作品', exact: true });
     await expect(page.locator('.photo-grid img')).toHaveCount(0);

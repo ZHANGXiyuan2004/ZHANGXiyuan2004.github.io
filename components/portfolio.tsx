@@ -70,6 +70,7 @@ function ActionLink({ href, children, back, external = false }: { href: string; 
 function PaperEntry({ paper, language }: { paper: ReturnType<typeof getContent>['papers'][number]; language: Language }) {
   const tr = (zh: string, en: string) => language === 'zh' ? zh : en;
   const reduced = useReducedMotion();
+  if (!paper.summary) return <article className="research-entry"><div className="paper-trigger paper-static"><span className="paper-copy"><span className="paper-meta"><span className="venue">{paper.venue}</span><span className="status">{tr('在投', 'Under review')}</span></span><span className="paper-title">{paper.title}</span></span></div></article>;
   return <AccordionItem value={paper.id} className="research-entry"><AccordionTrigger className="paper-trigger"><span className="paper-copy"><span className="paper-meta"><span className="venue">{paper.venue}</span><span className={`status ${paper.status === 'Published' ? 'is-published' : ''}`}>{paper.status === 'Published' ? tr('已发表', 'Published') : tr('在投', 'Under review')}</span></span><span className="paper-title">{paper.title}</span></span><span className="paper-status">{paper.authorship}</span></AccordionTrigger><AccordionContent transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 180, damping: 25 }}><div className="paper-details"><p>{paper.summary}</p></div></AccordionContent></AccordionItem>;
 }
 
