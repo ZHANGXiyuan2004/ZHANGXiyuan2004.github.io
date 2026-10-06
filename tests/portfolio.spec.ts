@@ -13,7 +13,7 @@ for (const width of [1440, 640, 390, 320]) {
       await expect(page.locator('h1')).toHaveText(language === 'zh' ? '张晰元' : 'Shine Yuan.');
       await page.waitForTimeout(650);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-      await expect(page.locator('.hero-actions a').first()).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+      await expect(page.locator('#about a[href="#contact"]')).toHaveCount(0);
       await page.screenshot({ path: `output/qa/${language}-${width}-top.png` });
       for (const id of ['research', 'community', 'making', 'beyond', 'contact']) {
         await page.locator(`#${id}`).scrollIntoViewIfNeeded();

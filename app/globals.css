@@ -44,12 +44,11 @@ img { display:block; max-width:100%; }
 .hero-greeting { font-size:14px; color:#73736f; margin:0 0 14px; letter-spacing:1px; }
 h1 { font-size:clamp(60px,8.6vw,104px); font-weight:500; letter-spacing:-2px; line-height:1.09; margin:0 0 24px -6px; }
 .hero-tagline { font-size:20px; letter-spacing:1px; margin:0; font-weight:400; }
-.hero-actions { display:flex; align-items:center; gap:27px; margin-top:30px; }
 .text-link { display:inline-flex; align-items:center; gap:8px; font-size:12px; white-space:nowrap; }
 .text-link:hover { text-decoration:underline; text-underline-offset:5px; }
 .portrait-block { width:194px; flex-shrink:0; margin-right:30px; }
-.portrait-frame { aspect-ratio: .92; background:#e6e6e3; overflow:hidden; border-radius:4px; }
-.portrait-frame img { width:100%; height:100%; object-fit:cover; object-position:50% 50%; }
+.portrait-frame { display:flex; aspect-ratio:.92; padding:6px; border:1px solid #d8d8d2; background:#fff; overflow:hidden; border-radius:8px; box-shadow:0 3px 8px rgb(0 0 0 / .035),0 14px 30px -20px rgb(0 0 0 / .2); }
+.portrait-frame img { width:100%; height:100%; min-height:0; object-fit:cover; object-position:50% 50%; border-radius:3px; }
 .portrait-caption { display:flex; align-items:center; justify-content:center; gap:5px; margin-top:12px; font-family:inherit; font-size:14px; line-height:1.5; color:#656560; }
 .about-strip { display:grid; grid-template-columns:190px 1fr; gap:50px; padding:35px 0 44px; border-top:1px solid var(--line); }
 .section-label { display:flex; align-items:center; gap:18px; font-family:monospace; font-size:10px; letter-spacing:.9px; line-height:1.6; color:#6c6c68; white-space:nowrap; }
@@ -186,9 +185,6 @@ h2>span { color:#969690; }
   .hero-tagline { font-size:13px; letter-spacing:.3px; }
   .portrait-block { width:120px; }
   .portrait-caption { font-size:13px; }
-  .hero-actions { gap:15px; margin-top:24px; }
-  .hero-actions .text-link { font-size:10px; }
-  .hero-actions button,.hero-actions>a:first-child { font-size:11px; height:33px; padding-inline:15px; }
   .about-strip { grid-template-columns:1fr; gap:20px; padding:26px 0 34px; }
   .about-description { font-size:13px; }
   .section-label { font-size:9px; gap:14px; }
@@ -413,13 +409,6 @@ h2>span { color:#969690; }
 .about-description { width:auto; max-width:100%; text-align:left; }
 
 /* Hero Contact: plain text and arrow, matching Watch demo. */
-/* Borderless contact link: Animate UI flips its text and directional arrow. */
-.hero-actions .hero-contact-link { background:transparent; border:0; box-shadow:none; border-radius:0; color:var(--foreground); padding:0; min-height:44px; height:auto; overflow:hidden; }
-.hero-actions .hero-contact-link:hover { background:transparent; box-shadow:none; }
-.hero-contact-link [data-slot="flip-button-front"],.hero-contact-link [data-slot="flip-button-back"] { width:100%; min-height:44px; padding:6px 0; justify-content:space-between; gap:24px; font-size:18px; font-weight:500; letter-spacing:-.02em; }
-.hero-actions .hero-contact-link svg { width:24px; height:24px; stroke-width:1.4; }
-.hero-actions .hero-contact-link:focus-visible { outline:2px solid currentColor; outline-offset:5px; }
-@media(max-width:480px) { .hero-contact-link [data-slot="flip-button-front"],.hero-contact-link [data-slot="flip-button-back"] { font-size:16px; gap:20px; } }
 
 
 /* Size the centered biography to its longest explicit line. */
@@ -436,3 +425,5 @@ h2>span { color:#969690; }
 /* Mask the name reveal while preserving its natural line breaks. */
 #hero-title > span > span { overflow:clip; vertical-align:bottom; padding-bottom:.08em; margin-bottom:-.08em; }
 .portrait-caption svg { flex-shrink:0; }
+
+@media(max-width:480px) { .portrait-frame { padding:3px; border-radius:5px; } .portrait-frame img { border-radius:2px; } }

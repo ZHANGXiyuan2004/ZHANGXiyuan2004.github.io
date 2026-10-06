@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode, type KeyboardEvent } from 'react';
 import { MotionConfig, useReducedMotion, useAnimationControls, useInView } from 'motion/react';
-import { ArrowUpRight, ArrowDownRight, Github, Copy, Check, Menu, X, Star, GitFork, Play, Camera, MoveUpRight, MapPin, Footprints, CircleDot, ChevronDown, Users, Maximize2, Mail } from 'lucide-react';
+import { ArrowUpRight, Github, Copy, Check, Menu, X, Star, GitFork, Play, Camera, MoveUpRight, MapPin, Footprints, CircleDot, ChevronDown, Users, Maximize2, Mail } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContents, TabsContent } from '@/components/animate-ui/components/animate/tabs';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/animate-ui/components/animate/tooltip';
 import { Button } from '@/components/animate-ui/components/buttons/button';
@@ -37,7 +37,7 @@ function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; 
   const ref = useRef<HTMLDivElement>(null);
   const entered = useInView(ref, { once: true });
   const controls = useAnimationControls();
-  const offset = ['hero-greeting-reveal', 'hero-actions', 'portrait-block', 'about-strip'].includes(className) ? 16 : 0;
+  const offset = ['hero-greeting-reveal', 'portrait-block', 'about-strip'].includes(className) ? 16 : 0;
   const previousLanguage = useRef(language);
   useEffect(() => {
     const switching = previousLanguage.current !== language;
@@ -152,7 +152,6 @@ export default function Portfolio() {
           <div className="hero-type">
             <Reveal className="hero-greeting-reveal" delay={40}><p className="hero-greeting">{tr("Shine Yuan", "张晰元 / Xiyuan Zhang")}</p></Reveal>
             <h1 id="hero-title"><SplittingText key={language} text={tr("张晰元", "Shine Yuan.")} type="chars" initial={{ opacity: 0, y: '55%', rotate: 3 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: .75, ease: entranceEase }} stagger={language === 'zh' ? .09 : .035} delay={100} disableAnimation={!!reduced} /></h1>
-            <Reveal className="hero-actions" delay={260}><FlipButton asChild variant="ghost" from="bottom" className="hero-contact-link" whileFocus="hover" aria-label={tr('联系我', 'Contact')}><a href="#contact"><FlipButtonFront><span>{tr('联系我', 'Contact')}</span><ArrowUpRight aria-hidden="true" /></FlipButtonFront><FlipButtonBack aria-hidden="true"><span>{tr('联系方式', 'Contact details')}</span><ArrowDownRight /></FlipButtonBack></a></FlipButton></Reveal>
           </div>
           <Reveal className="portrait-block" delay={160}>
             <div className="portrait-frame"><img src="/images/optimized/avatar/me-512.webp" srcSet="/images/optimized/avatar/me-256.webp 256w, /images/optimized/avatar/me-512.webp 512w" sizes="(max-width: 640px) 120px, 194px" alt="Shine Yuan 张晰元" width="768" height="589" decoding="async" fetchPriority="high" /></div>

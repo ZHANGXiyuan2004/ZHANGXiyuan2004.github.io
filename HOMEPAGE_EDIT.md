@@ -31,7 +31,7 @@
 - 英文第三行：My work focuses on Harness and multimodal AI, alongside open-source community building, open-source product development and technical content creation.
 - 保留院校和协会链接，奖项加粗斜体。整体与板块标题左侧对齐；宽屏为三行，窄屏自然换行。不使用卡片。
 - 首屏不显示“个人主页 / Portfolio”和“2026”眉题。城市轮换文字桌面 14px、平板 13px、窄屏 12px。
-- 动画：Animate UI SplittingText 姓名逐字上移淡入；Fade 问候、头像、联系入口和简介依次轻移淡入。切换语言时首屏内容短距离淡入，其余板块原位淡入，保留标签页及展开状态；减少动态效果时静态呈现。
+- 动画：Animate UI SplittingText 姓名逐字上移淡入；Fade 问候、头像和简介依次轻移淡入。切换语言时首屏内容短距离淡入，其余板块原位淡入，保留标签页及展开状态；减少动态效果时静态呈现。
 
 ## 2. Research / 论文发表与投稿
 
@@ -229,6 +229,6 @@
 - 09：selection-09-20261005，重庆 / Chongqing。
 - 四张原图保存在 images/gallery-originals/；展示使用 images/optimized/gallery/ 下 800/1280 WebP。其余五张及默认收起交互不变。
 
-- 首页 Contact / 联系我采用无边框、无背景、无阴影的 Animate UI FlipButton：文字与大箭头组合，悬浮或键盘聚焦翻转为 Contact details / 联系方式及向右下箭头；44px 点击高度，保留 #contact 跳转和减少动态效果支持。
+- 首屏移除 Contact / 联系我按钮；右侧彩色头像使用白色留边、细灰边框、小圆角及轻阴影的相片样式，窄屏缩小留边。
 
 - 地点核对：05 对应主项目 images/beijing2.png，08 对应 images/taiyuan.jpeg，已目视核对原图。
