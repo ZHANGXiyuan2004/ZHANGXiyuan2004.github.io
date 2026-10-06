@@ -418,7 +418,7 @@ h2>span { color:#969690; }
 .about-strip { grid-template-columns:minmax(0,1fr); }
 .about-content { min-width:0; }
 
-/* Three-line biography, aligned with the section heading. */
+/* Numbered biography with hanging indentation on wrapped lines. */
 .about-content { width:100%; max-width:none; margin-inline:0; }
 .about-description { width:100%; text-align:left; white-space:normal; text-wrap:wrap; line-height:2; }
 
@@ -427,3 +427,8 @@ h2>span { color:#969690; }
 .portrait-caption svg { flex-shrink:0; }
 
 @media(max-width:480px) { .portrait-frame { padding:3px; border-radius:5px; } .portrait-frame img { border-radius:2px; } }
+
+.about-description { list-style:decimal outside; padding-left:1.8em; }
+.about-description li { padding-left:8px; }
+.about-description li + li { margin-top:10px; }
+.about-description li::marker { color:#8a8a83; font-size:12px; font-variant-numeric:tabular-nums; }

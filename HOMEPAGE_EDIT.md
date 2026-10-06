@@ -29,7 +29,7 @@
 - 英文第一行：Incoming Ph.D. student at ZJU‑UIUC Institute, Zhejiang University.
 - 英文第二行：Graduated from UESTC — Outstanding Student Award nominee; founded the UESTC Interdisciplinary Association.
 - 英文第三行：My work focuses on Harness and multimodal AI, alongside open-source community building, open-source product development and technical content creation.
-- 保留院校和协会链接，奖项加粗斜体。整体与板块标题左侧对齐；宽屏为三行，窄屏自然换行。不使用卡片。
+- 保留院校和协会链接，奖项加粗斜体。中英文简介均为 1、2、3 编号列表，编号统一对齐，条目之间保留间距，换行与正文起点对齐。不使用卡片。
 - 首屏不显示“个人主页 / Portfolio”和“2026”眉题。城市轮换文字桌面 14px、平板 13px、窄屏 12px。
 - 动画：Animate UI SplittingText 姓名逐字上移淡入；Fade 问候、头像和简介依次轻移淡入。切换语言时首屏内容短距离淡入，其余板块原位淡入，保留标签页及展开状态；减少动态效果时静态呈现。
 
