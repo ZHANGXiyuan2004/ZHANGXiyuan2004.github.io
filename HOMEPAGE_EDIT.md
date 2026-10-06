@@ -23,13 +23,13 @@
 - 英文姓名：Shine Yuan
 - 头像：images/optimized/avatar/me-512.webp（保留 256/512 响应式版本和彩色）
 - 城市：杭州、北京、上海、成都、深圳、香港 / Hangzhou, Beijing, Shanghai, Chengdu, Shenzhen, Hong Kong。头像下用 Animate UI RotatingText 纵向轮换；减少动态效果时静态显示，后台标签页及离开视口时暂停。
-- 中文第一行：浙江大学[伊利诺伊大学厄巴纳香槟校区联合学院（ZJU‑UIUC Institute）](https://www.zju.edu.cn/)准博士生。
+- 中文第一行：浙江大学[伊利诺伊大学厄巴纳香槟校区联合学院（ZJU‑UIUC Institute）](https://www.zju.edu.cn/)博士生。
 - 中文第二行：毕业于[电子科技大学](https://en.uestc.edu.cn/)，获校级最高荣誉「成电杰出学生」提名，并创立[电子科技大学交叉学科协会](https://uestc-ia.github.io/)。
 - 中文第三行：工作主要关注 Harness 和多模态，同时参与开源社区建设、开源项目与产品开发，以及自媒体技术内容创作。
-- 英文第一行：Incoming Ph.D. student at ZJU‑UIUC Institute, Zhejiang University.
+- 英文第一行：Ph.D. student at ZJU‑UIUC Institute, Zhejiang University.
 - 英文第二行：Graduated from UESTC — Outstanding Student Award nominee; founded the UESTC Interdisciplinary Association.
 - 英文第三行：My work focuses on Harness and multimodal AI, alongside open-source community building, open-source product development and technical content creation.
-- 保留院校和协会链接，奖项加粗斜体。中英文简介均为 1、2、3 编号列表，编号统一对齐，条目之间保留间距，换行与正文起点对齐。不使用卡片。
+- 保留院校和协会链接，奖项加粗斜体。中英文简介均为 小圆点无序列表，圆点统一对齐，条目之间保留间距，换行与正文起点对齐。不使用卡片。
 - 首屏不显示“个人主页 / Portfolio”和“2026”眉题。城市轮换文字桌面 14px、平板 13px、窄屏 12px。
 - 动画：Animate UI SplittingText 姓名逐字上移淡入；Fade 问候、头像和简介依次轻移淡入。切换语言时首屏内容短距离淡入，其余板块原位淡入，保留标签页及展开状态；减少动态效果时静态呈现。
 

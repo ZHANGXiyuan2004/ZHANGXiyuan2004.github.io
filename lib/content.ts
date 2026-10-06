@@ -2,7 +2,7 @@
 export const profile = {
   name: 'Shine Yuan', chineseName: '张晰元', location: 'Hangzhou, China',
   email: 'mail_Xiyuan_Zhang@126.com', qq: '3438036864',
-  description: '浙江大学伊利诺伊大学厄巴纳香槟校区联合学院（ZJU‑UIUC Institute）准博士生。毕业于电子科技大学，获校级最高荣誉「成电杰出学生」提名。创立电子科技大学交叉学科协会。',
+  description: '浙江大学伊利诺伊大学厄巴纳香槟校区联合学院（ZJU‑UIUC Institute）博士生。毕业于电子科技大学，获校级最高荣誉「成电杰出学生」提名。创立电子科技大学交叉学科协会。',
 };
 export const navigation = [
   { id: 'about', label: 'About', zh: '关于' },
@@ -72,7 +72,7 @@ export function getContent(language: Language) {
   ];
   const places = ['Dunhuang', 'Chongqing', 'Xiamen', 'Chongqing', 'Beijing', 'Chongqing', 'Beijing', 'Taiyuan', 'Chongqing'];
   return {
-    profile: { ...profile, description: 'Incoming Ph.D. student at ZJU‑UIUC Institute, Zhejiang University. Graduated from UESTC — nominee for the Outstanding Student Award (university-wide top honor). Founded the UESTC Interdisciplinary Association.' },
+    profile: { ...profile, description: 'Ph.D. student at ZJU‑UIUC Institute, Zhejiang University. Graduated from UESTC — nominee for the Outstanding Student Award (university-wide top honor). Founded the UESTC Interdisciplinary Association.' },
     papers: papers.map((paper, i) => ({ ...paper, title: englishPapers[i][0], topic: englishPapers[i][1], authorship: paper.authorshipEn, summary: paper.summaryEn })),
     products: products.map((product, i) => ({ ...product, ...englishProducts[i] })),
     videos: videos.map((video, i) => ({ ...video, title: englishVideos[i][0], category: englishVideos[i][1] })),
