@@ -138,7 +138,6 @@ export default function Portfolio() {
     <a href="#main" className="skip-link">{tr('跳转到正文', 'Skip to content')}</a>
     <header className="site-header">
       <div className="header-inner">
-        <a href="#about" className="wordmark" aria-label={tr("张晰元首页", "Shine Yuan homepage")}><span className="monogram">sy.</span><span>{tr("张晰元", "Shine Yuan")}<span className="wordmark-dot"> / </span><span className="wordmark-sub">{tr('个人主页', 'Portfolio')}</span></span></a>
         <nav id="main-navigation" aria-label={tr("主导航", "Main navigation")} className={`navigation ${menuOpen ? 'is-open' : ''}`}>
           {navigation.map(item => <a key={item.id} href={`#${item.id}`} aria-current={active === item.id ? 'location' : undefined} onClick={() => { setMenuOpen(false); setActive(item.id); }}><span>{tr(item.zh, item.label)}</span></a>)}
         </nav>

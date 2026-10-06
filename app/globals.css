@@ -31,9 +31,6 @@ img { display:block; max-width:100%; }
 .page-shell,.header-inner { max-width:1120px; margin-inline:auto; }
 .site-header { height:84px; position:sticky; top:0; z-index:40; background:rgba(252,252,250,.94); border-bottom:1px solid var(--line); backdrop-filter:blur(14px); }
 .header-inner { height:100%; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-.wordmark { display:flex; align-items:center; gap:12px; font-size:13px; font-weight:600; white-space:nowrap; }
-.monogram { display:grid; place-items:center; width:34px; height:34px; border-radius:9px; background:#222; color:#fff; font-size:21px; letter-spacing:-2px; padding-right:3px; }
-.wordmark-dot,.wordmark-sub { color:#888; font-size:11px; font-weight:400; }
 .navigation { display:flex; gap:25px; align-items:center; }
 .navigation a { font-size:12px; color:#73736f; padding:11px 0; position:relative; }
 .navigation a:hover,.navigation a[aria-current] { color:#171717; }
@@ -152,7 +149,6 @@ h2>span { color:#969690; }
 @media(max-width:1200px) { .page-shell,.header-inner { margin-inline:48px; } .portrait-block { margin-right:10px; } }
 @media(max-width:900px) {
   .page-shell,.header-inner { margin-inline:32px; }
-  .wordmark-sub,.wordmark-dot { display:none; }
   .navigation { gap:18px; }
   .hero-main { gap:30px; }
   h1 { font-size:78px; letter-spacing:-5px; }
@@ -286,8 +282,8 @@ h2>span { color:#969690; }
 .locale-en h1 { letter-spacing:-6px; }
 .locale-en .community-panel .body-copy { font-size:14px; }
 .locale-en .hobby-card ul { line-height:1.7; }
-@media(max-width:900px) { .navigation { gap:12px; } .header-inner { gap:16px; } .wordmark>span:last-child { display:none; } .locale-zh h2 { font-size:29px; } }
-@media(max-width:700px) { .header-controls { margin-left:auto; } .wordmark>span:last-child { display:inline; } .locale-zh h2 { font-size:26px; } .locale-en h1 { letter-spacing:-3px; } .locale-en .hero-tagline { font-size:11px; } }
+@media(max-width:900px) { .navigation { gap:12px; } .header-inner { gap:16px; } .locale-zh h2 { font-size:29px; } }
+@media(max-width:700px) { .header-controls { margin-left:auto; } .locale-zh h2 { font-size:26px; } .locale-en h1 { letter-spacing:-3px; } .locale-en .hero-tagline { font-size:11px; } }
 @media(max-width:480px) { .locale-zh h2 { font-size:24px; } .locale-en .community-stats { gap:25px; } .locale-en .hobby-card ul { font-size:10px; } .locale-en .hobby-word { font-size:21px; } .locale-en .product-top .small-label { letter-spacing:0; } }
 @media(max-width:480px) {
   .making-tabs [data-slot="tabs-list"] { max-width:100%; }
